@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScoreMind.AI — AI Football Predictions</title>
+  <meta name="description" content="AI-powered football predictions across 83+ competitions worldwide. 82.9% accuracy on Very High confidence picks.">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0a0e1a;
+      color: #f1f5f9;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: #00e5cc; text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+
+    /* Nav */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 20%;
+    }
+    .nav-logo span {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo .ai { color: #00e5cc; }
+    .lang-toggle {
+      display: flex;
+      background: #1a2236;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .lang-btn {
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: #00e5cc;
+      color: #0a0e1a;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 60px 24px 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 20%;
+      margin-bottom: 24px;
+      box-shadow: 0 0 40px rgba(0,229,204,0.15);
+    }
+    .hero-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .hero-title .ai { color: #00e5cc; }
+    .hero-tagline {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #f1f5f9, #00e5cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: 17px;
+      color: #94a3b8;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+    .stat-card {
+      background: #1a2236;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 20px 12px;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+    .stat-value.green { color: #22c55e; }
+    .stat-value.cyan { color: #00e5cc; }
+    .stat-value.white { color: #f1f5f9; }
+    .stat-label {
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    /* Coming Soon */
+    .coming-soon {
+      text-align: center;
+      padding: 32px 24px 48px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .coming-soon h2 {
+      font-size: 16px;
+      color: #64748b;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+    .sports-grid {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .sport-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.5;
+    }
+    .sport-icon { font-size: 32px; }
+    .sport-label { font-size: 11px; color: #64748b; font-weight: 500; }
+
+    /* Download */
+    .download {
+      text-align: center;
+      padding: 40px 24px 60px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .download h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+    .qr-placeholder {
+      width: 160px;
+      height: 160px;
+      border: 2px dashed #64748b;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      color: #64748b;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      background: #1a2236;
+      min-width: 190px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .badge:hover { border-color: #00e5cc; }
+    .badge.disabled {
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+    }
+    .badge-icon { font-size: 28px; line-height: 1; }
+    .badge-text { text-align: left; }
+    .badge-small { font-size: 10px; color: #94a3b8; font-weight: 500; }
+    .badge-big { font-size: 16px; font-weight: 700; color: #f1f5f9; }
+    .badge.disabled .badge-big { color: #64748b; }
+    .badge-coming { font-size: 9px; color: #64748b; font-weight: 600; margin-top: 2px; }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 24px;
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-links a { font-size: 13px; color: #94a3b8; }
+    .footer-links a:hover { color: #00e5cc; }
+    .footer-copy { font-size: 12px; color: #64748b; }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .hero-tagline { font-size: 24px; }
+      .hero-subtitle { font-size: 15px; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-value { font-size: 22px; }
+      .sports-grid { gap: 20px; }
+    }
+    @media (max-width: 420px) {
+      .nav { padding: 12px 16px; }
+      .hero { padding: 40px 16px 32px; }
+      .hero-logo { width: 80px; height: 80px; }
+      .stats-bar { padding: 0 16px 40px; gap: 8px; }
+      .stat-card { padding: 14px 8px; }
+      .stat-value { font-size: 20px; }
+      .stat-label { font-size: 10px; }
+      .badges { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <img src="/logo.png" alt="ScoreMind.AI">
+      <span>ScoreMind<span class="ai">.AI</span></span>
+    </a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="/logo.png" alt="ScoreMind.AI" class="hero-logo">
+    <div class="hero-title">ScoreMind<span class="ai">.AI</span></div>
+    <h1 class="hero-tagline" data-en="The Future of Football Predictions" data-es="El Futuro de las Predicciones de Futbol">The Future of Football Predictions</h1>
+    <p class="hero-subtitle" data-en="AI-powered predictions across 83+ competitions worldwide" data-es="Predicciones potenciadas por IA en mas de 83 competiciones mundiales">AI-powered predictions across 83+ competitions worldwide</p>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="stat-card">
+      <div class="stat-value green">82.9%</div>
+      <div class="stat-label" data-en="Very High Accuracy" data-es="Precision Muy Alta">Very High Accuracy</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value cyan">68.9%</div>
+      <div class="stat-label" data-en="High Accuracy" data-es="Precision Alta">High Accuracy</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value white">12,000+</div>
+      <div class="stat-label" data-en="Verified Predictions" data-es="Predicciones Verificadas">Verified Predictions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value cyan">83+</div>
+      <div class="stat-label" data-en="Competitions" data-es="Competiciones">Competitions</div>
+    </div>
+  </section>
+
+  <!-- Coming Soon -->
+  <section class="coming-soon">
+    <h2 data-en="COMING SOON — MORE SPORTS" data-es="PROXIMAMENTE — MAS DEPORTES">COMING SOON — MORE SPORTS</h2>
+    <div class="sports-grid">
+      <div class="sport-item">
+        <span class="sport-icon">&#127936;</span>
+        <span class="sport-label">Basketball</span>
+      </div>
+      <div class="sport-item">
+        <span class="sport-icon">&#127934;</span>
+        <span class="sport-label">Tennis</span>
+      </div>
+      <div class="sport-item">
+        <span class="sport-icon">&#127944;</span>
+        <span class="sport-label">American Football</span>
+      </div>
+      <div class="sport-item">
+        <span class="sport-icon">&#127951;</span>
+        <span class="sport-label">Cricket</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section class="download">
+    <h2 data-en="Download Now" data-es="Descarga Ahora">Download Now</h2>
+    <div class="qr-placeholder">QR Code</div>
+    <div class="badges">
+      <a class="badge" href="#" id="play-badge">
+        <span class="badge-icon">&#9654;&#65039;</span>
+        <div class="badge-text">
+          <div class="badge-small" data-en="GET IT ON" data-es="DISPONIBLE EN">GET IT ON</div>
+          <div class="badge-big">Google Play</div>
+        </div>
+      </a>
+      <div class="badge disabled">
+        <span class="badge-icon">&#63743;</span>
+        <div class="badge-text">
+          <div class="badge-small" data-en="Download on the" data-es="Descarga en la">Download on the</div>
+          <div class="badge-big">App Store</div>
+          <div class="badge-coming">Coming Soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/privacy" data-en="Privacy Policy" data-es="Politica de Privacidad">Privacy Policy</a>
+      <a href="/terms" data-en="Terms of Service" data-es="Terminos de Servicio">Terms of Service</a>
+      <a href="mailto:info@datanaat.com" data-en="Contact" data-es="Contacto">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Datanaat. All rights reserved.</div>
+  </footer>
+
+  <script>
+    let currentLang = 'en';
+    function setLang(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
+      });
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.textContent = el.getAttribute('data-' + lang);
+      });
+      document.documentElement.lang = lang;
+    }
+  </script>
+</body>
+</html>
