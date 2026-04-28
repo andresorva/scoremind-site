@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service — ScoreMind.AI</title>
-  <meta name="description" content="ScoreMind.AI Terms of Service. Free to use with optional premium features. Predictions are for entertainment only.">
+  <title>Terms of Use — ScoreMind.AI</title>
+  <meta name="description" content="ScoreMind.AI Terms of Use. AI-powered football analysis app — not a betting platform.">
   <link rel="icon" type="image/png" href="/logo.png">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,545 +13,146 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background: #0a0e1a;
       color: #f1f5f9;
-      line-height: 1.7;
+      line-height: 1.6;
       min-height: 100vh;
     }
     a { color: #00e5cc; text-decoration: none; transition: opacity 0.2s; }
     a:hover { opacity: 0.8; }
 
-    /* Nav */
     .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 24px;
-      max-width: 900px;
-      margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px; max-width: 1100px; margin: 0 auto;
     }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo img { width: 36px; height: 36px; border-radius: 20%; }
     .nav-logo span { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
     .nav-logo .ai { color: #00e5cc; }
-    .lang-toggle {
-      display: flex;
+
+    .doc { max-width: 760px; margin: 0 auto; padding: 24px 24px 80px; }
+    .doc h1 {
+      font-size: 32px; font-weight: 800; margin-bottom: 4px;
+      background: linear-gradient(135deg, #f1f5f9, #00e5cc);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .doc .last-updated { font-size: 13px; color: #64748b; margin-bottom: 32px; }
+    .doc h2 {
+      font-size: 18px; font-weight: 700; color: #f1f5f9;
+      margin-top: 28px; margin-bottom: 10px;
+      border-left: 3px solid #00e5cc; padding-left: 12px;
+    }
+    .doc p, .doc li { font-size: 15px; color: #cbd5e1; margin-bottom: 10px; }
+    .doc strong { color: #f1f5f9; }
+    .doc ul { padding-left: 22px; margin-bottom: 12px; }
+    .doc li { margin-bottom: 6px; }
+    .doc .callout {
       background: #1a2236;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .lang-btn {
-      padding: 6px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      color: #64748b;
-      transition: all 0.2s;
-    }
-    .lang-btn.active { background: #00e5cc; color: #0a0e1a; }
-
-    /* Content */
-    .content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px 24px 60px;
-    }
-    .page-title {
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-    .page-date {
-      font-size: 13px;
-      color: #64748b;
-      margin-bottom: 32px;
-    }
-
-    /* TL;DR */
-    .tldr {
-      background: #1a2236;
-      border: 1px solid rgba(0,229,204,0.2);
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 36px;
-    }
-    .tldr h2 {
-      color: #00e5cc;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-    .tldr ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .tldr li {
-      font-size: 14px;
-      color: #94a3b8;
-      padding-left: 20px;
-      position: relative;
-    }
-    .tldr li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: #22c55e;
-      font-weight: 700;
-    }
-
-    /* Sections */
-    .section { margin-bottom: 32px; }
-    .section-number {
-      display: inline-block;
-      background: rgba(0,229,204,0.12);
-      color: #00e5cc;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 6px;
-      margin-bottom: 6px;
-    }
-    .section h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #f1f5f9;
-    }
-    .section p {
-      font-size: 14px;
-      color: #94a3b8;
-      margin-bottom: 8px;
-    }
-    .section ul { list-style: none; margin: 8px 0; }
-    .section li {
-      font-size: 14px;
-      color: #94a3b8;
-      padding: 4px 0 4px 20px;
-      position: relative;
-    }
-    .section li::before {
-      content: '•';
-      position: absolute;
-      left: 4px;
-      color: #00e5cc;
-      font-weight: 700;
-    }
-    .highlight {
-      background: rgba(0,229,204,0.06);
       border: 1px solid rgba(0,229,204,0.15);
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin-top: 10px;
-      font-size: 14px;
-      color: #f1f5f9;
-      font-weight: 500;
+      border-left: 3px solid #00e5cc;
+      padding: 14px 18px; border-radius: 8px;
+      margin: 16px 0; font-size: 14px;
     }
-    .highlight a { color: #00e5cc; text-decoration: underline; }
 
-    /* Footer */
     .footer {
       border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 24px;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
+      padding: 24px; text-align: center;
+      max-width: 1100px; margin: 0 auto;
     }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; flex-wrap: wrap; }
     .footer-links a { font-size: 13px; color: #94a3b8; }
     .footer-links a:hover { color: #00e5cc; }
     .footer-copy { font-size: 12px; color: #64748b; }
 
-    @media (max-width: 600px) {
-      .page-title { font-size: 22px; }
-      .content { padding: 16px 16px 48px; }
+    @media (max-width: 480px) {
+      .doc h1 { font-size: 26px; }
+      .doc h2 { font-size: 16px; }
+      .nav { padding: 12px 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
   <nav class="nav">
     <a href="/" class="nav-logo">
       <img src="/logo.png" alt="ScoreMind.AI">
       <span>ScoreMind<span class="ai">.AI</span></span>
     </a>
-    <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('es')">ES</button>
-    </div>
   </nav>
 
-  <!-- Content: EN -->
-  <div class="content" id="content-en">
-    <h1 class="page-title">Terms of Service</h1>
-    <p class="page-date">Last updated: March 2, 2026</p>
+  <main class="doc">
+    <h1>Terms of Use</h1>
+    <p class="last-updated">Last updated: April 28, 2026</p>
 
-    <div class="tldr">
-      <h2>TL;DR</h2>
-      <ul>
-        <li>ScoreMind.AI is free to use with optional premium features</li>
-        <li>Predictions are for entertainment only — not gambling advice</li>
-        <li>Don't abuse the service or try to scrape our data</li>
-        <li>We can update these terms and will notify you</li>
-        <li>You own your data and can delete your account anytime</li>
-      </ul>
+    <div class="callout">
+      ScoreMind.AI is an <strong>AI-powered sports analysis app</strong>. It is <strong>NOT a betting platform</strong>. We do not accept wagers, hold funds, or facilitate any form of real-money gambling.
     </div>
 
-    <div class="section">
-      <span class="section-number">01</span>
-      <h3>Acceptance of Terms</h3>
-      <p>By accessing or using ScoreMind.AI, you agree to be bound by these Terms of Service. If you do not agree, please do not use the Service.</p>
-      <p>You must be at least 13 years old. If you are under 18, you confirm that you have your parent or guardian's permission.</p>
-    </div>
+    <h2>1. About the Service</h2>
+    <p>ScoreMind.AI ("ScoreMind", "we", "our", "us") provides statistical analysis and AI-generated football match predictions across 80+ competitions. The service is offered through our mobile applications (iOS and Android) and our website at <a href="https://scoremind.ai">scoremind.ai</a>. The service is operated by Datanaat.</p>
 
-    <div class="section">
-      <span class="section-number">02</span>
-      <h3>Description of Service</h3>
-      <p>ScoreMind.AI is a football prediction and statistics platform that provides:</p>
-      <ul>
-        <li>AI-powered match predictions with confidence levels</li>
-        <li>Live scores and match statistics</li>
-        <li>Head-to-head records and team analysis</li>
-        <li>League standings and historical data</li>
-        <li>Personalized features for registered users</li>
-      </ul>
-    </div>
+    <h2>2. No Real-Money Wagering</h2>
+    <p>The app does not allow users to place real-money bets. ScoreMind.AI does not collect, hold, or transmit funds for the purpose of gambling. Predictions, picks, and recommendations shown in the app are for <strong>entertainment and statistical reference only</strong>.</p>
 
-    <div class="section">
-      <span class="section-number">03</span>
-      <h3>User Accounts</h3>
-      <ul>
-        <li>Provide accurate information</li>
-        <li>Keep your login credentials secure</li>
-        <li>Not create multiple accounts for the same person</li>
-        <li>Not impersonate another person or entity</li>
-        <li>Not use offensive, misleading, or inappropriate usernames</li>
-      </ul>
-      <div class="highlight">You are responsible for all activity under your account. If you suspect unauthorized access, contact us at <a href="mailto:info@datanaat.com">info@datanaat.com</a>.</div>
-    </div>
+    <h2>3. Virtual Coins</h2>
+    <p>The app contains a virtual currency called "coins" that users earn through activity (logins, daily streaks, predictions, etc.). Coins:</p>
+    <ul>
+      <li>Have <strong>no monetary value</strong> and cannot be exchanged for cash, products, or any tangible goods.</li>
+      <li>Cannot be purchased with real money.</li>
+      <li>Are non-transferable between accounts.</li>
+      <li>Are forfeited if your account is deleted.</li>
+    </ul>
 
-    <div class="section">
-      <span class="section-number">04</span>
-      <h3>Predictions & Disclaimer</h3>
-      <p>ScoreMind.AI predictions are for ENTERTAINMENT AND INFORMATIONAL PURPOSES ONLY.</p>
-      <ul>
-        <li>Predictions are NOT gambling advice, betting tips, or financial recommendations</li>
-        <li>No prediction is guaranteed — football is inherently unpredictable</li>
-        <li>ScoreMind.AI is NOT a bookmaker, betting platform, or gambling service</li>
-        <li>We do NOT facilitate, encourage, or promote gambling or betting</li>
-        <li>You should NOT use predictions as the sole basis for any financial decision</li>
-        <li>We are NOT responsible for financial losses based on our predictions</li>
-      </ul>
-      <div class="highlight">If you or someone you know has a gambling problem, please contact your local gambling helpline or visit <a href="https://www.begambleaware.org" target="_blank" rel="noopener">www.begambleaware.org</a>.</div>
-    </div>
+    <h2>4. Subscriptions</h2>
+    <p>ScoreMind.AI offers paid subscription tiers (Plus, Premium) with additional features. Subscriptions:</p>
+    <ul>
+      <li>Are billed through the App Store (Apple) or Google Play.</li>
+      <li>Auto-renew at the end of each period unless cancelled at least 24 hours before renewal.</li>
+      <li>Can be cancelled at any time through your App Store or Google Play account settings.</li>
+      <li>Are not refundable for partially-used periods, except as required by applicable law or platform policy.</li>
+    </ul>
 
-    <div class="section">
-      <span class="section-number">05</span>
-      <h3>Acceptable Use</h3>
-      <p>You agree NOT to:</p>
-      <ul>
-        <li>Use automated tools, bots, or scrapers to extract data</li>
-        <li>Reverse-engineer or extract our prediction models or algorithms</li>
-        <li>Reproduce, distribute, or commercially exploit our content</li>
-        <li>Use the Service to build a competing product</li>
-        <li>Interfere with or disrupt the Service's infrastructure</li>
-        <li>Attempt to access other users' accounts or data</li>
-        <li>Use the Service for any illegal activity</li>
-      </ul>
-    </div>
+    <h2>5. Eligibility</h2>
+    <p>You must be at least <strong>13 years old</strong> to use ScoreMind.AI. By using the service, you confirm that you meet this minimum age requirement and that your use of the service complies with all applicable local laws.</p>
 
-    <div class="section">
-      <span class="section-number">06</span>
-      <h3>Intellectual Property</h3>
-      <p>All content — predictions, analysis, algorithms, models, UI design, logos, and text — is property of Datanaat.</p>
-      <ul>
-        <li>Do not copy, reproduce, or redistribute predictions or analysis</li>
-        <li>Do not share predictions for commercial purposes</li>
-        <li>Do not use our brand, logo, or name without permission</li>
-        <li>Do not claim our predictions as your own</li>
-      </ul>
-    </div>
+    <h2>6. No Betting Advice</h2>
+    <p>All picks, predictions, confidence ratings, and statistical commentary in the app and on our website are <strong>data-driven analysis, not betting advice</strong>. We make no guarantee that any prediction will be correct. Football outcomes are inherently uncertain.</p>
+    <p>You are solely responsible for any decisions you make — including any decisions to place bets through third-party platforms — based on information shown in our app. ScoreMind.AI, Datanaat, and our operators are <strong>not responsible</strong> for any financial loss resulting from such decisions.</p>
 
-    <div class="section">
-      <span class="section-number">07</span>
-      <h3>Premium Features & Payments</h3>
-      <ul>
-        <li>Pricing will be clearly communicated before purchase</li>
-        <li>Subscriptions can be cancelled at any time</li>
-        <li>Refunds handled according to app store policies</li>
-        <li>Free features will remain available</li>
-      </ul>
-    </div>
+    <h2>7. Data Accuracy</h2>
+    <p>Match data (fixtures, scores, lineups, statistics) is provided by third-party data feeds (currently Sportmonks v3 API). We make reasonable efforts to ensure accuracy, but we do not guarantee that all data is complete, current, or error-free. The service is provided <strong>"as-is"</strong>.</p>
 
-    <div class="section">
-      <span class="section-number">08</span>
-      <h3>Availability & Modifications</h3>
-      <p>We strive for 24/7 availability, but do not guarantee uninterrupted access. May be unavailable due to:</p>
-      <ul>
-        <li>Scheduled maintenance</li>
-        <li>Server or infrastructure issues</li>
-        <li>Third-party API outages</li>
-        <li>Force majeure events</li>
-      </ul>
-    </div>
+    <h2>8. Acceptable Use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Reverse engineer, decompile, or attempt to extract the source code of our app.</li>
+      <li>Use the service to harass, defame, or harm other users.</li>
+      <li>Submit picks, predictions, or content that is illegal, hateful, or sexually explicit.</li>
+      <li>Use automated tools (bots, scrapers) to interact with the service without our written permission.</li>
+      <li>Attempt to bypass rate limits, paywalls, or feature gates.</li>
+    </ul>
 
-    <div class="section">
-      <span class="section-number">09</span>
-      <h3>Limitation of Liability</h3>
-      <ul>
-        <li>ScoreMind.AI is provided "AS IS" without warranties</li>
-        <li>We do not guarantee accuracy of any predictions</li>
-        <li>We are not liable for any damages from use of the Service</li>
-        <li>Maximum liability: $50 USD or 12-month payments, whichever is greater</li>
-      </ul>
-    </div>
+    <h2>9. Intellectual Property</h2>
+    <p>All app content, branding, design, code, and the ScoreMind.AI prediction model are the property of Datanaat. You may not reproduce, distribute, or commercialize any part of the service without written permission. Match data feeds remain the property of their respective owners.</p>
 
-    <div class="section">
-      <span class="section-number">10</span>
-      <h3>Indemnification</h3>
-      <p>You agree to hold harmless Datanaat from any claims, damages, or expenses arising from your use of the Service or violation of these Terms.</p>
-    </div>
+    <h2>10. Termination</h2>
+    <p>We may suspend or terminate your account at any time if you violate these terms or if your use of the service creates risk for us or other users. You may delete your account at any time from the in-app Settings → Delete Account screen.</p>
 
-    <div class="section">
-      <span class="section-number">11</span>
-      <h3>Governing Law & Disputes</h3>
-      <p>These Terms are governed by the laws of Mexico. Disputes shall be resolved through:</p>
-      <ul>
-        <li>Good faith negotiation (30 days)</li>
-        <li>Mediation through a mutually agreed mediator</li>
-        <li>Binding arbitration if unresolved</li>
-      </ul>
-    </div>
+    <h2>11. Changes</h2>
+    <p>We may update these terms from time to time. The "Last updated" date at the top of this page indicates when changes were last made. Continued use of the service after a change indicates acceptance of the updated terms.</p>
 
-    <div class="section">
-      <span class="section-number">12</span>
-      <h3>International Users</h3>
-      <p>ScoreMind.AI is available worldwide. By using from outside Mexico, you consent to data transfer to our servers. We comply with GDPR and CCPA. Contact <a href="mailto:info@datanaat.com">info@datanaat.com</a> for data rights.</p>
-    </div>
+    <h2>12. Contact</h2>
+    <p>Questions about these terms? Email <a href="mailto:info@datanaat.com">info@datanaat.com</a>.</p>
+  </main>
 
-    <div class="section">
-      <span class="section-number">13</span>
-      <h3>Termination</h3>
-      <p>You may delete your account at any time. We may terminate accounts for Terms violations, fraud, abuse, or legal requirements.</p>
-    </div>
-
-    <div class="section">
-      <span class="section-number">14</span>
-      <h3>Changes to These Terms</h3>
-      <p>Significant changes will be notified through the app or email. Continued use after changes constitutes acceptance.</p>
-    </div>
-
-    <div class="section">
-      <h3>Questions?</h3>
-      <p>If you have any questions about these Terms, contact us at <a href="mailto:info@datanaat.com">info@datanaat.com</a></p>
-    </div>
-  </div>
-
-  <!-- Content: ES -->
-  <div class="content" id="content-es" style="display:none;">
-    <h1 class="page-title">Terminos de Servicio</h1>
-    <p class="page-date">Ultima actualizacion: 2 de marzo de 2026</p>
-
-    <div class="tldr">
-      <h2>TL;DR</h2>
-      <ul>
-        <li>ScoreMind.AI es gratis con funciones premium opcionales</li>
-        <li>Las predicciones son solo para entretenimiento — no son consejos de apuestas</li>
-        <li>No abuses del servicio ni intentes extraer nuestros datos</li>
-        <li>Podemos actualizar estos terminos y te notificaremos</li>
-        <li>Eres dueno de tus datos y puedes eliminar tu cuenta en cualquier momento</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">01</span>
-      <h3>Aceptacion de Terminos</h3>
-      <p>Al acceder o usar ScoreMind.AI, aceptas estar sujeto a estos Terminos de Servicio. Si no estas de acuerdo, por favor no uses el Servicio.</p>
-      <p>Debes tener al menos 13 anos. Si eres menor de 18, confirmas que tienes el permiso de tu padre, madre o tutor.</p>
-    </div>
-
-    <div class="section">
-      <span class="section-number">02</span>
-      <h3>Descripcion del Servicio</h3>
-      <p>ScoreMind.AI es una plataforma de predicciones y estadisticas de futbol que proporciona:</p>
-      <ul>
-        <li>Predicciones de partidos impulsadas por IA con niveles de confianza</li>
-        <li>Resultados en vivo y estadisticas de partidos</li>
-        <li>Registros de enfrentamientos directos y analisis de equipos</li>
-        <li>Tablas de posiciones y datos historicos</li>
-        <li>Funciones personalizadas para usuarios registrados</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">03</span>
-      <h3>Cuentas de Usuario</h3>
-      <ul>
-        <li>Proporcionar informacion precisa</li>
-        <li>Mantener tus credenciales de acceso seguras</li>
-        <li>No crear multiples cuentas para la misma persona</li>
-        <li>No hacerse pasar por otra persona o entidad</li>
-        <li>No usar nombres de usuario ofensivos, enganosos o inapropiados</li>
-      </ul>
-      <div class="highlight">Eres responsable de toda la actividad bajo tu cuenta. Si sospechas de acceso no autorizado, contactanos en <a href="mailto:info@datanaat.com">info@datanaat.com</a>.</div>
-    </div>
-
-    <div class="section">
-      <span class="section-number">04</span>
-      <h3>Predicciones y Descargo de Responsabilidad</h3>
-      <p>Las predicciones de ScoreMind.AI son SOLO PARA ENTRETENIMIENTO E INFORMACION.</p>
-      <ul>
-        <li>Las predicciones NO son consejos de apuestas, tips de apuestas ni recomendaciones financieras</li>
-        <li>Ninguna prediccion esta garantizada — el futbol es inherentemente impredecible</li>
-        <li>ScoreMind.AI NO es una casa de apuestas, plataforma de apuestas ni servicio de juegos de azar</li>
-        <li>NO facilitamos, fomentamos ni promovemos las apuestas o el juego</li>
-        <li>NO debes usar las predicciones como unica base para ninguna decision financiera</li>
-        <li>NO somos responsables de perdidas financieras basadas en nuestras predicciones</li>
-      </ul>
-      <div class="highlight">Si tu o alguien que conoces tiene un problema con el juego, por favor contacta a tu linea de ayuda local o visita <a href="https://www.begambleaware.org" target="_blank" rel="noopener">www.begambleaware.org</a>.</div>
-    </div>
-
-    <div class="section">
-      <span class="section-number">05</span>
-      <h3>Uso Aceptable</h3>
-      <p>Aceptas NO:</p>
-      <ul>
-        <li>Usar herramientas automatizadas, bots o scrapers para extraer datos</li>
-        <li>Hacer ingenieria inversa o extraer nuestros modelos de prediccion o algoritmos</li>
-        <li>Reproducir, distribuir o explotar comercialmente nuestro contenido</li>
-        <li>Usar el Servicio para construir un producto competidor</li>
-        <li>Interferir con o interrumpir la infraestructura del Servicio</li>
-        <li>Intentar acceder a cuentas o datos de otros usuarios</li>
-        <li>Usar el Servicio para cualquier actividad ilegal</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">06</span>
-      <h3>Propiedad Intelectual</h3>
-      <p>Todo el contenido — predicciones, analisis, algoritmos, modelos, diseno de interfaz, logos y texto — es propiedad de Datanaat.</p>
-      <ul>
-        <li>No copiar, reproducir o redistribuir predicciones o analisis</li>
-        <li>No compartir predicciones con fines comerciales</li>
-        <li>No usar nuestra marca, logo o nombre sin permiso</li>
-        <li>No reclamar nuestras predicciones como propias</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">07</span>
-      <h3>Funciones Premium y Pagos</h3>
-      <ul>
-        <li>Los precios se comunicaran claramente antes de la compra</li>
-        <li>Las suscripciones se pueden cancelar en cualquier momento</li>
-        <li>Reembolsos manejados segun las politicas de la tienda de aplicaciones</li>
-        <li>Las funciones gratuitas seguiran disponibles</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">08</span>
-      <h3>Disponibilidad y Modificaciones</h3>
-      <p>Nos esforzamos por disponibilidad 24/7, pero no garantizamos acceso ininterrumpido. Puede no estar disponible debido a:</p>
-      <ul>
-        <li>Mantenimiento programado</li>
-        <li>Problemas de servidor o infraestructura</li>
-        <li>Interrupciones de APIs de terceros</li>
-        <li>Eventos de fuerza mayor</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">09</span>
-      <h3>Limitacion de Responsabilidad</h3>
-      <ul>
-        <li>ScoreMind.AI se proporciona "TAL CUAL" sin garantias</li>
-        <li>No garantizamos la precision de ninguna prediccion</li>
-        <li>No somos responsables de ningun dano derivado del uso del Servicio</li>
-        <li>Responsabilidad maxima: $50 USD o pagos de 12 meses, lo que sea mayor</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">10</span>
-      <h3>Indemnizacion</h3>
-      <p>Aceptas eximir de responsabilidad a Datanaat de cualquier reclamacion, dano o gasto derivado de tu uso del Servicio o violacion de estos Terminos.</p>
-    </div>
-
-    <div class="section">
-      <span class="section-number">11</span>
-      <h3>Ley Aplicable y Disputas</h3>
-      <p>Estos Terminos se rigen por las leyes de Mexico. Las disputas se resolveran mediante:</p>
-      <ul>
-        <li>Negociacion de buena fe (30 dias)</li>
-        <li>Mediacion a traves de un mediador mutuamente acordado</li>
-        <li>Arbitraje vinculante si no se resuelve</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">12</span>
-      <h3>Usuarios Internacionales</h3>
-      <p>ScoreMind.AI esta disponible en todo el mundo. Al usar desde fuera de Mexico, consientes la transferencia de datos a nuestros servidores. Cumplimos con GDPR y CCPA. Contacta <a href="mailto:info@datanaat.com">info@datanaat.com</a> para derechos de datos.</p>
-    </div>
-
-    <div class="section">
-      <span class="section-number">13</span>
-      <h3>Terminacion</h3>
-      <p>Puedes eliminar tu cuenta en cualquier momento. Podemos terminar cuentas por violaciones de los Terminos, fraude, abuso o requisitos legales.</p>
-    </div>
-
-    <div class="section">
-      <span class="section-number">14</span>
-      <h3>Cambios a Estos Terminos</h3>
-      <p>Los cambios significativos se notificaran a traves de la app o por correo electronico. El uso continuado despues de los cambios constituye aceptacion.</p>
-    </div>
-
-    <div class="section">
-      <h3>Preguntas?</h3>
-      <p>Si tienes alguna pregunta sobre estos Terminos, contactanos en <a href="mailto:info@datanaat.com">info@datanaat.com</a></p>
-    </div>
-  </div>
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-links">
-      <a href="/privacy" data-en="Privacy Policy" data-es="Politica de Privacidad">Privacy Policy</a>
-      <a href="/terms" data-en="Terms of Service" data-es="Terminos de Servicio">Terms of Service</a>
-      <a href="mailto:info@datanaat.com" data-en="Contact" data-es="Contacto">Contact</a>
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Use</a>
+      <a href="mailto:info@datanaat.com">Contact</a>
     </div>
     <div class="footer-copy">&copy; 2026 Datanaat. All rights reserved.</div>
   </footer>
 
-  <script>
-    let currentLang = 'en';
-    function setLang(lang) {
-      currentLang = lang;
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
-      });
-      document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
-      document.getElementById('content-es').style.display = lang === 'es' ? 'block' : 'none';
-      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-        el.textContent = el.getAttribute('data-' + lang);
-      });
-      document.documentElement.lang = lang;
-    }
-  </script>
 </body>
 </html>

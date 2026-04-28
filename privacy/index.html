@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — ScoreMind.AI</title>
-  <meta name="description" content="ScoreMind.AI Privacy Policy. We don't sell your data. We don't share with advertisers. You can delete your account anytime.">
+  <meta name="description" content="ScoreMind.AI Privacy Policy. What data we collect, how we use it, and your rights.">
   <link rel="icon" type="image/png" href="/logo.png">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,461 +13,198 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       background: #0a0e1a;
       color: #f1f5f9;
-      line-height: 1.7;
+      line-height: 1.6;
       min-height: 100vh;
     }
     a { color: #00e5cc; text-decoration: none; transition: opacity 0.2s; }
     a:hover { opacity: 0.8; }
 
-    /* Nav */
     .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 24px;
-      max-width: 900px;
-      margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px; max-width: 1100px; margin: 0 auto;
     }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo img { width: 36px; height: 36px; border-radius: 20%; }
     .nav-logo span { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
     .nav-logo .ai { color: #00e5cc; }
-    .lang-toggle {
-      display: flex;
+
+    .doc { max-width: 760px; margin: 0 auto; padding: 24px 24px 80px; }
+    .doc h1 {
+      font-size: 32px; font-weight: 800; margin-bottom: 4px;
+      background: linear-gradient(135deg, #f1f5f9, #00e5cc);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .doc .last-updated { font-size: 13px; color: #64748b; margin-bottom: 32px; }
+    .doc h2 {
+      font-size: 18px; font-weight: 700; color: #f1f5f9;
+      margin-top: 28px; margin-bottom: 10px;
+      border-left: 3px solid #00e5cc; padding-left: 12px;
+    }
+    .doc p, .doc li { font-size: 15px; color: #cbd5e1; margin-bottom: 10px; }
+    .doc strong { color: #f1f5f9; }
+    .doc ul { padding-left: 22px; margin-bottom: 12px; }
+    .doc li { margin-bottom: 6px; }
+    .doc .callout {
       background: #1a2236;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .lang-btn {
-      padding: 6px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      color: #64748b;
-      transition: all 0.2s;
-    }
-    .lang-btn.active { background: #00e5cc; color: #0a0e1a; }
-
-    /* Content */
-    .content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px 24px 60px;
-    }
-    .page-title {
-      font-size: 28px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-    .page-date {
-      font-size: 13px;
-      color: #64748b;
-      margin-bottom: 32px;
-    }
-
-    /* TL;DR */
-    .tldr {
-      background: #1a2236;
-      border: 1px solid rgba(0,229,204,0.2);
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 36px;
-    }
-    .tldr h2 {
-      color: #00e5cc;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-    .tldr ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .tldr li {
-      font-size: 14px;
-      color: #94a3b8;
-      padding-left: 20px;
-      position: relative;
-    }
-    .tldr li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: #22c55e;
-      font-weight: 700;
-    }
-
-    /* Sections */
-    .section {
-      margin-bottom: 32px;
-    }
-    .section-number {
-      display: inline-block;
-      background: rgba(0,229,204,0.12);
-      color: #00e5cc;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 6px;
-      margin-bottom: 6px;
-    }
-    .section h3 {
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #f1f5f9;
-    }
-    .section p {
-      font-size: 14px;
-      color: #94a3b8;
-      margin-bottom: 8px;
-    }
-    .section ul {
-      list-style: none;
-      margin: 8px 0;
-    }
-    .section li {
-      font-size: 14px;
-      color: #94a3b8;
-      padding: 4px 0 4px 20px;
-      position: relative;
-    }
-    .section li::before {
-      content: '•';
-      position: absolute;
-      left: 4px;
-      color: #00e5cc;
-      font-weight: 700;
-    }
-    .highlight {
-      background: rgba(0,229,204,0.06);
       border: 1px solid rgba(0,229,204,0.15);
-      border-radius: 10px;
-      padding: 14px 18px;
-      margin-top: 10px;
-      font-size: 14px;
-      color: #f1f5f9;
-      font-weight: 500;
+      border-left: 3px solid #00e5cc;
+      padding: 14px 18px; border-radius: 8px;
+      margin: 16px 0; font-size: 14px;
     }
+    .doc table {
+      width: 100%; border-collapse: collapse;
+      margin: 12px 0; font-size: 14px;
+    }
+    .doc th, .doc td {
+      text-align: left; padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .doc th { color: #00e5cc; font-weight: 600; font-size: 13px; }
+    .doc td { color: #cbd5e1; }
 
-    /* Footer */
     .footer {
       border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 24px;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
+      padding: 24px; text-align: center;
+      max-width: 1100px; margin: 0 auto;
     }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; flex-wrap: wrap; }
     .footer-links a { font-size: 13px; color: #94a3b8; }
     .footer-links a:hover { color: #00e5cc; }
     .footer-copy { font-size: 12px; color: #64748b; }
 
-    @media (max-width: 600px) {
-      .page-title { font-size: 22px; }
-      .content { padding: 16px 16px 48px; }
+    @media (max-width: 480px) {
+      .doc h1 { font-size: 26px; }
+      .doc h2 { font-size: 16px; }
+      .nav { padding: 12px 16px; }
+      .doc th, .doc td { padding: 8px 6px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
   <nav class="nav">
     <a href="/" class="nav-logo">
       <img src="/logo.png" alt="ScoreMind.AI">
       <span>ScoreMind<span class="ai">.AI</span></span>
     </a>
-    <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('es')">ES</button>
-    </div>
   </nav>
 
-  <!-- Content: EN -->
-  <div class="content" id="content-en">
-    <h1 class="page-title">Privacy Policy</h1>
-    <p class="page-date">Last updated: March 2, 2026</p>
+  <main class="doc">
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last updated: April 28, 2026</p>
 
-    <div class="tldr">
-      <h2>TL;DR</h2>
-      <ul>
-        <li>We do not sell your data. Ever.</li>
-        <li>We do not share your data with advertisers.</li>
-        <li>We do not use your data for targeted advertising.</li>
-        <li>We only collect what's needed to make the app work for you.</li>
-        <li>You can delete your account and all your data at any time.</li>
-      </ul>
+    <div class="callout">
+      We collect only what we need to make ScoreMind.AI work. We never sell your data, and you can delete your account at any time from the in-app Settings.
     </div>
 
-    <div class="section">
-      <span class="section-number">01</span>
-      <h3>Who We Are</h3>
-      <p>ScoreMind.AI is a football prediction platform operated by Datanaat. We provide AI-powered match predictions, live scores, and statistics for football fans worldwide.</p>
-      <p>ScoreMind.AI is an independent project — we are NOT affiliated with any betting company, bookmaker, or gambling organization.</p>
-    </div>
+    <h2>1. Who we are</h2>
+    <p>ScoreMind.AI ("ScoreMind", "we", "our", "us") is operated by Datanaat. This policy explains what personal data we collect when you use our mobile app (iOS, Android) or website at <a href="https://scoremind.ai">scoremind.ai</a>, and what we do with it.</p>
 
-    <div class="section">
-      <span class="section-number">02</span>
-      <h3>What We Collect</h3>
-      <p>When you create an account:</p>
-      <ul>
-        <li>Email address — to identify your account and send password resets</li>
-        <li>Username — your chosen display name</li>
-        <li>Age range — general demographic (e.g., "25-34", not your exact birthday)</li>
-        <li>Country — to personalize league and content recommendations</li>
-        <li>Profile photo — only if you sign in with Google</li>
-      </ul>
-      <div class="highlight">We do NOT collect: your real name, phone number, physical address, exact date of birth, financial information, location data, or any government-issued IDs.</div>
-    </div>
+    <h2>2. Data we collect</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>What it is</th>
+          <th>Why we need it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account</td>
+          <td>Email, display name, optional avatar; auth provider (Google, Apple, email/password)</td>
+          <td>Sign in, attach your subscription, sync your favourite teams across devices</td>
+        </tr>
+        <tr>
+          <td>Profile preferences</td>
+          <td>Country, age range, favourite teams/leagues, theme, language</td>
+          <td>Personalize the home screen, surface local leagues first</td>
+        </tr>
+        <tr>
+          <td>Activity</td>
+          <td>Picks you make, ScoreBot conversations, daily login streak, coin balance</td>
+          <td>Run the gamification + leaderboard features, evaluate your prediction accuracy</td>
+        </tr>
+        <tr>
+          <td>Subscription</td>
+          <td>Tier (free / plus / premium), expiry date, original platform receipt id</td>
+          <td>Verify your subscription is active, restore on a new device</td>
+        </tr>
+        <tr>
+          <td>Push tokens</td>
+          <td>Firebase Cloud Messaging device token</td>
+          <td>Send you match-start, goal, and result notifications you opted into</td>
+        </tr>
+        <tr>
+          <td>Diagnostic / usage</td>
+          <td>App version, OS, anonymous request rate counters, error logs</td>
+          <td>Detect bugs, prevent abuse, improve performance</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>We do <strong>not</strong> collect: precise location (GPS), contacts, photos, or microphone audio.</p>
 
-    <div class="section">
-      <span class="section-number">03</span>
-      <h3>How We Use Your Data</h3>
-      <ul>
-        <li>Account management — keeping you signed in, resetting your password</li>
-        <li>Personalization — showing your favorite teams, leagues, and preferred theme</li>
-        <li>App improvement — understanding which features are popular to make the app better</li>
-        <li>Notifications — sending match alerts you've opted into</li>
-      </ul>
-      <div class="highlight">We will never use your data for advertising, profiling, or any purpose other than making ScoreMind.AI work better for you.</div>
-    </div>
+    <h2>3. How we use the data</h2>
+    <ul>
+      <li><strong>Run the app.</strong> Show your picks, your subscription tier, your daily reward, your followed teams.</li>
+      <li><strong>Personalize content.</strong> Lead the home feed with leagues from your country.</li>
+      <li><strong>Improve the model.</strong> Aggregate prediction accuracy across all users to retune the scientific model. Individual identities are not used in model training.</li>
+      <li><strong>Send notifications.</strong> Only those you opted into in Settings → Notifications.</li>
+      <li><strong>Prevent abuse.</strong> Rate-limit ScoreBot calls and detect script-driven access.</li>
+    </ul>
 
-    <div class="section">
-      <span class="section-number">04</span>
-      <h3>What We Will Never Do</h3>
-      <ul>
-        <li>Never sell your data to anyone, for any reason</li>
-        <li>Never share your data with advertisers or ad networks</li>
-        <li>Never use your data for political profiling or behavioral manipulation</li>
-        <li>Never send you spam — if we email you, it's because you asked for it</li>
-        <li>Never make your profile public without your explicit consent</li>
-      </ul>
-    </div>
+    <h2>4. Third parties</h2>
+    <p>To run the app we share specific data with the following processors:</p>
+    <ul>
+      <li><strong>Supabase</strong> — hosts the database where your account, picks, and preferences live.</li>
+      <li><strong>Railway</strong> — hosts our backend API and crons (no user data stored here, only forwarded).</li>
+      <li><strong>Google AdMob</strong> — serves rewarded video ads for ScoreBot ad-gated messages on free / quota-exhausted users. Ad personalization can be turned off in your device settings.</li>
+      <li><strong>Google Generative AI (Gemini)</strong> — powers ScoreBot replies. Your message text is sent for inference; responses are not used by Google to train its model on your data per the API ToS.</li>
+      <li><strong>Anthropic (Claude)</strong> — fallback ScoreBot model. Same processing terms.</li>
+      <li><strong>Sportmonks</strong> — match data feed. We send no user data to Sportmonks; we only fetch fixtures, lineups, scores.</li>
+      <li><strong>Apple App Store / Google Play</strong> — handle subscription billing and receipt verification.</li>
+      <li><strong>Firebase Cloud Messaging</strong> — delivers push notifications.</li>
+      <li><strong>Resend</strong> — sends contact/feedback emails when you reach us via the in-app form.</li>
+    </ul>
+    <p>We do <strong>not</strong> sell your personal data to advertisers, brokers, or any third party.</p>
 
-    <div class="section">
-      <span class="section-number">05</span>
-      <h3>Third-Party Services</h3>
-      <ul>
-        <li>Supabase (database & authentication) — stores account data securely</li>
-        <li>Google Sign-In (optional auth) — shares name, email, and profile picture with us if you sign in with Google</li>
-        <li>API-Football (football data) — provides match data. Does NOT receive any personal data.</li>
-        <li>Anthropic Claude (AI analysis) — generates match analysis. No personal user data sent.</li>
-      </ul>
-      <div class="highlight">We do not use Google Analytics, Facebook Pixel, or any third-party tracking or advertising tools.</div>
-    </div>
+    <h2>5. Data retention</h2>
+    <p>We keep your account-level data for as long as you have an active account. Activity data (picks, ScoreBot messages older than 3 days, login streaks) is retained on a rolling basis to support feature timelines and accuracy backtests. When you delete your account, all of the above is removed within 30 days from our active systems. Some entries (purchase audit logs) are retained longer where required by tax, legal, or anti-fraud obligations.</p>
 
-    <div class="section">
-      <span class="section-number">06</span>
-      <h3>Data Storage & Security</h3>
-      <ul>
-        <li>All data encrypted in transit (HTTPS/TLS) and at rest</li>
-        <li>Passwords are hashed — we cannot see or recover your password</li>
-        <li>Row-Level Security ensures users can only access their own data</li>
-        <li>API endpoints are rate-limited to prevent abuse</li>
-        <li>Server-side API keys are never exposed to the app</li>
-        <li>Usage analytics data automatically deleted after 90 days</li>
-      </ul>
-    </div>
+    <h2>6. Your rights</h2>
+    <ul>
+      <li><strong>Access / export.</strong> Email <a href="mailto:info@datanaat.com">info@datanaat.com</a> with the subject "Data export" and we'll send you a JSON of everything we hold about your account within 14 days.</li>
+      <li><strong>Correction.</strong> Most fields you can edit yourself in Settings.</li>
+      <li><strong>Deletion.</strong> Settings → Account → Delete Account. The deletion is propagated across all linked tables, push tokens are unregistered, and Apple Sign-in tokens (if applicable) are revoked through Apple's revoke endpoint per Guideline 5.1.1(v).</li>
+      <li><strong>Object / withdraw consent.</strong> You can disable notifications, opt out of analytics, or stop using the app at any time.</li>
+    </ul>
 
-    <div class="section">
-      <span class="section-number">07</span>
-      <h3>Your Rights</h3>
-      <ul>
-        <li>Access — view all data from your Profile page</li>
-        <li>Edit — update username, preferences, and favorites anytime</li>
-        <li>Export — request a copy of all data by contacting us</li>
-        <li>Delete — permanently delete account and all data from Profile page</li>
-      </ul>
-      <div class="highlight">When you delete your account, we delete everything: profile, favorites, preferences, and usage history. This action is permanent and cannot be undone.</div>
-    </div>
+    <h2>7. Children</h2>
+    <p>ScoreMind.AI is not intended for users under 13. We do not knowingly collect data from children under 13. If you believe we have collected such data, please contact us so we can delete it.</p>
 
-    <div class="section">
-      <span class="section-number">08</span>
-      <h3>Children's Privacy</h3>
-      <p>ScoreMind.AI is not directed to children under 13. We do not knowingly collect personal information from children under 13.</p>
-    </div>
+    <h2>8. Security</h2>
+    <p>Passwords are hashed and never stored in plaintext. Database connections are encrypted in transit (TLS) and at rest. Backend API keys are stored in Railway's encrypted secret manager. We follow industry-standard practices, but no internet-connected service is 100% secure — please use a strong unique password.</p>
 
-    <div class="section">
-      <span class="section-number">09</span>
-      <h3>Gambling Disclaimer</h3>
-      <p>Predictions are for entertainment and informational purposes only. We are not a gambling platform. We do not facilitate, encourage, or promote betting or gambling.</p>
-    </div>
+    <h2>9. International transfers</h2>
+    <p>Our infrastructure (Supabase, Railway, Google) operates in the United States and the European Union. By using the app you consent to your data being processed in those regions.</p>
 
-    <div class="section">
-      <span class="section-number">10</span>
-      <h3>Changes to This Policy</h3>
-      <p>Significant changes will be notified through the app or email. Minor clarifications may be updated without notice.</p>
-    </div>
+    <h2>10. Changes</h2>
+    <p>We may update this policy from time to time. The "Last updated" date at the top indicates when. Material changes will be communicated in-app on next launch.</p>
 
-    <div class="section">
-      <h3>Questions?</h3>
-      <p>If you have any questions about this privacy policy, contact us at <a href="mailto:info@datanaat.com">info@datanaat.com</a></p>
-    </div>
-  </div>
+    <h2>11. Contact</h2>
+    <p>Questions or requests? Email <a href="mailto:info@datanaat.com">info@datanaat.com</a>. We reply within 5 business days.</p>
+  </main>
 
-  <!-- Content: ES -->
-  <div class="content" id="content-es" style="display:none;">
-    <h1 class="page-title">Politica de Privacidad</h1>
-    <p class="page-date">Ultima actualizacion: 2 de marzo de 2026</p>
-
-    <div class="tldr">
-      <h2>TL;DR</h2>
-      <ul>
-        <li>No vendemos tus datos. Nunca.</li>
-        <li>No compartimos tus datos con anunciantes.</li>
-        <li>No usamos tus datos para publicidad dirigida.</li>
-        <li>Solo recopilamos lo necesario para que la app funcione para ti.</li>
-        <li>Puedes eliminar tu cuenta y todos tus datos en cualquier momento.</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">01</span>
-      <h3>Quienes Somos</h3>
-      <p>ScoreMind.AI es una plataforma de predicciones de futbol operada por Datanaat. Proporcionamos predicciones impulsadas por IA, resultados en vivo y estadisticas para aficionados al futbol en todo el mundo.</p>
-      <p>ScoreMind.AI es un proyecto independiente — NO estamos afiliados a ninguna casa de apuestas, corredor de apuestas u organizacion de juegos de azar.</p>
-    </div>
-
-    <div class="section">
-      <span class="section-number">02</span>
-      <h3>Que Recopilamos</h3>
-      <p>Cuando creas una cuenta:</p>
-      <ul>
-        <li>Direccion de correo electronico — para identificar tu cuenta y enviar restablecimientos de contrasena</li>
-        <li>Nombre de usuario — tu nombre de visualizacion elegido</li>
-        <li>Rango de edad — demografico general (ej., "25-34", no tu cumpleanos exacto)</li>
-        <li>Pais — para personalizar recomendaciones de ligas y contenido</li>
-        <li>Foto de perfil — solo si inicias sesion con Google</li>
-      </ul>
-      <div class="highlight">NO recopilamos: tu nombre real, numero de telefono, direccion fisica, fecha de nacimiento exacta, informacion financiera, datos de ubicacion, ni identificaciones gubernamentales.</div>
-    </div>
-
-    <div class="section">
-      <span class="section-number">03</span>
-      <h3>Como Usamos Tus Datos</h3>
-      <ul>
-        <li>Gestion de cuenta — mantener tu sesion iniciada, restablecer tu contrasena</li>
-        <li>Personalizacion — mostrar tus equipos favoritos, ligas y tema preferido</li>
-        <li>Mejora de la app — entender que funciones son populares para mejorar la app</li>
-        <li>Notificaciones — enviar alertas de partidos que hayas activado</li>
-      </ul>
-      <div class="highlight">Nunca usaremos tus datos para publicidad, perfilamiento, ni ningun proposito diferente a hacer que ScoreMind.AI funcione mejor para ti.</div>
-    </div>
-
-    <div class="section">
-      <span class="section-number">04</span>
-      <h3>Lo Que Nunca Haremos</h3>
-      <ul>
-        <li>Nunca venderemos tus datos a nadie, por ninguna razon</li>
-        <li>Nunca compartiremos tus datos con anunciantes o redes publicitarias</li>
-        <li>Nunca usaremos tus datos para perfilamiento politico o manipulacion conductual</li>
-        <li>Nunca te enviaremos spam — si te enviamos un correo, es porque lo solicitaste</li>
-        <li>Nunca haremos publico tu perfil sin tu consentimiento explicito</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">05</span>
-      <h3>Servicios de Terceros</h3>
-      <ul>
-        <li>Supabase (base de datos y autenticacion) — almacena datos de cuenta de forma segura</li>
-        <li>Google Sign-In (autenticacion opcional) — comparte nombre, correo y foto de perfil con nosotros si inicias sesion con Google</li>
-        <li>API-Football (datos de futbol) — proporciona datos de partidos. NO recibe ningun dato personal.</li>
-        <li>Anthropic Claude (analisis IA) — genera analisis de partidos. No se envian datos personales del usuario.</li>
-      </ul>
-      <div class="highlight">No usamos Google Analytics, Facebook Pixel, ni ninguna herramienta de rastreo o publicidad de terceros.</div>
-    </div>
-
-    <div class="section">
-      <span class="section-number">06</span>
-      <h3>Almacenamiento y Seguridad de Datos</h3>
-      <ul>
-        <li>Todos los datos encriptados en transito (HTTPS/TLS) y en reposo</li>
-        <li>Las contrasenas son hasheadas — no podemos ver ni recuperar tu contrasena</li>
-        <li>Seguridad a Nivel de Fila asegura que los usuarios solo accedan a sus propios datos</li>
-        <li>Los endpoints de la API tienen limite de velocidad para prevenir abuso</li>
-        <li>Las claves de API del servidor nunca se exponen a la app</li>
-        <li>Los datos de analitica de uso se eliminan automaticamente despues de 90 dias</li>
-      </ul>
-    </div>
-
-    <div class="section">
-      <span class="section-number">07</span>
-      <h3>Tus Derechos</h3>
-      <ul>
-        <li>Acceso — ver todos los datos desde tu pagina de Perfil</li>
-        <li>Editar — actualizar nombre de usuario, preferencias y favoritos en cualquier momento</li>
-        <li>Exportar — solicitar una copia de todos los datos contactandonos</li>
-        <li>Eliminar — eliminar permanentemente la cuenta y todos los datos desde la pagina de Perfil</li>
-      </ul>
-      <div class="highlight">Cuando eliminas tu cuenta, eliminamos todo: perfil, favoritos, preferencias e historial de uso. Esta accion es permanente y no se puede deshacer.</div>
-    </div>
-
-    <div class="section">
-      <span class="section-number">08</span>
-      <h3>Privacidad de Menores</h3>
-      <p>ScoreMind.AI no esta dirigido a menores de 13 anos. No recopilamos intencionalmente informacion personal de menores de 13 anos.</p>
-    </div>
-
-    <div class="section">
-      <span class="section-number">09</span>
-      <h3>Aviso sobre Apuestas</h3>
-      <p>Las predicciones son solo para entretenimiento e informacion. No somos una plataforma de apuestas. No facilitamos, fomentamos ni promovemos las apuestas o el juego.</p>
-    </div>
-
-    <div class="section">
-      <span class="section-number">10</span>
-      <h3>Cambios a Esta Politica</h3>
-      <p>Los cambios significativos se notificaran a traves de la app o por correo electronico. Las aclaraciones menores pueden actualizarse sin previo aviso.</p>
-    </div>
-
-    <div class="section">
-      <h3>Preguntas?</h3>
-      <p>Si tienes alguna pregunta sobre esta politica de privacidad, contactanos en <a href="mailto:info@datanaat.com">info@datanaat.com</a></p>
-    </div>
-  </div>
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="footer-links">
-      <a href="/privacy" data-en="Privacy Policy" data-es="Politica de Privacidad">Privacy Policy</a>
-      <a href="/terms" data-en="Terms of Service" data-es="Terminos de Servicio">Terms of Service</a>
-      <a href="mailto:info@datanaat.com" data-en="Contact" data-es="Contacto">Contact</a>
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Use</a>
+      <a href="mailto:info@datanaat.com">Contact</a>
     </div>
     <div class="footer-copy">&copy; 2026 Datanaat. All rights reserved.</div>
   </footer>
 
-  <script>
-    let currentLang = 'en';
-    function setLang(lang) {
-      currentLang = lang;
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
-      });
-      document.getElementById('content-en').style.display = lang === 'en' ? 'block' : 'none';
-      document.getElementById('content-es').style.display = lang === 'es' ? 'block' : 'none';
-      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-        el.textContent = el.getAttribute('data-' + lang);
-      });
-      document.documentElement.lang = lang;
-    }
-  </script>
 </body>
 </html>
