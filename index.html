@@ -3,374 +3,1117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ScoreMind.AI — AI Football Predictions</title>
-  <meta name="description" content="AI-powered football predictions across 83+ competitions worldwide. 82.9% accuracy on Very High confidence picks.">
-  <link rel="icon" type="image/png" href="/logo.png">
+  <meta name="theme-color" content="#000000">
+  <title>ScoreMind AI — AI Predictions for 140+ Football Competitions</title>
+  <meta name="description" content="AI-powered football predictions, deep stats, and a personal AI sports analyst (ScoreBot) for 140+ competitions worldwide. Free on Android. iOS coming soon.">
+  <link rel="icon" type="image/webp" href="/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="/assets/screenshots/home.webp" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Open Graph (FIXME: og-image.png needs to be uploaded to /og-image.png) -->
+  <meta property="og:title" content="ScoreMind AI — AI Predictions for Football">
+  <meta property="og:description" content="Win probabilities, deep stats, and a personal AI sports analyst — for 140+ competitions worldwide.">
+  <meta property="og:image" content="https://scoremind.ai/og-image.png">
+  <meta property="og:url" content="https://scoremind.ai">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ScoreMind AI — AI Predictions for Football">
+  <meta name="twitter:description" content="Win probabilities, deep stats, and a personal AI sports analyst.">
+  <meta name="twitter:image" content="https://scoremind.ai/og-image.png">
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: #0a0e1a;
-      color: #f1f5f9;
-      line-height: 1.6;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.5;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
-    a { color: #00e5cc; text-decoration: none; transition: opacity 0.2s; }
-    a:hover { opacity: 0.8; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+    img { display: block; max-width: 100%; }
 
-    /* Nav */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: #00CEC9;
+      text-transform: uppercase;
+    }
+    .h2-display {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background-color: currentColor;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      mask-size: contain;
+    }
+    .icon-brain { -webkit-mask-image: url('/assets/icons/brain.svg'); mask-image: url('/assets/icons/brain.svg'); }
+    .icon-bot { -webkit-mask-image: url('/assets/icons/bot.svg'); mask-image: url('/assets/icons/bot.svg'); }
+    .icon-bar-chart { -webkit-mask-image: url('/assets/icons/bar-chart-3.svg'); mask-image: url('/assets/icons/bar-chart-3.svg'); }
+    .icon-check { -webkit-mask-image: url('/assets/icons/check.svg'); mask-image: url('/assets/icons/check.svg'); }
+
     .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 64px;
+      z-index: 50;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 24px;
-      max-width: 1100px;
-      margin: 0 auto;
     }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
+    .nav.scrolled {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom-color: #1A1A1A;
     }
-    .nav-logo img {
-      width: 36px;
-      height: 36px;
-      border-radius: 20%;
-    }
-    .nav-logo span {
-      font-size: 20px;
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo img { width: 32px; height: 32px; border-radius: 8px; }
+    .nav-logo-text {
+      font-size: 18px;
       font-weight: 800;
+      letter-spacing: -0.3px;
       color: #fff;
-      letter-spacing: -0.5px;
     }
-    .nav-logo .ai { color: #00e5cc; }
+    .nav-logo-text .ai { color: #00CEC9; }
+
     .lang-toggle {
       display: flex;
-      background: #1a2236;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .lang-btn {
-      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid #1A1A1A;
+      border-radius: 999px;
+      padding: 4px;
       font-size: 13px;
       font-weight: 600;
-      cursor: pointer;
-      border: none;
+    }
+    .lang-toggle button {
       background: transparent;
-      color: #64748b;
-      transition: all 0.2s;
+      border: 0;
+      color: #999;
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: inherit;
+      transition: color 0.2s, background 0.2s;
     }
-    .lang-btn.active {
-      background: #00e5cc;
-      color: #0a0e1a;
+    .lang-toggle button.active {
+      background: #00CEC9;
+      color: #000;
     }
 
-    /* Hero */
     .hero {
-      text-align: center;
-      padding: 60px 24px 40px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .hero-logo {
-      width: 100px;
-      height: 100px;
-      border-radius: 20%;
-      margin-bottom: 24px;
-      box-shadow: 0 0 40px rgba(0,229,204,0.15);
-    }
-    .hero-title {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-    .hero-title .ai { color: #00e5cc; }
-    .hero-tagline {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 12px;
-      background: linear-gradient(135deg, #f1f5f9, #00e5cc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-subtitle {
-      font-size: 17px;
-      color: #94a3b8;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    /* Stats bar */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 24px 48px;
-    }
-    .stat-card {
-      background: #1a2236;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 20px 12px;
-      text-align: center;
-    }
-    .stat-value {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-      margin-bottom: 4px;
-    }
-    .stat-value.green { color: #22c55e; }
-    .stat-value.cyan { color: #00e5cc; }
-    .stat-value.white { color: #f1f5f9; }
-    .stat-label {
-      font-size: 12px;
-      color: #94a3b8;
-      font-weight: 500;
-    }
-
-    /* Coming Soon */
-    .coming-soon {
-      text-align: center;
-      padding: 32px 24px 48px;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .coming-soon h2 {
-      font-size: 16px;
-      color: #64748b;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-    }
-    .sports-grid {
+      position: relative;
+      padding: 120px 32px 80px;
+      min-height: 90vh;
       display: flex;
-      justify-content: center;
-      gap: 32px;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 30%, rgba(0, 206, 201, 0.15), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: #00CEC9;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(48px, 6vw, 76px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      max-width: 600px;
+    }
+    .hero-sub {
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.5;
+      color: #A0A8B4;
+      max-width: 540px;
+      margin-top: 24px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
       flex-wrap: wrap;
     }
-    .sport-item {
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 0;
+      text-decoration: none;
+    }
+    .btn-primary { background: #00CEC9; color: #000; }
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(0, 206, 201, 0.35);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid #333;
+      color: rgba(255, 255, 255, 0.7);
+      cursor: not-allowed;
+      opacity: 0.85;
+    }
+    .btn-icon { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.1;
+      gap: 2px;
+    }
+    .btn-stack-small {
+      font-size: 10px;
+      font-weight: 600;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .btn-stack-big { font-size: 15px; font-weight: 700; }
+    .hero-tiny { font-size: 13px; color: #666; margin-top: 16px; }
+
+    .hero-phone-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-phone {
+      width: 360px;
+      max-width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      transform: rotate(2deg);
+      opacity: 1;
+      box-shadow:
+        0 30px 80px rgba(0, 206, 201, 0.25),
+        0 12px 32px rgba(0, 0, 0, 0.5);
+      animation: heroPhoneIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 200ms;
+    }
+    @keyframes heroPhoneIn {
+      from { opacity: 0; transform: rotate(2deg) translateY(20px); }
+      to { opacity: 1; transform: rotate(2deg) translateY(0); }
+    }
+
+    .trust { padding: 64px 0; }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .trust-card {
+      background: #0A0A0A;
+      border: 1px solid #1A1A1A;
+      border-radius: 16px;
+      padding: 32px 24px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .trust-card:hover {
+      border-color: rgba(0, 206, 201, 0.4);
+      transform: translateY(-4px);
+    }
+    .trust-number {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .trust-card.green .trust-number { color: #10B981; }
+    .trust-card.cyan .trust-number { color: #00CEC9; }
+    .trust-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-top: 16px;
+    }
+    .trust-desc {
+      font-size: 13px;
+      color: #A0A8B4;
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+    .trust-disclaimer {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-top: 32px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .live-proof { padding: 32px 0 64px; }
+    .live-proof-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #0A0A0A, #050505);
+      border: 1px solid rgba(0, 206, 201, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .live-proof-phone {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+    .live-proof-text {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      background: rgba(255, 68, 68, 0.12);
+      border: 1px solid rgba(255, 68, 68, 0.4);
+      color: #FF4444;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FF4444;
+      animation: livePulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .live-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #00CEC9;
+      text-transform: uppercase;
+    }
+    .live-headline {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.35;
+    }
+    .live-subhead {
+      font-size: 14px;
+      color: #A0A8B4;
+      line-height: 1.5;
+    }
+    .live-disclaimer {
+      font-size: 11px;
+      color: #555;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    .why { padding: 96px 0; }
+    .why-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 56px;
+    }
+    .why-header .eyebrow { display: inline-block; margin-bottom: 16px; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .why-card {
+      background: linear-gradient(180deg, #0A0A0A, #050505);
+      border: 1px solid #1A1A1A;
+      border-radius: 16px;
+      padding: 40px 28px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+    .why-card:hover {
+      border-color: rgba(0, 206, 201, 0.3);
+      transform: translateY(-4px);
+    }
+    .why-card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(0, 206, 201, 0.1);
+      color: #00CEC9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .why-card-icon .icon { width: 28px; height: 28px; }
+    .why-card-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 24px;
+    }
+    .why-card-body {
+      font-size: 15px;
+      color: #A0A8B4;
+      line-height: 1.6;
+      margin-top: 12px;
+    }
+
+    .scorebot {
+      position: relative;
+      padding: 96px 0;
+      overflow: hidden;
+    }
+    .scorebot::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 206, 201, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+    .scorebot-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 64px;
+      align-items: center;
+    }
+    .scorebot-phone-wrap { display: flex; justify-content: center; }
+    .scorebot-phone {
+      width: 360px;
+      max-width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow:
+        0 30px 80px rgba(0, 206, 201, 0.25),
+        0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+    .scorebot-text .eyebrow { display: inline-block; margin-bottom: 16px; }
+    .scorebot-h2 {
+      font-size: clamp(36px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .scorebot-body {
+      font-size: 18px;
+      color: #A0A8B4;
+      line-height: 1.6;
+      margin-top: 20px;
+      max-width: 480px;
+    }
+    .scorebot-bullets {
+      list-style: none;
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .scorebot-bullets li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      color: #fff;
+      font-weight: 500;
+    }
+    .scorebot-bullets .icon-check {
+      width: 20px;
+      height: 20px;
+      color: #00CEC9;
+      flex-shrink: 0;
+    }
+
+    .beyond { padding: 96px 0; }
+    .beyond-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 64px;
+      align-items: center;
+    }
+    .beyond-phone-wrap { display: flex; justify-content: center; }
+    .beyond-phone {
+      width: 340px;
+      max-width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow:
+        0 24px 60px rgba(0, 206, 201, 0.18),
+        0 10px 28px rgba(0, 0, 0, 0.5);
+      transform: rotate(-2deg);
+    }
+    .beyond-text .eyebrow { display: inline-block; margin-bottom: 16px; }
+    .beyond-h2 {
+      font-size: clamp(36px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .beyond-body {
+      font-size: 18px;
+      color: #A0A8B4;
+      line-height: 1.6;
+      margin-top: 20px;
+      max-width: 480px;
+    }
+
+    .market { padding: 96px 0; text-align: center; }
+    .market-header { max-width: 720px; margin: 0 auto 48px; }
+    .market-header .eyebrow { display: inline-block; margin-bottom: 16px; }
+    .market-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .pill-cyan { background: rgba(0, 206, 201, 0.15); color: #00CEC9; }
+    .pill-blue { background: rgba(9, 132, 227, 0.15); color: #0984E3; }
+    .pill-purple { background: rgba(108, 92, 231, 0.15); color: #6C5CE7; }
+    .pill-gold { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
+    .pill-red { background: rgba(255, 68, 68, 0.15); color: #FF4444; }
+    .market-subtext {
+      font-size: 14px;
+      color: #666;
+      margin-top: 32px;
+    }
+
+    .stats { padding: 96px 0; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 64px;
+      align-items: center;
+    }
+    .stats-text .eyebrow { display: inline-block; margin-bottom: 16px; }
+    .stats-h2 {
+      font-size: clamp(36px, 4vw, 48px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .stats-body {
+      font-size: 18px;
+      color: #A0A8B4;
+      line-height: 1.6;
+      margin-top: 20px;
+      max-width: 480px;
+    }
+    .stats-phone-wrap { display: flex; justify-content: center; }
+    .stats-phone {
+      width: 340px;
+      max-width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow:
+        0 24px 60px rgba(0, 206, 201, 0.18),
+        0 10px 28px rgba(0, 0, 0, 0.5);
+      transform: rotate(2deg);
+    }
+
+    .download { padding: 96px 0; }
+    .download-card {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      background: radial-gradient(circle at 50% 0%, rgba(0, 206, 201, 0.12), transparent 60%), linear-gradient(180deg, #0A0A0A, #000);
+      border: 1px solid rgba(0, 206, 201, 0.2);
+      border-radius: 24px;
+      padding: 80px 60px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .download-card .eyebrow { display: inline-block; margin-bottom: 16px; }
+    .download-h2 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .download-sub {
+      font-size: 18px;
+      color: #A0A8B4;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+
+    .download-options {
+      margin: 56px auto 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 80px;
+      max-width: 720px;
+    }
+    .download-col {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
-      opacity: 0.5;
+      gap: 20px;
     }
-    .sport-icon { font-size: 32px; }
-    .sport-label { font-size: 11px; color: #64748b; font-weight: 500; }
-
-    /* Download */
-    .download {
-      text-align: center;
-      padding: 40px 24px 60px;
-      max-width: 600px;
-      margin: 0 auto;
+    .qr-wrap {
+      position: relative;
+      padding: 20px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #0A0A0A, #050505);
+      border: 1px solid rgba(0, 206, 201, 0.3);
+      box-shadow:
+        0 0 40px rgba(0, 206, 201, 0.15),
+        inset 0 0 20px rgba(0, 206, 201, 0.05);
+      transition: box-shadow 0.3s ease;
+      display: block;
     }
-    .download h2 {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 24px;
+    .qr-wrap:hover {
+      box-shadow:
+        0 0 60px rgba(0, 206, 201, 0.25),
+        inset 0 0 24px rgba(0, 206, 201, 0.08);
     }
-    .qr-placeholder {
-      width: 160px;
-      height: 160px;
-      border: 2px dashed #64748b;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 24px;
-      color: #64748b;
-      font-size: 14px;
+    .qr-wrap img.qr-img {
+      width: 200px;
+      height: 200px;
+      display: block;
+    }
+    .qr-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: #000;
+      padding: 6px;
+      box-shadow: 0 0 0 4px #000;
+    }
+    .qr-wrap.dimmed {
+      opacity: 0.55;
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: none;
+    }
+    .qr-wrap.dimmed:hover { box-shadow: none; }
+    .qr-label {
+      font-size: 13px;
       font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
-    .badges {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .badge {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      border: 1.5px solid rgba(255,255,255,0.15);
-      background: #1a2236;
-      min-width: 190px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .badge:hover { border-color: #00e5cc; }
-    .badge.disabled {
-      opacity: 0.4;
-      cursor: default;
-      pointer-events: none;
-    }
-    .badge-icon { font-size: 28px; line-height: 1; }
-    .badge-text { text-align: left; }
-    .badge-small { font-size: 10px; color: #94a3b8; font-weight: 500; }
-    .badge-big { font-size: 16px; font-weight: 700; color: #f1f5f9; }
-    .badge.disabled .badge-big { color: #64748b; }
-    .badge-coming { font-size: 9px; color: #64748b; font-weight: 600; margin-top: 2px; }
+    .qr-label.active { color: #00CEC9; }
+    .qr-label.dimmed { color: #666; }
 
-    /* Footer */
+    .download-mobile-buttons {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .download-mobile-buttons .btn {
+      justify-content: center;
+      width: 100%;
+    }
+
     .footer {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 24px;
-      text-align: center;
-      max-width: 1100px;
-      margin: 0 auto;
+      border-top: 1px solid #1A1A1A;
+      padding: 80px 0 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; }
+    .footer-logo img { width: 32px; height: 32px; border-radius: 8px; }
+    .footer-logo-text {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+    .footer-logo-text .ai { color: #00CEC9; }
+    .footer-tagline {
+      font-size: 14px;
+      color: #A0A8B4;
+      max-width: 360px;
+      line-height: 1.5;
     }
     .footer-links {
       display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
     }
-    .footer-links a { font-size: 13px; color: #94a3b8; }
-    .footer-links a:hover { color: #00e5cc; }
-    .footer-copy { font-size: 12px; color: #64748b; }
+    .footer-links a {
+      font-size: 14px;
+      color: #A0A8B4;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #00CEC9; }
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid #1A1A1A;
+      text-align: center;
+    }
+    .footer-copy { font-size: 13px; color: #666; }
+    .footer-disclaimer {
+      font-size: 12px;
+      color: #444;
+      max-width: 600px;
+      margin: 16px auto 0;
+      line-height: 1.5;
+    }
 
-    /* Responsive */
-    @media (max-width: 700px) {
-      .hero-tagline { font-size: 24px; }
-      .hero-subtitle { font-size: 15px; }
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
-      .stat-value { font-size: 22px; }
-      .sports-grid { gap: 20px; }
+    @media (max-width: 1023px) {
+      .hero-phone, .scorebot-phone { width: 320px; }
+      .beyond-phone, .stats-phone { width: 300px; }
+      .why-grid { grid-template-columns: 1fr; gap: 16px; }
+      .trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .scorebot-grid, .beyond-grid, .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .scorebot-grid .scorebot-phone-wrap { order: 2; }
     }
-    @media (max-width: 420px) {
-      .nav { padding: 12px 16px; }
-      .hero { padding: 40px 16px 32px; }
-      .hero-logo { width: 80px; height: 80px; }
-      .stats-bar { padding: 0 16px 40px; gap: 8px; }
-      .stat-card { padding: 14px 8px; }
-      .stat-value { font-size: 20px; }
-      .stat-label { font-size: 10px; }
-      .badges { flex-direction: column; align-items: center; }
+
+    @media (max-width: 767px) {
+      .container { padding: 0 20px; }
+      .nav-inner { padding: 0 16px; }
+      .hero { padding: 100px 20px 60px; min-height: auto; }
+      .hero h1 {
+        font-size: 40px !important;
+        line-height: 1.08;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+      }
+      .hero-sub { font-size: 17px; }
+      .hero-eyebrow { font-size: 12px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+      .hero-phone { width: min(280px, 75vw); }
+      .lang-toggle { font-size: 12px; padding: 3px; }
+      .lang-toggle button { padding: 5px 10px; }
+      .h2-display { font-size: 32px !important; }
+      .scorebot-h2, .beyond-h2, .stats-h2 { font-size: 30px !important; }
+      .download-h2 { font-size: 32px !important; }
+      .why, .scorebot, .beyond, .market, .stats, .download {
+        padding: 64px 0;
+      }
+      .live-proof-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+      }
+      .live-proof-phone {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+      .download-card { padding: 48px 24px; }
+      .download-options { display: none; }
+      .download-mobile-buttons { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-links { align-items: flex-start; }
+      .market-pills { gap: 10px; }
+      .pill { font-size: 14px; padding: 10px 16px; }
+      .trust-grid { grid-template-columns: 1fr; }
+      .trust-number { font-size: 40px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav class="nav">
-    <a href="/" class="nav-logo">
-      <img src="/logo.png" alt="ScoreMind.AI">
-      <span>ScoreMind<span class="ai">.AI</span></span>
-    </a>
-    <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('es')">ES</button>
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="ScoreMind.AI home">
+        <img src="/logo.webp" alt="">
+        <span class="nav-logo-text">ScoreMind<span class="ai">.AI</span></span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language selector">
+        <button data-lang-btn="en" data-i18n="nav.lang_en" class="active" aria-pressed="true">EN</button>
+        <button data-lang-btn="es" data-i18n="nav.lang_es" aria-pressed="false">ES</button>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
-    <img src="/logo.png" alt="ScoreMind.AI" class="hero-logo">
-    <div class="hero-title">ScoreMind<span class="ai">.AI</span></div>
-    <h1 class="hero-tagline" data-en="The Future of Football Predictions" data-es="El Futuro de las Predicciones de Futbol">The Future of Football Predictions</h1>
-    <p class="hero-subtitle" data-en="AI-powered predictions across 83+ competitions worldwide" data-es="Predicciones potenciadas por IA en mas de 83 competiciones mundiales">AI-powered predictions across 83+ competitions worldwide</p>
-  </section>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-eyebrow" data-i18n="hero.eyebrow">AI-POWERED · 140+ COMPETITIONS</div>
+        <h1 data-i18n="hero.h1">The Future of Football Predictions</h1>
+        <p class="hero-sub" data-i18n="hero.sub">Win probabilities, deep stats, and a personal AI sports analyst — for 140+ competitions worldwide.</p>
 
-  <!-- Stats Bar -->
-  <section class="stats-bar">
-    <div class="stat-card">
-      <div class="stat-value green">82.9%</div>
-      <div class="stat-label" data-en="Very High Accuracy" data-es="Precision Muy Alta">Very High Accuracy</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value cyan">68.9%</div>
-      <div class="stat-label" data-en="High Accuracy" data-es="Precision Alta">High Accuracy</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value white">12,000+</div>
-      <div class="stat-label" data-en="Verified Predictions" data-es="Predicciones Verificadas">Verified Predictions</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-value cyan">83+</div>
-      <div class="stat-label" data-en="Competitions" data-es="Competiciones">Competitions</div>
-    </div>
-  </section>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=ai.scoremind.app">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92Z"/>
+              <path d="m16.81 9.013 2.633 1.494c1.376.78 1.376 2.205 0 2.985l-2.633 1.494L13.792 12l3.018-2.987Z"/>
+              <path d="m4.609 1.814 9.183 9.186-3.018 3.018L4.609 1.814Z"/>
+              <path d="m4.609 22.186 9.183-9.186-3.018-3.018L4.609 22.186Z"/>
+            </svg>
+            <span class="btn-stack">
+              <span class="btn-stack-small" data-i18n="hero.btn_primary_small">GET IT ON</span>
+              <span class="btn-stack-big" data-i18n="hero.btn_primary_big">Google Play</span>
+            </span>
+          </a>
 
-  <!-- Coming Soon -->
-  <section class="coming-soon">
-    <h2 data-en="COMING SOON — MORE SPORTS" data-es="PROXIMAMENTE — MAS DEPORTES">COMING SOON — MORE SPORTS</h2>
-    <div class="sports-grid">
-      <div class="sport-item">
-        <span class="sport-icon">&#127936;</span>
-        <span class="sport-label">Basketball</span>
+          <button class="btn btn-secondary" disabled aria-disabled="true">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+            </svg>
+            <span class="btn-stack">
+              <span class="btn-stack-small" data-i18n="hero.btn_secondary_small">COMING SOON</span>
+              <span class="btn-stack-big" data-i18n="hero.btn_secondary_big">for iOS</span>
+            </span>
+          </button>
+        </div>
+
+        <p class="hero-tiny" data-i18n="hero.tiny">Free · No ads · Available in 5 languages</p>
       </div>
-      <div class="sport-item">
-        <span class="sport-icon">&#127934;</span>
-        <span class="sport-label">Tennis</span>
-      </div>
-      <div class="sport-item">
-        <span class="sport-icon">&#127944;</span>
-        <span class="sport-label">American Football</span>
-      </div>
-      <div class="sport-item">
-        <span class="sport-icon">&#127951;</span>
-        <span class="sport-label">Cricket</span>
+
+      <div class="hero-phone-wrap">
+        <div class="hero-phone">
+          <img src="/assets/screenshots/home.webp" alt="ScoreMind home screen" fetchpriority="high" decoding="async" width="1284" height="2778">
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Download -->
+  <section class="trust">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-card green">
+          <div class="trust-number">82.9%</div>
+          <div class="trust-label" data-i18n="trust.card1.label">Very High Accuracy</div>
+          <div class="trust-desc" data-i18n="trust.card1.desc">Very High confidence picks since launch</div>
+        </div>
+        <div class="trust-card green">
+          <div class="trust-number">68.9%</div>
+          <div class="trust-label" data-i18n="trust.card2.label">High Accuracy</div>
+          <div class="trust-desc" data-i18n="trust.card2.desc">High confidence picks since launch</div>
+        </div>
+        <div class="trust-card cyan">
+          <div class="trust-number">12,000+</div>
+          <div class="trust-label" data-i18n="trust.card3.label">Verified Predictions</div>
+          <div class="trust-desc" data-i18n="trust.card3.desc">Predictions verified against real results</div>
+        </div>
+        <div class="trust-card cyan">
+          <div class="trust-number">140+</div>
+          <div class="trust-label" data-i18n="trust.card4.label">Competitions</div>
+          <div class="trust-desc" data-i18n="trust.card4.desc">Across 6 continents</div>
+        </div>
+      </div>
+      <p class="trust-disclaimer" data-i18n="trust.disclaimer">Stats updated daily. For entertainment purposes only. ScoreMind doesn't promote betting.</p>
+    </div>
+  </section>
+
+  <section class="live-proof">
+    <div class="container">
+      <div class="live-proof-card">
+        <div class="live-proof-phone">
+          <img src="/assets/screenshots/live.webp" alt="Live match prediction" loading="lazy" decoding="async" width="1284" height="2778">
+        </div>
+        <div class="live-proof-text">
+          <span class="live-badge">
+            <span class="live-dot"></span>
+            <span data-i18n="live.live_label">LIVE</span>
+          </span>
+          <span class="live-eyebrow" data-i18n="live.predicted_eyebrow">AI PREDICTION</span>
+          <h3 class="live-headline" data-i18n="live.headline">AI predicted Barnsley to win — currently winning</h3>
+          <p class="live-subhead" data-i18n="live.subhead">Real predictions, validated in real time.</p>
+          <p class="live-disclaimer" data-i18n="live.disclaimer">Match shown as illustration. Actual matches vary daily.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="container">
+      <div class="why-header">
+        <div class="eyebrow" data-i18n="why.eyebrow">WHY SCOREMIND</div>
+        <h2 class="h2-display" data-i18n="why.h2">Built for fans who think before they pick</h2>
+      </div>
+      <div class="why-grid">
+        <article class="why-card">
+          <div class="why-card-icon"><span class="icon icon-brain" aria-hidden="true"></span></div>
+          <h3 class="why-card-title" data-i18n="why.card1.title">AI Predictions</h3>
+          <p class="why-card-body" data-i18n="why.card1.body">Win probabilities, Over/Under, and Both Teams To Score for every match. Powered by a proprietary prediction engine.</p>
+        </article>
+        <article class="why-card">
+          <div class="why-card-icon"><span class="icon icon-bot" aria-hidden="true"></span></div>
+          <h3 class="why-card-title" data-i18n="why.card2.title">Talk to ScoreBot</h3>
+          <p class="why-card-body" data-i18n="why.card2.body">Your personal AI sports analyst. Ask anything about any match — in your language.</p>
+        </article>
+        <article class="why-card">
+          <div class="why-card-icon"><span class="icon icon-bar-chart" aria-hidden="true"></span></div>
+          <h3 class="why-card-title" data-i18n="why.card3.title">Deep Stats</h3>
+          <p class="why-card-body" data-i18n="why.card3.body">Corners, cards, goal timing, xG, and form — the data behind every pick.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="scorebot">
+    <div class="container">
+      <div class="scorebot-grid">
+        <div class="scorebot-phone-wrap">
+          <div class="scorebot-phone">
+            <img src="/assets/screenshots/scorebot.webp" alt="ScoreBot conversation" loading="lazy" decoding="async" width="1284" height="2778">
+          </div>
+        </div>
+        <div class="scorebot-text">
+          <div class="eyebrow" data-i18n="scorebot.eyebrow">INTRODUCING</div>
+          <h2 class="scorebot-h2" data-i18n="scorebot.h2">Your AI Sports Analyst</h2>
+          <p class="scorebot-body" data-i18n="scorebot.body">ScoreBot reads the stats, weighs the form, checks injuries, and gives you a pick — with reasoning. In English, Spanish, Portuguese, French, or Arabic.</p>
+          <ul class="scorebot-bullets">
+            <li><span class="icon icon-check" aria-hidden="true"></span><span data-i18n="scorebot.bullet1">Multi-market analysis (1X2, O/U, BTTS, parlays)</span></li>
+            <li><span class="icon icon-check" aria-hidden="true"></span><span data-i18n="scorebot.bullet2">Live match priority</span></li>
+            <li><span class="icon icon-check" aria-hidden="true"></span><span data-i18n="scorebot.bullet3">Powered by Google Gemini</span></li>
+            <li><span class="icon icon-check" aria-hidden="true"></span><span data-i18n="scorebot.bullet4">Available in 5 languages</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="beyond">
+    <div class="container">
+      <div class="beyond-grid">
+        <div class="beyond-text">
+          <div class="eyebrow" data-i18n="beyond.eyebrow">DEEP ANALYSIS</div>
+          <h2 class="beyond-h2" data-i18n="beyond.h2">Every market, analyzed</h2>
+          <p class="beyond-body" data-i18n="beyond.body">Win probability, Over/Under, Both Teams To Score, parlays — all in one screen, with the data behind every number.</p>
+        </div>
+        <div class="beyond-phone-wrap">
+          <div class="beyond-phone">
+            <img src="/assets/screenshots/match.webp" alt="Match prediction detail" loading="lazy" decoding="async" width="1284" height="2778">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="market">
+    <div class="container">
+      <div class="market-header">
+        <div class="eyebrow" data-i18n="market.eyebrow">ALL THE MARKETS</div>
+        <h2 class="h2-display" data-i18n="market.h2">Every prediction you care about</h2>
+      </div>
+      <div class="market-pills">
+        <span class="pill pill-cyan" data-i18n="market.pill_winprob">Win Probability</span>
+        <span class="pill pill-blue" data-i18n="market.pill_overunder">Over 1.5 / 2.5 / 3.5</span>
+        <span class="pill pill-purple" data-i18n="market.pill_btts">Both Teams To Score</span>
+        <span class="pill pill-gold" data-i18n="market.pill_parlays">Parlays 3–5 legs</span>
+        <span class="pill pill-red">
+          <span class="live-dot"></span>
+          <span data-i18n="market.pill_live">Live in-match</span>
+        </span>
+      </div>
+      <p class="market-subtext" data-i18n="market.subtext">All powered by real stats. None of it gambling advice.</p>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stats-text">
+          <div class="eyebrow" data-i18n="stats.eyebrow">REAL DATA</div>
+          <h2 class="stats-h2" data-i18n="stats.h2">The numbers behind every pick</h2>
+          <p class="stats-body" data-i18n="stats.body">Corners, cards, shots, possession, goal timing, xG, and form. Real stats from 140+ competitions, updated daily.</p>
+        </div>
+        <div class="stats-phone-wrap">
+          <div class="stats-phone">
+            <img src="/assets/screenshots/stats.webp" alt="Team advanced stats" loading="lazy" decoding="async" width="1284" height="2778">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="download">
-    <h2 data-en="Download Now" data-es="Descarga Ahora">Download Now</h2>
-    <div class="qr-placeholder">QR Code</div>
-    <div class="badges">
-      <a class="badge" href="#" id="play-badge">
-        <span class="badge-icon">&#9654;&#65039;</span>
-        <div class="badge-text">
-          <div class="badge-small" data-en="GET IT ON" data-es="DISPONIBLE EN">GET IT ON</div>
-          <div class="badge-big">Google Play</div>
+    <div class="container">
+      <div class="download-card">
+        <div class="eyebrow" data-i18n="download.eyebrow">GET STARTED</div>
+        <h2 class="download-h2" data-i18n="download.h2">Ready to upgrade your picks?</h2>
+        <p class="download-sub" data-i18n="download.sub">Download free on Android. Available worldwide.</p>
+
+        <div class="download-options">
+          <div class="download-col">
+            <a class="qr-wrap" href="https://play.google.com/store/apps/details?id=ai.scoremind.app" aria-label="Open Google Play listing">
+              <img class="qr-img" src="/assets/qr/google-play.svg" alt="Google Play QR code">
+              <img class="qr-logo" src="/logo.webp" alt="">
+            </a>
+            <span class="qr-label active" data-i18n="download.qr_label_active">Scan for Google Play</span>
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=ai.scoremind.app">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92Z"/>
+                <path d="m16.81 9.013 2.633 1.494c1.376.78 1.376 2.205 0 2.985l-2.633 1.494L13.792 12l3.018-2.987Z"/>
+                <path d="m4.609 1.814 9.183 9.186-3.018 3.018L4.609 1.814Z"/>
+                <path d="m4.609 22.186 9.183-9.186-3.018-3.018L4.609 22.186Z"/>
+              </svg>
+              <span class="btn-stack">
+                <span class="btn-stack-small" data-i18n="download.btn_active_small">GET IT ON</span>
+                <span class="btn-stack-big" data-i18n="download.btn_active_big">Google Play</span>
+              </span>
+            </a>
+          </div>
+
+          <div class="download-col">
+            <div class="qr-wrap dimmed" aria-disabled="true">
+              <img class="qr-img" src="/assets/qr/app-store-dimmed.svg" alt="">
+              <img class="qr-logo" src="/logo.webp" alt="" style="opacity: 0.4;">
+            </div>
+            <span class="qr-label dimmed" data-i18n="download.qr_label_dimmed">iOS coming soon</span>
+            <button class="btn btn-secondary" disabled aria-disabled="true">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+              </svg>
+              <span class="btn-stack">
+                <span class="btn-stack-small" data-i18n="download.btn_dimmed_small">COMING SOON</span>
+                <span class="btn-stack-big" data-i18n="download.btn_dimmed_big">for iOS</span>
+              </span>
+            </button>
+          </div>
         </div>
-      </a>
-      <div class="badge disabled">
-        <span class="badge-icon">&#63743;</span>
-        <div class="badge-text">
-          <div class="badge-small" data-en="Download on the" data-es="Descarga en la">Download on the</div>
-          <div class="badge-big">App Store</div>
-          <div class="badge-coming">Coming Soon</div>
+
+        <div class="download-mobile-buttons">
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=ai.scoremind.app">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M3.609 1.814 13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92Z"/>
+              <path d="m16.81 9.013 2.633 1.494c1.376.78 1.376 2.205 0 2.985l-2.633 1.494L13.792 12l3.018-2.987Z"/>
+              <path d="m4.609 1.814 9.183 9.186-3.018 3.018L4.609 1.814Z"/>
+              <path d="m4.609 22.186 9.183-9.186-3.018-3.018L4.609 22.186Z"/>
+            </svg>
+            <span class="btn-stack">
+              <span class="btn-stack-small" data-i18n="download.btn_active_small">GET IT ON</span>
+              <span class="btn-stack-big" data-i18n="download.btn_active_big">Google Play</span>
+            </span>
+          </a>
+          <button class="btn btn-secondary" disabled aria-disabled="true">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+            </svg>
+            <span class="btn-stack">
+              <span class="btn-stack-small" data-i18n="download.btn_dimmed_small">COMING SOON</span>
+              <span class="btn-stack-big" data-i18n="download.btn_dimmed_big">for iOS</span>
+            </span>
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
-    <div class="footer-links">
-      <a href="/privacy" data-en="Privacy Policy" data-es="Politica de Privacidad">Privacy Policy</a>
-      <a href="/terms" data-en="Terms of Service" data-es="Terminos de Servicio">Terms of Service</a>
-      <a href="mailto:info@datanaat.com" data-en="Contact" data-es="Contacto">Contact</a>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo" aria-label="ScoreMind.AI home">
+            <img src="/logo.webp" alt="">
+            <span class="footer-logo-text">ScoreMind<span class="ai">.AI</span></span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Made by a sports fan with ❤ — for sports fans</p>
+        </div>
+        <div class="footer-links">
+          <a href="/privacy" data-i18n="footer.link_privacy">Privacy Policy</a>
+          <a href="/terms" data-i18n="footer.link_terms">Terms of Service</a>
+          <a href="mailto:info@datanaat.com" data-i18n="footer.link_contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n="footer.copyright">© 2026 Datanaat. All rights reserved.</p>
+        <p class="footer-disclaimer" data-i18n="footer.disclaimer">ScoreMind provides statistical analysis for entertainment purposes only and does not promote betting.</p>
+      </div>
     </div>
-    <div class="footer-copy">&copy; 2026 Datanaat. All rights reserved.</div>
   </footer>
 
+  <script src="/assets/js/i18n.js" defer></script>
   <script>
-    let currentLang = 'en';
-    function setLang(lang) {
-      currentLang = lang;
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
-      });
-      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-        el.textContent = el.getAttribute('data-' + lang);
-      });
-      document.documentElement.lang = lang;
-    }
+    (function () {
+      var nav = document.getElementById('nav');
+      function onScroll() {
+        if (window.scrollY > 8) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
   </script>
+
 </body>
 </html>
