@@ -15,7 +15,7 @@
       'hero.btn_primary_big': 'Google Play',
       'hero.btn_secondary_small': 'COMING SOON',
       'hero.btn_secondary_big': 'for iOS',
-      'hero.tiny': 'Free · No ads · Available in 5 languages',
+      'hero.tiny': 'Free · Available in 5 languages',
 
       'trust.card1.label': 'Very High Accuracy',
       'trust.card1.desc': 'Very High confidence picks since launch',
@@ -65,7 +65,7 @@
       'hero.btn_primary_big': 'Google Play',
       'hero.btn_secondary_small': 'PRÓXIMAMENTE',
       'hero.btn_secondary_big': 'para iOS',
-      'hero.tiny': 'Gratis · Sin anuncios · Disponible en 5 idiomas',
+      'hero.tiny': 'Gratis · Disponible en 5 idiomas',
 
       'trust.card1.label': 'Precisión Muy Alta',
       'trust.card1.desc': 'Picks de Confianza Muy Alta desde el lanzamiento',
