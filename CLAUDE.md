@@ -28,7 +28,7 @@
 - **Repo:** andresorva/scoremind-site
 - **Domain:** scoremind.ai (CNAME → GitHub Pages)
 - **Languages:** English (default) + Spanish (toggle in header, persisted in localStorage)
-- **Analytics:** None (deliberate — keep site lean per CLAUDE.md rule §9.5)
+- **Analytics:** Google Tag Manager `GTM-NVF7D37X` — approved 2026-05-19 for unified tracking. No other analytics or tracking scripts without explicit approval (see §9.5).
 - **CSS strategy:** Inline `<style>` blocks per page (privacy/, terms/, index.html each self-contained)
 - **i18n strategy:** JSON dictionary in assets/js/i18n.js with `data-i18n="key"` attributes; toggle stored in localStorage
 - **Images:** WebP for screenshots, SVG for icons. Stored in `/assets/screenshots/` and `/assets/icons/`. PNG backups in `/assets/screenshots/png/`.
@@ -155,7 +155,7 @@ This account exists in the app's Supabase auth, NOT on the website.
 2. **Verify Apple compliance pages still work** after any change to routing, layout, or navigation. `/privacy`, `/terms`, `/contact` must always return 200.
 3. **Preserve i18n.** If you add copy in English, you MUST add the Spanish version. Never ship English-only strings.
 4. **Show the plan before coding** when the change touches more than 3 files.
-5. **No new dependencies without explicit approval.** Especially avoid analytics, tracking, or heavy animation libraries.
+5. **No new dependencies without explicit approval.** Especially avoid analytics, tracking, or heavy animation libraries. **Exception:** Google Tag Manager `GTM-NVF7D37X` is approved (added 2026-05-19) — additional analytics/tracking still require approval.
 6. **Performance budget:** Lighthouse Performance >85, Accessibility >90, SEO >95. Run Lighthouse before declaring done.
 7. **Image hygiene:** Never commit images >500KB. Use WebP and proper dimensions. Lazy-load below the fold.
 8. **No "Coming Soon"** placeholders unless explicitly requested. They make the product look unfinished. If a feature isn't ready, omit the section entirely.
@@ -177,9 +177,10 @@ Decisions made about the landing site, with date and reasoning:
 | 2026-04-28 | Stack confirmed as GitHub Pages (not Vercel) | CNAME present in repo; no Vercel project linked. CLAUDE.md previously listed Vercel — corrected during landing redesign session. |
 | 2026-04-28 | Hero composition reduced to 1 phone (was 3) | 3 phones with marketing copy embedded competed with hero headline at viewports <1440px and clipped at the column boundary. Single-phone matches Linear/Raycast/Vercel pattern. Other 4 screenshots reused in dedicated sections (Meet ScoreBot, Beyond the Score, Stats That Matter, Live social-proof card). |
 | 2026-04-28 | Live.webp placed as inline social-proof card between Trust Bar and Why ScoreMind | Reinforces credibility ("AI predicted, currently winning") with real validation, without bloating into a full section. |
+| 2026-05-19 | Google Tag Manager `GTM-NVF7D37X` injected on all 4 HTML pages | Unified tag management for future analytics/conversion tracking. GTM itself is lean (~20KB async, no UI impact). Replaces the §2 / §9.5 "no analytics" stance — see updated rules. |
 | [add as decisions are made] | | |
 
 ---
 
-*Last updated: 28 April 2026*
+*Last updated: 19 May 2026*
 *Owner: Mac (Andrés Orvananos) — datanaat / ScoreMind AI*
