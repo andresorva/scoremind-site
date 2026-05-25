@@ -7,6 +7,7 @@
     en: {
       'nav.lang_en': 'EN',
       'nav.lang_es': 'ES',
+      'nav.link_blog': 'Blog',
 
       'hero.eyebrow': 'AI-POWERED · 140+ COMPETITIONS',
       'hero.h1': 'The Future of Football Predictions',
@@ -57,6 +58,7 @@
     es: {
       'nav.lang_en': 'EN',
       'nav.lang_es': 'ES',
+      'nav.link_blog': 'Blog',
 
       'hero.eyebrow': 'POTENCIADO POR IA · 140+ COMPETENCIAS',
       'hero.h1': 'El Futuro de las Predicciones de Fútbol',

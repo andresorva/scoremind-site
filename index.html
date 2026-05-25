@@ -119,6 +119,16 @@
     }
     .nav-logo-text .ai { color: #00CEC9; }
 
+    .nav-right { display: flex; align-items: center; gap: 18px; }
+    .nav-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: #cbd5e1;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: #00CEC9; }
+
     .lang-toggle {
       display: flex;
       background: rgba(255, 255, 255, 0.04);
@@ -540,6 +550,8 @@
       .hero-phone { width: min(280px, 75vw); }
       .lang-toggle { font-size: 12px; padding: 3px; }
       .lang-toggle button { padding: 5px 10px; }
+      .nav-right { gap: 12px; }
+      .nav-link { font-size: 13px; }
       .h2-display { font-size: 32px !important; }
       .download-h2 { font-size: 32px !important; }
       .why, .download { padding: 64px 0; }
@@ -565,9 +577,12 @@
         <img src="/logo.webp" alt="">
         <span class="nav-logo-text">ScoreMind<span class="ai">.AI</span></span>
       </a>
-      <div class="lang-toggle" role="group" aria-label="Language selector">
-        <button data-lang-btn="en" data-i18n="nav.lang_en" class="active" aria-pressed="true">EN</button>
-        <button data-lang-btn="es" data-i18n="nav.lang_es" aria-pressed="false">ES</button>
+      <div class="nav-right">
+        <a href="/blog" class="nav-link" data-i18n="nav.link_blog">Blog</a>
+        <div class="lang-toggle" role="group" aria-label="Language selector">
+          <button data-lang-btn="en" data-i18n="nav.lang_en" class="active" aria-pressed="true">EN</button>
+          <button data-lang-btn="es" data-i18n="nav.lang_es" aria-pressed="false">ES</button>
+        </div>
       </div>
     </div>
   </nav>
