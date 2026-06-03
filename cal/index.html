@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ScoreMind · World Cup 2026 Calendar</title>
+
+  <!-- WhatsApp / Open Graph preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="World Cup 2026 Calendar · ScoreMind AI" />
+  <meta property="og:description" content="All 104 matches plus the bracket — synced to your calendar, auto-updates with results, 15-min reminders. Free." />
+  <meta property="og:image" content="https://scoremind.ai/assets/images/og-banner.png" />
+  <meta property="og:url" content="https://scoremind.ai/cal" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root { color-scheme: dark; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: linear-gradient(180deg, #050505, #0A0A0A);
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      text-align: center;
+    }
+    main {
+      max-width: 460px;
+      width: 100%;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      color: #F59E0B;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: 26px;
+      line-height: 1.2;
+      margin: 0 0 12px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+    p.lead {
+      font-size: 15px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.78);
+      margin: 0 0 26px;
+    }
+    .spinner {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      border: 3px solid rgba(245, 158, 11, 0.25);
+      border-top-color: #F59E0B;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      margin-bottom: 18px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: 12px;
+      border: 2px solid #F59E0B;
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.14), rgba(245, 158, 11, 0.04));
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    button:hover { transform: scale(1.02); box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3); }
+    .small {
+      margin-top: 22px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .small a { color: #F59E0B; text-decoration: none; font-weight: 600; }
+    .small a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="badge" id="badge">World Cup 2026</div>
+    <div class="spinner" id="spinner" aria-hidden="true"></div>
+    <h1 id="title">Opening your calendar…</h1>
+    <p class="lead" id="lead">Adding the World Cup 2026 calendar — 104 matches, auto-updates with results.</p>
+    <button id="manual-subscribe" hidden type="button">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/>
+        <line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+      </svg>
+      <span id="manual-label">Subscribe to calendar</span>
+    </button>
+    <p class="small">
+      Powered by <a href="https://scoremind.ai">ScoreMind.AI</a>
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      var BACKEND_HOST = 'migration-production-dc6e.up.railway.app';
+      var SUPPORTED = ['en', 'es', 'pt', 'fr', 'ar'];
+
+      // Locale resolution: ?lang= override > browser language > 'en'
+      var params = new URLSearchParams(window.location.search);
+      var requested = (params.get('lang') || '').toLowerCase();
+      var browserLang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+      var lang = SUPPORTED.indexOf(requested) !== -1
+        ? requested
+        : (SUPPORTED.indexOf(browserLang) !== -1 ? browserLang : 'en');
+
+      // Localized copy — minimal, in lockstep with i18n.js wc.* keys.
+      var COPY = {
+        en: { badge: 'World Cup 2026', title: 'Opening your calendar…', lead: 'Adding the World Cup 2026 calendar — 104 matches, auto-updates with results.', button: 'Subscribe to calendar', fallback: "Didn't open? Tap below to subscribe." },
+        es: { badge: 'Mundial 2026', title: 'Abriendo tu calendario…', lead: 'Agregando el calendario del Mundial 2026 — 104 partidos, se actualiza solo con los resultados.', button: 'Suscribirme al calendario', fallback: '¿No se abrió? Toca abajo para suscribirte.' },
+        pt: { badge: 'Copa do Mundo 2026', title: 'Abrindo seu calendário…', lead: 'Adicionando o calendário da Copa do Mundo 2026 — 104 jogos, atualiza-se sozinho com os resultados.', button: 'Inscrever no calendário', fallback: 'Não abriu? Toque abaixo para se inscrever.' },
+        fr: { badge: 'Coupe du Monde 2026', title: 'Ouverture de votre calendrier…', lead: 'Ajout du calendrier de la Coupe du Monde 2026 — 104 matchs, mises à jour automatiques avec les résultats.', button: "S'abonner au calendrier", fallback: "Ça ne s'ouvre pas ? Touchez ci-dessous pour vous abonner." },
+        ar: { badge: 'كأس العالم 2026', title: '...جارٍ فتح التقويم', lead: 'تتم إضافة تقويم كأس العالم 2026 — 104 مباراة، يتحدث تلقائيا بالنتائج.', button: 'الاشتراك في التقويم', fallback: 'لم يفتح؟ اضغط أسفل للاشتراك.' }
+      };
+      var c = COPY[lang] || COPY.en;
+
+      document.documentElement.lang = lang;
+      if (lang === 'ar') document.documentElement.dir = 'rtl';
+      document.title = 'ScoreMind · ' + c.badge;
+      document.getElementById('badge').textContent = c.badge;
+      document.getElementById('title').textContent = c.title;
+      document.getElementById('lead').textContent = c.lead;
+      document.getElementById('manual-label').textContent = c.button;
+
+      var webcalUrl = 'webcal://' + BACKEND_HOST + '/calendars/worldcup-2026.ics?lang=' + lang;
+      var googleSubscribeUrl = 'https://www.google.com/calendar/render?cid=' + encodeURIComponent(webcalUrl);
+
+      // Apple platforms get webcal:// natively (iCloud Calendar one-tap
+      // subscribe). Everyone else (Android, desktop Chrome) gets Google
+      // Calendar's legacy `render?cid=` wrapper — same Option A platform
+      // detect used on the homepage and in the Flutter app (S38hf +105).
+      function isApplePlatform() {
+        var ua = navigator.userAgent || '';
+        var p = navigator.platform || '';
+        if (/iPhone|iPad|iPod/i.test(ua)) return true;
+        if (/Mac/i.test(p) && navigator.maxTouchPoints > 1) return true; // iPadOS Safari
+        if (/Macintosh/i.test(ua)) return true;
+        return false;
+      }
+
+      function fire() {
+        var target = isApplePlatform() ? webcalUrl : googleSubscribeUrl;
+        window.location.href = target;
+      }
+
+      function manualFire() {
+        // Same flow but the user tapped the button explicitly. On Android the
+        // gesture is required if the browser blocked the auto-redirect.
+        var target = isApplePlatform() ? webcalUrl : googleSubscribeUrl;
+        window.location.assign(target);
+      }
+
+      document.getElementById('manual-subscribe').addEventListener('click', manualFire);
+
+      // Auto-fire after a beat so the page renders + user sees branding.
+      setTimeout(fire, 350);
+
+      // If we're still here ~1.8s later, the redirect didn't take (most
+      // common: in-app browser blocking schemes). Show the manual button +
+      // friendly fallback copy.
+      setTimeout(function () {
+        document.getElementById('spinner').style.display = 'none';
+        document.getElementById('title').textContent = c.fallback;
+        document.getElementById('lead').style.display = 'none';
+        document.getElementById('manual-subscribe').hidden = false;
+      }, 1800);
+    })();
+  </script>
+</body>
+</html>
