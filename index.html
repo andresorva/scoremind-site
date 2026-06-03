@@ -479,6 +479,126 @@
       width: 100%;
     }
 
+    /* World Cup 2026 calendar subscribe CTA (S38 W8) */
+    .download-ctas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .btn-wc-calendar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 560px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(245, 158, 11, 0.6);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.08), rgba(245, 158, 11, 0.02));
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.35;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-wc-calendar:hover {
+      transform: scale(1.02);
+      border-color: #F59E0B;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.25);
+    }
+    .btn-wc-calendar .btn-wc-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: #F59E0B;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-card {
+      background: linear-gradient(180deg, #0A0A0A, #050505);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 20px;
+      padding: 32px 28px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 40px rgba(245, 158, 11, 0.12);
+      text-align: left;
+    }
+    .modal-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+    .modal-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .modal-card ul li {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+    .modal-card ul li a {
+      color: #00CEC9;
+      text-decoration: underline;
+    }
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    .modal-actions .btn-modal {
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .modal-actions .btn-modal-cancel {
+      background: transparent;
+      border: 1px solid #333;
+      color: #cbd5e1;
+    }
+    .modal-actions .btn-modal-cancel:hover { border-color: #666; }
+    .modal-actions .btn-modal-confirm {
+      background: #F59E0B;
+      color: #000;
+    }
+    .modal-actions .btn-modal-confirm:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4);
+    }
+    @media (max-width: 480px) {
+      .modal-card { padding: 24px 20px; }
+      .modal-card h2 { font-size: 20px; }
+    }
+
     .footer {
       border-top: 1px solid #1A1A1A;
       padding: 80px 0 40px;
@@ -736,9 +856,42 @@
             </span>
           </a>
         </div>
+
+        <!-- World Cup 2026 calendar subscribe CTA (S38 W8) -->
+        <div class="download-ctas">
+          <a href="#" class="btn-wc-calendar" id="subscribe-wc-calendar"
+             role="button"
+             aria-haspopup="dialog"
+             data-i18n="wc.subscribe_cta">
+            <svg class="btn-wc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span>Subscribe to the full World Cup 2026 calendar — auto-updates every day with results and upcoming matches</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- World Cup 2026 calendar subscribe modal (S38 W8) -->
+  <div class="modal-overlay" id="wc-subscribe-modal" role="dialog" aria-modal="true" aria-labelledby="wc-subscribe-modal-title">
+    <div class="modal-card">
+      <h2 id="wc-subscribe-modal-title" data-i18n="wc.modal.title">World Cup 2026 Calendar</h2>
+      <ul>
+        <li data-i18n="wc.modal.bullet1">All 72 matches plus bracket auto-fills as the tournament progresses</li>
+        <li data-i18n="wc.modal.bullet2">Match results update automatically</li>
+        <li data-i18n="wc.modal.bullet3">15-minute reminder before each match (via your calendar)</li>
+        <li data-i18n="wc.modal.bullet4" data-i18n-html="true">Want instant result notifications? <a href="https://play.google.com/store/apps/details?id=ai.scoremind.app" target="_blank" rel="noopener">Download the app</a></li>
+      </ul>
+      <div class="modal-actions">
+        <button type="button" class="btn-modal btn-modal-cancel" id="wc-modal-cancel" data-i18n="wc.modal.cancel">Cancel</button>
+        <button type="button" class="btn-modal btn-modal-confirm" id="wc-modal-confirm" data-i18n="wc.modal.confirm">Subscribe</button>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container">
@@ -774,6 +927,94 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     })();
+  </script>
+
+  <!-- World Cup 2026 calendar subscribe handler (S38 W8) -->
+  <script>
+  (function () {
+    'use strict';
+    var BACKEND_HOST = 'migration-production-dc6e.up.railway.app';
+    var CALENDAR_PATH = '/calendars/worldcup-2026.ics';
+    var SUPPORTED_LANGS = ['en', 'es', 'pt', 'fr', 'ar'];
+
+    function getCalendarLang() {
+      var raw = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      var base = raw.split(/[-_]/)[0];
+      return SUPPORTED_LANGS.indexOf(base) !== -1 ? base : 'en';
+    }
+
+    function isApplePlatform() {
+      var ua = navigator.userAgent || '';
+      return /iPad|iPhone|iPod|Macintosh/.test(ua);
+    }
+
+    function buildHttpsIcsUrl(lang) {
+      return 'https://' + BACKEND_HOST + CALENDAR_PATH + '?lang=' + encodeURIComponent(lang);
+    }
+    function buildWebcalUrl(lang) {
+      return 'webcal://' + BACKEND_HOST + CALENDAR_PATH + '?lang=' + encodeURIComponent(lang);
+    }
+
+    function subscribeToCalendar() {
+      var lang = getCalendarLang();
+      if (isApplePlatform()) {
+        // iOS / macOS Safari → webcal:// native (Apple Calendar one-tap subscribe)
+        window.location.href = buildWebcalUrl(lang);
+      } else {
+        // Android / desktop → Google Calendar web subscribe wrapper
+        var googleSubscribeUrl = 'https://calendar.google.com/calendar/r?cid=' + encodeURIComponent(buildHttpsIcsUrl(lang));
+        window.open(googleSubscribeUrl, '_blank', 'noopener');
+      }
+    }
+
+    function showModal() {
+      var modal = document.getElementById('wc-subscribe-modal');
+      if (!modal) return;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function hideModal() {
+      var modal = document.getElementById('wc-subscribe-modal');
+      if (!modal) return;
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function bind() {
+      var btn = document.getElementById('subscribe-wc-calendar');
+      if (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          showModal();
+        });
+      }
+      var confirmBtn = document.getElementById('wc-modal-confirm');
+      if (confirmBtn) {
+        confirmBtn.addEventListener('click', function () {
+          hideModal();
+          subscribeToCalendar();
+        });
+      }
+      var cancelBtn = document.getElementById('wc-modal-cancel');
+      if (cancelBtn) cancelBtn.addEventListener('click', hideModal);
+
+      var modal = document.getElementById('wc-subscribe-modal');
+      if (modal) {
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) hideModal();
+        });
+      }
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') hideModal();
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bind);
+    } else {
+      bind();
+    }
+  })();
   </script>
 
 </body>

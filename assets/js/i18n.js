@@ -51,6 +51,15 @@
       'footer.copyright': '© 2026 Datanaat. All rights reserved.',
       'footer.disclaimer': 'ScoreMind provides statistical analysis for entertainment purposes only and does not promote betting.',
 
+      'wc.subscribe_cta': 'Subscribe to the full World Cup 2026 calendar — auto-updates every day with results and upcoming matches',
+      'wc.modal.title': 'World Cup 2026 Calendar',
+      'wc.modal.bullet1': 'All 72 matches plus bracket auto-fills as the tournament progresses',
+      'wc.modal.bullet2': 'Match results update automatically',
+      'wc.modal.bullet3': '15-minute reminder before each match (via your calendar)',
+      'wc.modal.bullet4': 'Want instant result notifications? <a href="https://play.google.com/store/apps/details?id=ai.scoremind.app" target="_blank" rel="noopener">Download the app</a>',
+      'wc.modal.cancel': 'Cancel',
+      'wc.modal.confirm': 'Subscribe',
+
       'meta.title': 'ScoreMind AI — AI Predictions for 140+ Football Competitions',
       'meta.description': 'AI-powered football predictions, deep stats, and a personal AI sports analyst (ScoreBot) for 140+ competitions worldwide. Free on Android. iOS coming soon.'
     },
@@ -102,6 +111,15 @@
       'footer.copyright': '© 2026 Datanaat. Todos los derechos reservados.',
       'footer.disclaimer': 'ScoreMind ofrece análisis estadístico solo con fines de entretenimiento y no promueve apuestas.',
 
+      'wc.subscribe_cta': 'Suscríbete al calendario completo del Mundial 2026 — se actualiza cada día con resultados y próximos partidos',
+      'wc.modal.title': 'Calendario del Mundial 2026',
+      'wc.modal.bullet1': 'Los 72 partidos y el bracket se llenan automáticamente conforme avanza el torneo',
+      'wc.modal.bullet2': 'Los resultados de cada partido se actualizan automáticamente',
+      'wc.modal.bullet3': 'Recordatorio 15 minutos antes de cada partido (vía tu calendario)',
+      'wc.modal.bullet4': '¿Quieres notificaciones instantáneas de resultados? <a href="https://play.google.com/store/apps/details?id=ai.scoremind.app" target="_blank" rel="noopener">Descarga la app</a>',
+      'wc.modal.cancel': 'Cancelar',
+      'wc.modal.confirm': 'Suscribirme',
+
       'meta.title': 'ScoreMind AI — Predicciones de IA para más de 140 competencias de fútbol',
       'meta.description': 'Predicciones de fútbol con IA, estadísticas profundas y un analista deportivo personal (ScoreBot) para más de 140 competencias en el mundo. Gratis en Android. iOS próximamente.'
     }
@@ -129,7 +147,12 @@
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       const key = el.getAttribute('data-i18n');
       const val = dict[key];
-      if (typeof val === 'string') el.textContent = val;
+      if (typeof val !== 'string') return;
+      if (el.getAttribute('data-i18n-html') === 'true') {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
     });
 
     document.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
