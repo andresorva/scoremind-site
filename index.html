@@ -977,23 +977,16 @@
     }
 
     function subscribeToCalendar() {
+      // Single source of truth — the homepage and any shared link (WhatsApp,
+      // SMS, email) both route through `/cal`, which renders a branded
+      // "Opening your calendar…" page and then fires the same Option A
+      // platform-detect (iOS webcal:// vs Android/desktop Google Calendar
+      // legacy render?cid=). Same-tab navigation here (no window.open new
+      // tab) avoids triggering Android App Link interception that some
+      // users saw on the homepage when window.open opened a new Activity
+      // and Android handed the URL to the Google Calendar app.
       var lang = getCalendarLang();
-      if (isApplePlatform()) {
-        // iOS / macOS Safari → webcal:// native (Apple Calendar one-tap subscribe)
-        window.location.href = buildWebcalUrl(lang);
-      } else {
-        // Android / desktop → Google Calendar legacy `render` subscribe endpoint.
-        // We use `www.google.com/calendar/render?cid=` and NOT the modern
-        // `calendar.google.com/calendar/r?cid=` because the latter is an
-        // Android App Link target for the Google Calendar app, which silently
-        // ignores the `?cid=` param and opens an empty calendar — user sees
-        // "subscribed" UX but nothing is actually added. The legacy `render`
-        // path is not App-Link-intercepted and the web flow does subscribe.
-        // We also pass `webcal://...` as the cid value (not `https://...ics`)
-        // to explicitly signal SUBSCRIBE intent over IMPORT.
-        var googleSubscribeUrl = 'https://www.google.com/calendar/render?cid=' + encodeURIComponent(buildWebcalUrl(lang));
-        window.open(googleSubscribeUrl, '_blank', 'noopener');
-      }
+      window.location.href = '/cal?lang=' + encodeURIComponent(lang);
     }
 
     function showModal() {
