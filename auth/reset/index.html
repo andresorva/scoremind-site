@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set a new password — ScoreMind AI</title>
+  <meta name="description" content="Reset your ScoreMind AI password securely.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/png" href="/logo.png">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: #0a0e1a;
+      color: #f1f5f9;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: #00e5cc; text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+
+    /* Nav */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { width: 36px; height: 36px; border-radius: 20%; }
+    .nav-logo span { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+    .nav-logo .ai { color: #00e5cc; }
+    .lang-toggle {
+      display: flex;
+      background: #1a2236;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .lang-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .lang-btn.active { background: #00e5cc; color: #0a0e1a; }
+
+    /* Main */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px 40px;
+      width: 100%;
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: #131a2b;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+    .title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      margin-bottom: 8px;
+      color: #f1f5f9;
+    }
+    .subtitle {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+    .field { margin-bottom: 16px; }
+    .label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+    .input {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 15px;
+      background: #0a0e1a;
+      color: #f1f5f9;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      font-family: inherit;
+      transition: border-color 0.15s;
+    }
+    .input:focus {
+      outline: none;
+      border-color: #00e5cc;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 13px 20px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      border-radius: 10px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      text-decoration: none;
+      font-family: inherit;
+    }
+    .btn-primary { background: #00e5cc; color: #0a0e1a; }
+    .btn-primary:hover:not(:disabled) { opacity: 0.92; transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .msg {
+      font-size: 13px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      display: none;
+    }
+    .msg.error {
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #fca5a5;
+      display: block;
+    }
+    .msg.info {
+      background: rgba(0,229,204,0.10);
+      border: 1px solid rgba(0,229,204,0.25);
+      color: #99f0e2;
+      display: block;
+    }
+
+    /* Success */
+    .success-state {
+      text-align: center;
+      display: none;
+    }
+    .success-state.show { display: block; }
+    .form-state.hide { display: none; }
+    .check-wrap {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.3);
+    }
+    .check-wrap svg { width: 36px; height: 36px; }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 20px 24px;
+      text-align: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .footer-links a { font-size: 12px; color: #94a3b8; }
+    .footer-links a:hover { color: #00e5cc; }
+    .footer-copy { font-size: 11px; color: #64748b; }
+
+    /* RTL */
+    html[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
+    html[dir="rtl"] .label { text-align: right; }
+
+    /* Light theme */
+    @media (prefers-color-scheme: light) {
+      body { background: #f8fafc; color: #0f172a; }
+      .nav-logo span { color: #0f172a; }
+      .lang-toggle { background: #ffffff; border-color: rgba(0,0,0,0.08); }
+      .lang-btn { color: #64748b; }
+      .card { background: #ffffff; border-color: rgba(0,0,0,0.06); box-shadow: 0 10px 30px rgba(15,23,42,0.06); }
+      .title { color: #0f172a; }
+      .subtitle { color: #475569; }
+      .label { color: #334155; }
+      .input { background: #f1f5f9; color: #0f172a; border-color: rgba(0,0,0,0.1); }
+      .footer-copy { color: #94a3b8; }
+      .footer-links a { color: #475569; }
+    }
+
+    @media (max-width: 420px) {
+      .nav { padding: 12px 16px; }
+      .card { padding: 24px 18px; }
+      .title { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="/" class="nav-logo">
+      <img src="/logo.png" alt="ScoreMind.AI">
+      <span>ScoreMind<span class="ai">.AI</span></span>
+    </a>
+    <div class="lang-toggle" id="lang-toggle">
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="es">ES</button>
+      <button type="button" class="lang-btn" data-lang="pt">PT</button>
+      <button type="button" class="lang-btn" data-lang="fr">FR</button>
+      <button type="button" class="lang-btn" data-lang="ar">AR</button>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <section class="hero">
+    <div class="card">
+      <!-- Form state -->
+      <div class="form-state" id="form-state">
+        <h1 class="title" id="title">Set a new password</h1>
+        <p class="subtitle" id="subtitle">Choose a strong password (at least 8 characters).</p>
+
+        <div class="msg" id="msg" role="alert"></div>
+
+        <form id="reset-form" autocomplete="off" novalidate>
+          <div class="field">
+            <label class="label" for="pwd1" id="label-pwd">New password</label>
+            <input class="input" type="password" id="pwd1" name="pwd1" minlength="8" required autocomplete="new-password">
+          </div>
+          <div class="field">
+            <label class="label" for="pwd2" id="label-pwd2">Confirm password</label>
+            <input class="input" type="password" id="pwd2" name="pwd2" minlength="8" required autocomplete="new-password">
+          </div>
+          <button type="submit" class="btn btn-primary" id="submit-btn">Update password</button>
+        </form>
+      </div>
+
+      <!-- Success state -->
+      <div class="success-state" id="success-state">
+        <div class="check-wrap" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 12.5L9.5 18L20 7" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h1 class="title" id="success-title">All set</h1>
+        <p class="subtitle" id="success-msg">Password updated. Open the app to log in.</p>
+        <a href="ai.scoremind.app://login-callback" class="btn btn-primary" id="open-app-btn" style="margin-top:8px;">Open ScoreMindAI</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/privacy" id="link-privacy">Privacy Policy</a>
+      <a href="/terms" id="link-terms">Terms of Service</a>
+      <a href="mailto:info@datanaat.com" id="link-contact">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Datanaat. All rights reserved.</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    var SUPABASE_URL = 'https://dqjamdyahhcprmreyctr.supabase.co';
+    var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxamFtZHlhaGhjcHJtcmV5Y3RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3NzQ4OTYsImV4cCI6MjA4NzM1MDg5Nn0._jcEsJd6Xu8rzxmQNEP7WQmWtiXZSWuEaUkICnTDR-4';
+
+    var SUPPORTED = ['en', 'es', 'pt', 'fr', 'ar'];
+
+    var COPY = {
+      en: {
+        pageTitle: 'Set a new password — ScoreMind AI',
+        title: 'Set a new password',
+        subtitle: 'Choose a strong password (at least 8 characters).',
+        labelPwd: 'New password',
+        labelPwd2: 'Confirm password',
+        submit: 'Update password',
+        submitting: 'Updating…',
+        successTitle: 'All set',
+        successMsg: 'Password updated. Open the app to log in.',
+        openApp: 'Open ScoreMindAI',
+        errInvalidToken: 'This reset link is invalid or has expired. Request a new one from the app.',
+        errMismatch: 'The passwords do not match.',
+        errTooShort: 'Password must be at least 8 characters.',
+        errNetwork: 'Network error. Please check your connection and try again.',
+        errGeneric: 'Could not update password. Please try again.',
+        linkPrivacy: 'Privacy Policy',
+        linkTerms: 'Terms of Service',
+        linkContact: 'Contact'
+      },
+      es: {
+        pageTitle: 'Establece una nueva contraseña — ScoreMind AI',
+        title: 'Establece una nueva contraseña',
+        subtitle: 'Elige una contraseña fuerte (al menos 8 caracteres).',
+        labelPwd: 'Nueva contraseña',
+        labelPwd2: 'Confirma la contraseña',
+        submit: 'Actualizar contraseña',
+        submitting: 'Actualizando…',
+        successTitle: 'Listo',
+        successMsg: 'Contraseña actualizada. Abre la app para iniciar sesión.',
+        openApp: 'Abrir ScoreMindAI',
+        errInvalidToken: 'Este enlace de recuperación no es válido o ha expirado. Solicita uno nuevo desde la app.',
+        errMismatch: 'Las contraseñas no coinciden.',
+        errTooShort: 'La contraseña debe tener al menos 8 caracteres.',
+        errNetwork: 'Error de red. Revisa tu conexión e inténtalo de nuevo.',
+        errGeneric: 'No se pudo actualizar la contraseña. Inténtalo de nuevo.',
+        linkPrivacy: 'Política de Privacidad',
+        linkTerms: 'Términos de Servicio',
+        linkContact: 'Contacto'
+      },
+      pt: {
+        pageTitle: 'Definir nova senha — ScoreMind AI',
+        title: 'Definir nova senha',
+        subtitle: 'Escolha uma senha forte (no mínimo 8 caracteres).',
+        labelPwd: 'Nova senha',
+        labelPwd2: 'Confirme a senha',
+        submit: 'Atualizar senha',
+        submitting: 'Atualizando…',
+        successTitle: 'Tudo certo',
+        successMsg: 'Senha atualizada. Abra o app para entrar.',
+        openApp: 'Abrir ScoreMindAI',
+        errInvalidToken: 'Este link de recuperação é inválido ou expirou. Solicite um novo no app.',
+        errMismatch: 'As senhas não coincidem.',
+        errTooShort: 'A senha deve ter pelo menos 8 caracteres.',
+        errNetwork: 'Erro de rede. Verifique sua conexão e tente novamente.',
+        errGeneric: 'Não foi possível atualizar a senha. Tente novamente.',
+        linkPrivacy: 'Política de Privacidade',
+        linkTerms: 'Termos de Serviço',
+        linkContact: 'Contato'
+      },
+      fr: {
+        pageTitle: 'Définir un nouveau mot de passe — ScoreMind AI',
+        title: 'Définir un nouveau mot de passe',
+        subtitle: 'Choisissez un mot de passe robuste (au moins 8 caractères).',
+        labelPwd: 'Nouveau mot de passe',
+        labelPwd2: 'Confirmer le mot de passe',
+        submit: 'Mettre à jour',
+        submitting: 'Mise à jour…',
+        successTitle: 'Terminé',
+        successMsg: 'Mot de passe mis à jour. Ouvrez l’app pour vous connecter.',
+        openApp: 'Ouvrir ScoreMindAI',
+        errInvalidToken: 'Ce lien de réinitialisation est invalide ou a expiré. Demandez-en un nouveau depuis l’app.',
+        errMismatch: 'Les mots de passe ne correspondent pas.',
+        errTooShort: 'Le mot de passe doit comporter au moins 8 caractères.',
+        errNetwork: 'Erreur réseau. Vérifiez votre connexion et réessayez.',
+        errGeneric: 'Impossible de mettre à jour le mot de passe. Réessayez.',
+        linkPrivacy: 'Politique de confidentialité',
+        linkTerms: 'Conditions d’utilisation',
+        linkContact: 'Contact'
+      },
+      ar: {
+        pageTitle: 'تعيين كلمة مرور جديدة — ScoreMind AI',
+        title: 'تعيين كلمة مرور جديدة',
+        subtitle: 'اختر كلمة مرور قوية (8 أحرف على الأقل).',
+        labelPwd: 'كلمة المرور الجديدة',
+        labelPwd2: 'تأكيد كلمة المرور',
+        submit: 'تحديث كلمة المرور',
+        submitting: '...جارٍ التحديث',
+        successTitle: 'تم',
+        successMsg: 'تم تحديث كلمة المرور. افتح التطبيق لتسجيل الدخول.',
+        openApp: 'فتح ScoreMindAI',
+        errInvalidToken: 'رابط إعادة التعيين غير صالح أو منتهي الصلاحية. اطلب رابطًا جديدًا من التطبيق.',
+        errMismatch: 'كلمتا المرور غير متطابقتين.',
+        errTooShort: 'يجب أن تتكون كلمة المرور من 8 أحرف على الأقل.',
+        errNetwork: 'خطأ في الشبكة. تحقق من الاتصال وحاول مرة أخرى.',
+        errGeneric: 'تعذر تحديث كلمة المرور. حاول مرة أخرى.',
+        linkPrivacy: 'سياسة الخصوصية',
+        linkTerms: 'شروط الخدمة',
+        linkContact: 'اتصل بنا'
+      }
+    };
+
+    // Language detection: ?lang= → navigator.language → 'en'
+    var params = new URLSearchParams(window.location.search);
+    var requested = (params.get('lang') || '').toLowerCase();
+    var browserLang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    var lang = SUPPORTED.indexOf(requested) !== -1
+      ? requested
+      : (SUPPORTED.indexOf(browserLang) !== -1 ? browserLang : 'en');
+
+    function applyLang(l) {
+      lang = l;
+      var c = COPY[l] || COPY.en;
+      document.documentElement.lang = l;
+      document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+      document.title = c.pageTitle;
+      document.getElementById('title').textContent = c.title;
+      document.getElementById('subtitle').textContent = c.subtitle;
+      document.getElementById('label-pwd').textContent = c.labelPwd;
+      document.getElementById('label-pwd2').textContent = c.labelPwd2;
+      document.getElementById('submit-btn').textContent = c.submit;
+      document.getElementById('success-title').textContent = c.successTitle;
+      document.getElementById('success-msg').textContent = c.successMsg;
+      document.getElementById('open-app-btn').textContent = c.openApp;
+      document.getElementById('link-privacy').textContent = c.linkPrivacy;
+      document.getElementById('link-terms').textContent = c.linkTerms;
+      document.getElementById('link-contact').textContent = c.linkContact;
+      // Toggle active button
+      var btns = document.querySelectorAll('.lang-btn');
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].classList.toggle('active', btns[i].getAttribute('data-lang') === l);
+      }
+    }
+
+    // Wire lang buttons
+    document.getElementById('lang-toggle').addEventListener('click', function (e) {
+      var t = e.target;
+      if (t && t.classList && t.classList.contains('lang-btn')) {
+        applyLang(t.getAttribute('data-lang'));
+      }
+    });
+
+    applyLang(lang);
+
+    // Parse the recovery token from the URL hash.
+    // Supabase format: #access_token=...&refresh_token=...&type=recovery&...
+    function parseHashTokens() {
+      var h = window.location.hash || '';
+      if (h.charAt(0) === '#') h = h.substring(1);
+      var out = {};
+      var parts = h.split('&');
+      for (var i = 0; i < parts.length; i++) {
+        var kv = parts[i].split('=');
+        if (kv.length === 2) out[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
+      }
+      return out;
+    }
+
+    var tokens = parseHashTokens();
+    var hasRecoveryToken =
+      tokens.access_token && tokens.refresh_token && tokens.type === 'recovery';
+
+    var msgEl = document.getElementById('msg');
+    function showError(key) {
+      var c = COPY[lang] || COPY.en;
+      msgEl.textContent = c[key] || c.errGeneric;
+      msgEl.className = 'msg error';
+    }
+    function clearMsg() {
+      msgEl.textContent = '';
+      msgEl.className = 'msg';
+    }
+
+    // Initialize Supabase client only if the global loaded (CDN reachable).
+    var sb = null;
+    if (window.supabase && typeof window.supabase.createClient === 'function') {
+      sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
+      });
+    }
+
+    if (!hasRecoveryToken) {
+      // No valid token in hash — disable submit + show error pre-emptively.
+      showError('errInvalidToken');
+      document.getElementById('submit-btn').disabled = true;
+    }
+
+    var form = document.getElementById('reset-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      clearMsg();
+
+      var pwd1 = document.getElementById('pwd1').value;
+      var pwd2 = document.getElementById('pwd2').value;
+
+      if (pwd1.length < 8) { showError('errTooShort'); return; }
+      if (pwd1 !== pwd2)   { showError('errMismatch'); return; }
+      if (!hasRecoveryToken || !sb) { showError('errInvalidToken'); return; }
+
+      var btn = document.getElementById('submit-btn');
+      var origLabel = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = (COPY[lang] || COPY.en).submitting;
+
+      sb.auth.setSession({
+        access_token: tokens.access_token,
+        refresh_token: tokens.refresh_token
+      }).then(function (r) {
+        if (r && r.error) throw r.error;
+        return sb.auth.updateUser({ password: pwd1 });
+      }).then(function (r) {
+        if (r && r.error) throw r.error;
+        // Success — switch states
+        document.getElementById('form-state').classList.add('hide');
+        document.getElementById('success-state').classList.add('show');
+        // Best-effort: clear hash so token isn't preserved in browser history.
+        try {
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        } catch (_) { /* noop */ }
+      }).catch(function (err) {
+        var m = (err && err.message ? String(err.message) : '').toLowerCase();
+        if (m.indexOf('expired') !== -1 || m.indexOf('invalid') !== -1 || m.indexOf('token') !== -1) {
+          showError('errInvalidToken');
+        } else if (m.indexOf('password') !== -1 && (m.indexOf('short') !== -1 || m.indexOf('characters') !== -1 || m.indexOf('weak') !== -1)) {
+          showError('errTooShort');
+        } else if (m.indexOf('network') !== -1 || m.indexOf('fetch') !== -1) {
+          showError('errNetwork');
+        } else {
+          showError('errGeneric');
+        }
+        btn.disabled = false;
+        btn.textContent = origLabel;
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
