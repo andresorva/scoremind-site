@@ -91,8 +91,9 @@ These numbers should be reflected accurately on the site at all times:
 - Direct, confident, no marketing fluff
 - Casual but credible — like a smart friend explaining the app
 - Bilingual EN/ES — Spanish should feel native (Latin American neutral, NOT translated literally)
-- NEVER use words like "betting" or "gambling" as verbs — Apple-safe language. Always frame as "predictions", "picks", "analysis".
-- Disclaimer language: "ScoreMind doesn't promote betting. Statistical analysis for entertainment purposes only."
+- NEVER use ANY gambling/betting/odds language on the public site — even negative ones ("doesn't promote betting"). Google Ads classifier flags the word "betting/apuestas" regardless of context. Frame everything as "sports predictions", "football analysis", "match insights", "AI-powered analysis".
+- Site disclaimer (canonical): "ScoreMind AI provides sports predictions and football analysis for entertainment purposes only." (ES: "ScoreMind AI ofrece predicciones deportivas y análisis de fútbol solo con fines de entretenimiento.")
+- In-app language is DIFFERENT (Gambling=YES per Apple S33 forced declaration). This rule applies to the public site only.
 
 ---
 
@@ -106,10 +107,11 @@ The site hosts pages Apple App Review checks. Breaking them will block the app.
 - `/contact` — Contact page
 
 ### Critical copy rules
-- The site must NEVER use language that suggests we facilitate, encourage, or process bets or wagers
-- Always say "ScoreMind doesn't promote betting" / "No promovemos apuestas"
-- Never include affiliate links to sportsbooks or gambling operators
-- Never mention "real money", "winnings", "stakes", "odds you can bet on"
+- The site must NEVER use language naming gambling/betting/odds/wagering — even in disclaimers. Google Ads classifier penalizes the word, not the intent.
+- Site disclaimer (canonical): see §5 voice and tone.
+- Never include affiliate links to sportsbooks or gambling operators.
+- Never mention "real money", "winnings", "stakes", "odds", "picks", "Over/Under", "Both Teams To Score" as marketing copy on the public site.
+- The 18+ age badge must remain visible on every page footer.
 
 ### Demo account
 For App Review, the demo account is:
@@ -160,7 +162,7 @@ This account exists in the app's Supabase auth, NOT on the website.
 7. **Image hygiene:** Never commit images >500KB. Use WebP and proper dimensions. Lazy-load below the fold.
 8. **No "Coming Soon"** placeholders unless explicitly requested. They make the product look unfinished. If a feature isn't ready, omit the section entirely.
 9. **Stats and numbers must match reality.** Before changing any stat (accuracy %, prediction count, competition count), verify with the user. Never invent numbers.
-10. **Copy is sacred.** Apple-compliant language is non-negotiable. Never write "bet", "wager", "gamble" as verbs.
+10. **Copy is sacred.** Google Ads + Apple-compliant language is non-negotiable. Never write "bet", "wager", "gamble", "betting", "gambling", "odds", "picks", "Over/Under", "BTTS", "Both Teams To Score" on the public site — even in negative framings ("doesn't promote betting") or sportsbook market labels. In-app language is governed separately by the Flutter project CLAUDE.md.
 
 ---
 
@@ -178,6 +180,7 @@ Decisions made about the landing site, with date and reasoning:
 | 2026-04-28 | Hero composition reduced to 1 phone (was 3) | 3 phones with marketing copy embedded competed with hero headline at viewports <1440px and clipped at the column boundary. Single-phone matches Linear/Raycast/Vercel pattern. Other 4 screenshots reused in dedicated sections (Meet ScoreBot, Beyond the Score, Stats That Matter, Live social-proof card). |
 | 2026-04-28 | Live.webp placed as inline social-proof card between Trust Bar and Why ScoreMind | Reinforces credibility ("AI predicted, currently winning") with real validation, without bloating into a full section. |
 | 2026-05-19 | Google Tag Manager `GTM-NVF7D37X` injected on all 4 HTML pages | Unified tag management for future analytics/conversion tracking. GTM itself is lean (~20KB async, no UI impact). Replaces the §2 / §9.5 "no analytics" stance — see updated rules. |
+| 2026-06-06 | Gambling-language site cleanup for Google Ads eligibility + 18+ visibility | Apple forced Gambling=YES on the in-app declaration (per Flutter MEMORY S33), so the old "we are NOT a betting platform" framing is both no longer Apple-required AND damaging to Google's ad classifier. Stripped all gambling/betting/odds/wager references across index.html, terms/, blog/, privacy/, and i18n.js. Added 18+ pill on every page footer + hero tiny suffix on index. Terms §2 renamed "Strictly Informational Use"; §6 renamed "Statistical Analysis — Informational Use Only". Age bumped 17→18. Public site is now purely "AI-powered sports predictions and football analysis" with zero betting language. In-app language UNCHANGED (governed by Flutter CLAUDE.md). |
 | [add as decisions are made] | | |
 
 ---
