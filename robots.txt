@@ -1,0 +1,8 @@
+# ScoreMind AI — public site crawl directives
+# Updated: 2026-06-06
+
+User-agent: *
+Allow: /
+Disallow: /auth/
+
+Sitemap: https://scoremind.ai/sitemap.xml
