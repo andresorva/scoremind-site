@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRE56GWJR3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HRE56GWJR3');
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NVF7D37X');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account — ScoreMind.AI</title>
+  <meta name="description" content="Delete your ScoreMind.AI account and all associated data.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0e1a">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0e1a;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 48px;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+      margin-top: 20px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .logo img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f1f5f9;
+      letter-spacing: -0.01em;
+    }
+    .logo-text span { color: #00e5cc; }
+    .header p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* Language toggle */
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 24px;
+      background: #1a2236;
+      border-radius: 8px;
+      padding: 3px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .lang-btn {
+      padding: 6px 16px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: #94a3b8;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: #232b42;
+      color: #f1f5f9;
+    }
+
+    /* Card */
+    .card {
+      background: #1a2236;
+      border-radius: 16px;
+      padding: 28px 24px;
+      border: 1px solid #232b42;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 8px;
+    }
+    .step-desc {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    /* Steps indicator */
+    .steps-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #232b42;
+      transition: all 0.3s;
+    }
+    .step-dot.active { background: #00e5cc; }
+    .step-dot.done { background: #22c55e; }
+    .step-line {
+      width: 32px;
+      height: 2px;
+      background: #232b42;
+      transition: all 0.3s;
+    }
+    .step-line.done { background: #22c55e; }
+
+    /* Form elements */
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      background: #0a0e1a;
+      border: 1px solid #2a3553;
+      border-radius: 10px;
+      color: #f1f5f9;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus {
+      border-color: #00e5cc;
+    }
+    input::placeholder {
+      color: #64748b;
+    }
+
+    .otp-input {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 8px;
+      padding: 14px;
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      margin-top: 16px;
+      position: relative;
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .btn-primary {
+      background: #00e5cc;
+      color: #0a0e1a;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: #00c2ad;
+    }
+    .btn-danger {
+      background: #ef4444;
+      color: #fff;
+    }
+    .btn-danger:hover:not(:disabled) {
+      background: #dc2626;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #94a3b8;
+      border: 1px solid #2a3553;
+      margin-top: 10px;
+    }
+    .btn-secondary:hover:not(:disabled) {
+      border-color: #64748b;
+      color: #f1f5f9;
+    }
+
+    /* Loading spinner */
+    .btn.loading {
+      color: transparent !important;
+      pointer-events: none;
+    }
+    .btn.loading::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      margin-top: -10px;
+      margin-left: -10px;
+      border: 2px solid transparent;
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    .btn-primary.loading::after { border-top-color: #0a0e1a; }
+    .btn-danger.loading::after { border-top-color: #fff; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Messages */
+    .error-msg {
+      color: #ef4444;
+      font-size: 13px;
+      margin-top: 10px;
+      min-height: 18px;
+    }
+    .resend-link {
+      color: #00e5cc;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 12px;
+      display: inline-block;
+      background: none;
+      border: none;
+      font-family: inherit;
+      text-decoration: underline;
+    }
+    .resend-link:disabled {
+      color: #64748b;
+      cursor: not-allowed;
+      text-decoration: none;
+    }
+
+    /* Warning box */
+    .warning-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .warning-box h4 {
+      color: #ef4444;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .warning-box ul {
+      list-style: none;
+      padding: 0;
+    }
+    .warning-box li {
+      font-size: 13px;
+      color: #cbd5e1;
+      padding: 3px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+    .warning-box li::before {
+      content: '\2022';
+      color: #ef4444;
+      position: absolute;
+      left: 4px;
+    }
+
+    /* Success */
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(34, 197, 94, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 32px;
+      color: #22c55e;
+    }
+    .success-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      color: #22c55e;
+      margin-bottom: 8px;
+    }
+    .success-desc {
+      text-align: center;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* Hide/show */
+    .hidden { display: none !important; }
+
+    /* Footer */
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+    .footer a {
+      color: #94a3b8;
+      text-decoration: none;
+    }
+    .footer a:hover { color: #00e5cc; }
+    .footer .age-pill {
+      display: inline-block;
+      background: #1a2236;
+      border: 1px solid #2a3553;
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-left: 4px;
+    }
+    .footer .disclaimer {
+      margin-top: 6px;
+      color: #64748b;
+      font-size: 11px;
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 16px 12px 40px; }
+      .card { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVF7D37X"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Header -->
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <img src="/logo.png" alt="ScoreMind.AI">
+        <div class="logo-text">ScoreMind<span>.AI</span></div>
+      </div>
+      <p data-i18n="headerSubtitle">Account Deletion</p>
+    </div>
+
+    <!-- Language toggle -->
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">English</button>
+      <button class="lang-btn" onclick="setLang('es')">Espa&ntilde;ol</button>
+    </div>
+
+    <!-- Steps indicator -->
+    <div class="steps-indicator">
+      <div class="step-dot active" id="dot1"></div>
+      <div class="step-line" id="line1"></div>
+      <div class="step-dot" id="dot2"></div>
+      <div class="step-line" id="line2"></div>
+      <div class="step-dot" id="dot3"></div>
+    </div>
+
+    <!-- Step 1: Email -->
+    <div class="card" id="step1">
+      <h2 class="step-title" data-i18n="step1Title">Verify your identity</h2>
+      <p class="step-desc" data-i18n="step1Desc">Enter the email address associated with your ScoreMind.AI account. We'll send you a verification code.</p>
+      <label for="emailInput" data-i18n="emailLabel">Email address</label>
+      <input type="email" id="emailInput" placeholder="your@email.com" autocomplete="email">
+      <button class="btn btn-primary" id="sendOtpBtn" onclick="handleSendOtp()" data-i18n="sendCode">Send verification code</button>
+      <div class="error-msg" id="step1Error"></div>
+    </div>
+
+    <!-- Step 2: OTP verification -->
+    <div class="card hidden" id="step2">
+      <h2 class="step-title" data-i18n="step2Title">Enter verification code</h2>
+      <p class="step-desc" id="step2Desc"></p>
+      <label for="otpInput" data-i18n="otpLabel">6-digit code</label>
+      <input type="text" id="otpInput" class="otp-input" maxlength="6" inputmode="numeric" pattern="[0-9]*" placeholder="000000" autocomplete="one-time-code">
+      <button class="btn btn-primary" id="verifyOtpBtn" onclick="handleVerifyOtp()" data-i18n="verifyCode">Verify code</button>
+      <div class="error-msg" id="step2Error"></div>
+      <button class="resend-link" id="resendBtn" onclick="handleResendOtp()" data-i18n="resendCode">Resend code</button>
+    </div>
+
+    <!-- Step 3: Confirm deletion -->
+    <div class="card hidden" id="step3">
+      <h2 class="step-title" data-i18n="step3Title">Delete your account?</h2>
+      <p class="step-desc" data-i18n="step3Desc">This action is permanent and cannot be undone. The following data will be deleted:</p>
+      <div class="warning-box">
+        <h4 data-i18n="warningTitle">Data that will be permanently deleted:</h4>
+        <ul>
+          <li data-i18n="dataProfile">Your profile and account information</li>
+          <li data-i18n="dataFavorites">Favourite teams, leagues and players</li>
+          <li data-i18n="dataPush">Push notification settings and tokens</li>
+          <li data-i18n="dataActivity">Activity history and analytics</li>
+          <li data-i18n="dataSessions">Session history</li>
+          <li data-i18n="dataContact">Contact messages</li>
+        </ul>
+      </div>
+      <button class="btn btn-danger" id="deleteBtn" onclick="handleDelete()" data-i18n="deleteBtn">Delete my account permanently</button>
+      <button class="btn btn-secondary" onclick="handleCancel()" data-i18n="cancelBtn">Cancel</button>
+      <div class="error-msg" id="step3Error"></div>
+    </div>
+
+    <!-- Step 4: Success -->
+    <div class="card hidden" id="step4">
+      <div class="success-icon">&#10003;</div>
+      <h2 class="success-title" data-i18n="successTitle">Account deleted</h2>
+      <p class="success-desc" data-i18n="successDesc">Your account and all associated data have been permanently deleted. You can uninstall the app or create a new account at any time.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>
+        <a href="/">Home</a> &middot;
+        <a href="/privacy/" data-i18n="privacyLink">Privacy Policy</a> &middot;
+        <a href="/terms/" data-i18n="termsLink">Terms of Use</a> &middot;
+        <a href="mailto:info@datanaat.com" data-i18n="footerContact">Contact</a>
+      </p>
+      <p style="margin-top:8px;">&copy; 2026 Datanaat. All rights reserved. <span class="age-pill">18+</span></p>
+      <p class="disclaimer" data-i18n="footerDisclaimer">ScoreMind AI provides sports predictions and football analysis for entertainment purposes only.</p>
+    </div>
+  </div>
+
+  <!-- Supabase JS SDK (UMD) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <script>
+    // ============================================================
+    // CONFIG
+    // ============================================================
+    const SUPABASE_URL = 'https://dqjamdyahhcprmreyctr.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxamFtZHlhaGhjcHJtcmV5Y3RyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE3NzQ4OTYsImV4cCI6MjA4NzM1MDg5Nn0._jcEsJd6Xu8rzxmQNEP7WQmWtiXZSWuEaUkICnTDR-4';
+
+    // Service B (migration) — absolute URL because this page is hosted on
+    // scoremind.ai (GitHub Pages), not on the same origin as the API. The
+    // /api/delete-account handler enforces auth, rate limiting, multi-table
+    // cleanup, and Apple refresh-token revocation (Guideline 5.1.1(v)).
+    const DELETE_ACCOUNT_API = 'https://migration-production-dc6e.up.railway.app/api/delete-account';
+
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let currentEmail = '';
+    let accessToken = '';
+
+    // ============================================================
+    // i18n
+    // ============================================================
+    const strings = {
+      en: {
+        headerSubtitle: 'Account Deletion',
+        step1Title: 'Verify your identity',
+        step1Desc: 'Enter the email address associated with your ScoreMind.AI account. We\'ll send you a verification code.',
+        emailLabel: 'Email address',
+        sendCode: 'Send verification code',
+        step2Title: 'Enter verification code',
+        step2Desc: 'We sent a 6-digit code to <strong>{email}</strong>. Check your inbox and spam folder.',
+        otpLabel: '6-digit code',
+        verifyCode: 'Verify code',
+        resendCode: 'Resend code',
+        resendSent: 'Code resent!',
+        step3Title: 'Delete your account?',
+        step3Desc: 'This action is permanent and cannot be undone. The following data will be deleted:',
+        warningTitle: 'Data that will be permanently deleted:',
+        dataProfile: 'Your profile and account information',
+        dataFavorites: 'Favourite teams, leagues and players',
+        dataPush: 'Push notification settings and tokens',
+        dataActivity: 'Activity history and analytics',
+        dataSessions: 'Session history',
+        dataContact: 'Contact messages',
+        deleteBtn: 'Delete my account permanently',
+        cancelBtn: 'Cancel',
+        successTitle: 'Account deleted',
+        successDesc: 'Your account and all associated data have been permanently deleted. You can uninstall the app or create a new account at any time.',
+        privacyLink: 'Privacy Policy',
+        termsLink: 'Terms of Use',
+        footerContact: 'Contact',
+        footerDisclaimer: 'ScoreMind AI provides sports predictions and football analysis for entertainment purposes only.',
+        errEmail: 'Please enter a valid email address.',
+        errNoAccount: 'No account found with this email address.',
+        errOtpSend: 'Failed to send verification code. Please try again.',
+        errOtpEmpty: 'Please enter the 6-digit code.',
+        errOtpInvalid: 'Invalid or expired code. Please try again.',
+        errDeleteFailed: 'Failed to delete account. Please try again.',
+        errRateLimit: 'Too many attempts. Please try again in 15 minutes.',
+        errGeneric: 'Something went wrong. Please try again.'
+      },
+      es: {
+        headerSubtitle: 'Eliminar cuenta',
+        step1Title: 'Verifica tu identidad',
+        step1Desc: 'Ingresa el correo electrónico asociado a tu cuenta de ScoreMind.AI. Te enviaremos un código de verificación.',
+        emailLabel: 'Correo electrónico',
+        sendCode: 'Enviar código de verificación',
+        step2Title: 'Ingresa el código de verificación',
+        step2Desc: 'Enviamos un código de 6 dígitos a <strong>{email}</strong>. Revisa tu bandeja de entrada y spam.',
+        otpLabel: 'Código de 6 dígitos',
+        verifyCode: 'Verificar código',
+        resendCode: 'Reenviar código',
+        resendSent: '¡Código reenviado!',
+        step3Title: '¿Eliminar tu cuenta?',
+        step3Desc: 'Esta acción es permanente y no se puede deshacer. Se eliminarán los siguientes datos:',
+        warningTitle: 'Datos que se eliminarán permanentemente:',
+        dataProfile: 'Tu perfil e información de cuenta',
+        dataFavorites: 'Equipos, ligas y jugadores favoritos',
+        dataPush: 'Configuración de notificaciones push y tokens',
+        dataActivity: 'Historial de actividad y analíticas',
+        dataSessions: 'Historial de sesiones',
+        dataContact: 'Mensajes de contacto',
+        deleteBtn: 'Eliminar mi cuenta permanentemente',
+        cancelBtn: 'Cancelar',
+        successTitle: 'Cuenta eliminada',
+        successDesc: 'Tu cuenta y todos los datos asociados han sido eliminados permanentemente. Puedes desinstalar la app o crear una cuenta nueva en cualquier momento.',
+        privacyLink: 'Política de Privacidad',
+        termsLink: 'Términos de Uso',
+        footerContact: 'Contacto',
+        footerDisclaimer: 'ScoreMind AI ofrece predicciones deportivas y análisis de fútbol con fines de entretenimiento únicamente.',
+        errEmail: 'Por favor ingresa un correo electrónico válido.',
+        errNoAccount: 'No se encontró una cuenta con este correo.',
+        errOtpSend: 'No se pudo enviar el código. Inténtalo de nuevo.',
+        errOtpEmpty: 'Por favor ingresa el código de 6 dígitos.',
+        errOtpInvalid: 'Código inválido o expirado. Inténtalo de nuevo.',
+        errDeleteFailed: 'No se pudo eliminar la cuenta. Inténtalo de nuevo.',
+        errRateLimit: 'Demasiados intentos. Inténtalo en 15 minutos.',
+        errGeneric: 'Algo salió mal. Inténtalo de nuevo.'
+      }
+    };
+
+    let lang = 'en';
+
+    function setLang(l) {
+      lang = l;
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === (l === 'en' ? 'English' : 'Español')));
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (strings[lang][key]) {
+          if (el.tagName === 'INPUT') el.placeholder = strings[lang][key];
+          else el.innerHTML = strings[lang][key];
+        }
+      });
+      // Update dynamic desc
+      if (!document.getElementById('step2').classList.contains('hidden')) {
+        document.getElementById('step2Desc').innerHTML = t('step2Desc').replace('{email}', currentEmail);
+      }
+    }
+
+    function t(key) { return strings[lang][key] || key; }
+
+    // ============================================================
+    // STEP NAVIGATION
+    // ============================================================
+    function showStep(n) {
+      ['step1', 'step2', 'step3', 'step4'].forEach((id, i) => {
+        document.getElementById(id).classList.toggle('hidden', i !== n - 1);
+      });
+
+      // Update dots
+      for (let i = 1; i <= 3; i++) {
+        const dot = document.getElementById('dot' + i);
+        dot.classList.remove('active', 'done');
+        if (i < n) dot.classList.add('done');
+        else if (i === n) dot.classList.add('active');
+      }
+      for (let i = 1; i <= 2; i++) {
+        const line = document.getElementById('line' + i);
+        line.classList.toggle('done', i < n);
+      }
+
+      // Hide dots on success
+      document.querySelector('.steps-indicator').classList.toggle('hidden', n === 4);
+    }
+
+    // ============================================================
+    // STEP 1: Send OTP
+    // ============================================================
+    async function handleSendOtp() {
+      const emailInput = document.getElementById('emailInput');
+      const errEl = document.getElementById('step1Error');
+      const btn = document.getElementById('sendOtpBtn');
+      const email = emailInput.value.trim().toLowerCase();
+      errEl.textContent = '';
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errEl.textContent = t('errEmail');
+        return;
+      }
+
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      try {
+        const { error } = await sb.auth.signInWithOtp({
+          email: email,
+          options: { shouldCreateUser: false }
+        });
+
+        if (error) {
+          if (error.message.toLowerCase().includes('not found') || error.message.toLowerCase().includes('no user') || error.message.toLowerCase().includes('signups not allowed')) {
+            errEl.textContent = t('errNoAccount');
+          } else if (error.status === 429 || error.message.toLowerCase().includes('rate')) {
+            errEl.textContent = t('errRateLimit');
+          } else {
+            errEl.textContent = t('errOtpSend');
+          }
+          btn.classList.remove('loading');
+          btn.disabled = false;
+          return;
+        }
+
+        currentEmail = email;
+        document.getElementById('step2Desc').innerHTML = t('step2Desc').replace('{email}', email);
+        showStep(2);
+        document.getElementById('otpInput').focus();
+      } catch (err) {
+        errEl.textContent = t('errGeneric');
+      }
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+
+    // ============================================================
+    // STEP 2: Verify OTP
+    // ============================================================
+    async function handleVerifyOtp() {
+      const otpInput = document.getElementById('otpInput');
+      const errEl = document.getElementById('step2Error');
+      const btn = document.getElementById('verifyOtpBtn');
+      const code = otpInput.value.trim();
+      errEl.textContent = '';
+
+      if (!code || code.length !== 6) {
+        errEl.textContent = t('errOtpEmpty');
+        return;
+      }
+
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      try {
+        const { data, error } = await sb.auth.verifyOtp({
+          email: currentEmail,
+          token: code,
+          type: 'email'
+        });
+
+        if (error) {
+          errEl.textContent = t('errOtpInvalid');
+          btn.classList.remove('loading');
+          btn.disabled = false;
+          return;
+        }
+
+        if (!data.session?.access_token) {
+          errEl.textContent = t('errOtpInvalid');
+          btn.classList.remove('loading');
+          btn.disabled = false;
+          return;
+        }
+
+        accessToken = data.session.access_token;
+        showStep(3);
+      } catch (err) {
+        errEl.textContent = t('errGeneric');
+      }
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+
+    // Resend OTP
+    async function handleResendOtp() {
+      const resendBtn = document.getElementById('resendBtn');
+      const errEl = document.getElementById('step2Error');
+      resendBtn.disabled = true;
+      errEl.textContent = '';
+
+      try {
+        await sb.auth.signInWithOtp({
+          email: currentEmail,
+          options: { shouldCreateUser: false }
+        });
+        errEl.style.color = '#22c55e';
+        errEl.textContent = t('resendSent');
+        setTimeout(() => { errEl.style.color = ''; errEl.textContent = ''; }, 3000);
+      } catch (err) {
+        errEl.textContent = t('errOtpSend');
+      }
+      setTimeout(() => { resendBtn.disabled = false; }, 30000);
+    }
+
+    // ============================================================
+    // STEP 3: Delete account
+    // ============================================================
+    async function handleDelete() {
+      const errEl = document.getElementById('step3Error');
+      const btn = document.getElementById('deleteBtn');
+      errEl.textContent = '';
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      try {
+        const response = await fetch(DELETE_ACCOUNT_API, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + accessToken
+          },
+          body: JSON.stringify({ action: 'delete-account' })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+          if (response.status === 429) {
+            errEl.textContent = t('errRateLimit');
+          } else {
+            errEl.textContent = result.error || t('errDeleteFailed');
+          }
+          btn.classList.remove('loading');
+          btn.disabled = false;
+          return;
+        }
+
+        // Sign out locally
+        await sb.auth.signOut().catch(() => {});
+        showStep(4);
+      } catch (err) {
+        errEl.textContent = t('errGeneric');
+      }
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+
+    // Cancel goes back to step 1
+    function handleCancel() {
+      accessToken = '';
+      currentEmail = '';
+      document.getElementById('emailInput').value = '';
+      document.getElementById('otpInput').value = '';
+      document.getElementById('step1Error').textContent = '';
+      document.getElementById('step2Error').textContent = '';
+      document.getElementById('step3Error').textContent = '';
+      showStep(1);
+    }
+
+    // ============================================================
+    // KEYBOARD HANDLERS
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('emailInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') handleSendOtp();
+      });
+      document.getElementById('otpInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') handleVerifyOtp();
+      });
+      // Only allow digits in OTP
+      document.getElementById('otpInput').addEventListener('input', e => {
+        e.target.value = e.target.value.replace(/[^0-9]/g, '');
+      });
+
+      // Detect browser language
+      const browserLang = navigator.language?.startsWith('es') ? 'es' : 'en';
+      setLang(browserLang);
+    });
+  </script>
+
+</body>
+</html>
