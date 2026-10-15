@@ -1,0 +1,84 @@
+{
+  "task": "ScoreMind public home local remodel 2026-10-15",
+  "baseline_deployed_sha": "172c3f5f2f1a47cb080cb8c473d52f5563e70b40",
+  "hosting": "Existing GitHub Pages main root, CNAME scoremind.ai. No hosting changes.",
+  "approved_logo": {
+    "asset": "ScoreMindLogo.imageset/scoremind-logo.png",
+    "source_sha256": "a66ebd5c80183bcdc3cf91341f3997ab9d4e7e3d1b8d2ded0159ac4426520dbd",
+    "approval": "Mac explicitly confirmed purple SM in this session. Proportional resize only."
+  },
+  "screenshots": [
+    {
+      "source": "17-stats-cargadas.png",
+      "source_sha256": "5ea609f3abb956cc37c92723f44f8d214aa9422053aa53120cbb187eae24a5e9",
+      "output": "match-statistics.webp",
+      "crop": null,
+      "output_size": [
+        640,
+        1425
+      ],
+      "note": "Actual installed Android 3.5.0+175, Spanish, captured 2026-10-15. Historical match illustration, not live data or accuracy evidence."
+    },
+    {
+      "source": "11-partido-premium.png",
+      "source_sha256": "3ede5dcaa0219e56d9c91456f6858f4bde69ba0e2a0de91ac865410ed2e1e0ac",
+      "output": "match-probability.webp",
+      "crop": [
+        30,
+        1100,
+        1315,
+        1555
+      ],
+      "output_size": [
+        1000,
+        354
+      ],
+      "note": "Actual installed Android 3.5.0+175, Spanish, captured 2026-10-15. Historical match illustration, not live data or accuracy evidence."
+    }
+  ],
+  "badges": {
+    "source": "Google Play official badges, en/es, play.google.com/intl/en_us/badges/static/images/badges/",
+    "operation": "Proportional downscale, lossless WebP. No badge redesign."
+  },
+  "scope": {
+    "protected": [
+      "privacy/",
+      "terms/",
+      "delete-account/",
+      "blog/",
+      "cal/",
+      "auth/",
+      "assets/js/i18n.js",
+      "CNAME",
+      "robots.txt",
+      "sitemap.xml",
+      "site.webmanifest",
+      "ads.txt",
+      "app-ads.txt"
+    ],
+    "changed": "Home only plus approved favicon/icon/share assets; service-page branding keeps original references."
+  },
+  "verification": {
+    "contract_tests": "node --test scripts/marketing-check.mjs, 10 passed",
+    "responsive": "44 measured ES/EN cases, 280–3840px plus landscape, zero overflow or clipped primary actions",
+    "large_text": "14 measured ES/EN cases, 280–2560px, root/body 32px (200%) injected only by external QA response, no production test flag. This is not browser-zoom/device QA.",
+    "http_routes": "23 local routes/resources/404 controls passed",
+    "legal": "Normalized text and complete HTML byte-identical to deployed baseline",
+    "delete_account": "Initial email form shown in ES/EN only. No submission, email, code, session, or deletion.",
+    "blog": "Existing article football-statistics-tool-review-what-matters rendered through ?post=",
+    "qr": "Rendered QR decoded by macOS Vision to https://play.google.com/store/apps/details?id=ai.scoremind.app",
+    "keyboard": "Skip link focuses main; visible focus, menu Enter/Escape and anchor closure; all 8 FAQ opened with keyboard",
+    "performance": "Lighthouse 12.8.2 local simulated mobile: latest Performance97, Accessibility100, SEO100, LCP1.8s, CLS0.012, TBT180ms. Earlier after scores87/99, before74. Variability from laboratory and existing tags. No field INP measured.",
+    "performance_limit": "Existing GTM/gtag retained and can load pre-existing partner tags; Best Practices79 mobile,78 desktop. No new provider or external panel changes."
+  },
+  "pending": [
+    "Mac visual approval",
+    "Physical iPhone/Safari and Android browser QA",
+    "Optional current English app screenshots; current actual screenshots clearly labeled Spanish",
+    "Verified ScoreBot answer/demo waits for Claude; no answer fabricated or AI invocation here",
+    "No iOS availability claim or price/trial guarantees",
+    "Publish only with explicit GO; no pushes or deployment performed.",
+    "Pre-existing /contact is 404; current mailto:info@datanaat.com preserved. No new contact route.",
+    "Frozen Android/backend work and ScoreBot implementation were not modified."
+  ]
+}
