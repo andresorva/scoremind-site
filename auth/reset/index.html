@@ -251,7 +251,7 @@
             <label class="label" for="pwd2" id="label-pwd2">Confirm password</label>
             <input class="input" type="password" id="pwd2" name="pwd2" minlength="8" required autocomplete="new-password">
           </div>
-          <button type="submit" class="btn btn-primary" id="submit-btn">Update password</button>
+          <button type="submit" class="btn btn-primary" id="submit-btn" disabled>Update password</button>
         </form>
       </div>
 
@@ -279,6 +279,17 @@
     <div class="footer-copy">&copy; 2026 Datanaat. All rights reserved. <span style="display:inline-block;padding:2px 10px;border-radius:999px;border:1px solid currentColor;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-left:8px;vertical-align:middle;opacity:0.85;">18+</span></div>
   </footer>
 
+  <script>
+  // Capture once, then remove credentials and incompatible codes before loading third-party JS.
+  window.__scoremindRecovery = new URLSearchParams(window.location.hash.slice(1));
+  window.__scoremindRecoveryCode = new URLSearchParams(window.location.search).has('code');
+  (function () {
+    var clean = new URL(window.location.href);
+    clean.hash = '';
+    ['code', 'access_token', 'refresh_token', 'error', 'error_description', 'error_code'].forEach(function (key) { clean.searchParams.delete(key); });
+    try { history.replaceState(null, '', clean.pathname + clean.search); } catch (_) { /* no persistence fallback */ }
+  })();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script>
   (function () {
@@ -291,6 +302,8 @@
 
     var COPY = {
       en: {
+        checking: 'Checking recovery link…',
+        errIncompatibleLink: 'This link must be opened on the device that requested it. Request a new link from the updated iOS app to reset your password in this browser.',
         pageTitle: 'Set a new password — ScoreMind AI',
         title: 'Set a new password',
         subtitle: 'Choose a strong password (at least 8 characters).',
@@ -311,6 +324,8 @@
         linkContact: 'Contact'
       },
       es: {
+        checking: 'Comprobando enlace…',
+        errIncompatibleLink: 'Este enlace requiere el dispositivo que lo solicitó. Pide un enlace nuevo desde la app iOS actualizada para recuperar tu contraseña en este navegador.',
         pageTitle: 'Establece una nueva contraseña — ScoreMind AI',
         title: 'Establece una nueva contraseña',
         subtitle: 'Elige una contraseña fuerte (al menos 8 caracteres).',
@@ -331,6 +346,8 @@
         linkContact: 'Contacto'
       },
       pt: {
+        checking: 'Verificando link…',
+        errIncompatibleLink: 'Este link requer o dispositivo que o solicitou. Peça um novo link no app iOS atualizado para redefinir a senha neste navegador.',
         pageTitle: 'Definir nova senha — ScoreMind AI',
         title: 'Definir nova senha',
         subtitle: 'Escolha uma senha forte (no mínimo 8 caracteres).',
@@ -351,6 +368,8 @@
         linkContact: 'Contato'
       },
       fr: {
+        checking: 'Vérification du lien…',
+        errIncompatibleLink: 'Ce lien nécessite l’appareil qui l’a demandé. Demandez un nouveau lien depuis l’app iOS à jour pour réinitialiser le mot de passe dans ce navigateur.',
         pageTitle: 'Définir un nouveau mot de passe — ScoreMind AI',
         title: 'Définir un nouveau mot de passe',
         subtitle: 'Choisissez un mot de passe robuste (au moins 8 caractères).',
@@ -371,6 +390,8 @@
         linkContact: 'Contact'
       },
       ar: {
+        checking: 'جارٍ التحقق من الرابط…',
+        errIncompatibleLink: 'يتطلب هذا الرابط الجهاز الذي طلبه. اطلب رابطًا جديدًا من تطبيق iOS المحدّث لإعادة تعيين كلمة المرور في هذا المتصفح.',
         pageTitle: 'تعيين كلمة مرور جديدة — ScoreMind AI',
         title: 'تعيين كلمة مرور جديدة',
         subtitle: 'اختر كلمة مرور قوية (8 أحرف على الأقل).',
@@ -392,6 +413,10 @@
       }
     };
 
+    var busy = false;
+    var checking = true;
+    var errorKey = null;
+
     // Language detection: ?lang= → navigator.language → 'en'
     var params = new URLSearchParams(window.location.search);
     var requested = (params.get('lang') || '').toLowerCase();
@@ -410,7 +435,8 @@
       document.getElementById('subtitle').textContent = c.subtitle;
       document.getElementById('label-pwd').textContent = c.labelPwd;
       document.getElementById('label-pwd2').textContent = c.labelPwd2;
-      document.getElementById('submit-btn').textContent = c.submit;
+      document.getElementById('submit-btn').textContent = busy ? c.submitting : (checking ? c.checking : c.submit);
+      if (errorKey) showError(errorKey);
       document.getElementById('success-title').textContent = c.successTitle;
       document.getElementById('success-msg').textContent = c.successMsg;
       document.getElementById('open-app-btn').textContent = c.openApp;
@@ -434,95 +460,78 @@
 
     applyLang(lang);
 
-    // Parse the recovery token from the URL hash.
-    // Supabase format: #access_token=...&refresh_token=...&type=recovery&...
-    function parseHashTokens() {
-      var h = window.location.hash || '';
-      if (h.charAt(0) === '#') h = h.substring(1);
-      var out = {};
-      var parts = h.split('&');
-      for (var i = 0; i < parts.length; i++) {
-        var kv = parts[i].split('=');
-        if (kv.length === 2) out[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1]);
-      }
-      return out;
-    }
-
-    var tokens = parseHashTokens();
-    var hasRecoveryToken =
-      tokens.access_token && tokens.refresh_token && tokens.type === 'recovery';
-
+    var fragment = window.__scoremindRecovery || new URLSearchParams();
+    var incompatibleCode = window.__scoremindRecoveryCode;
+    delete window.__scoremindRecovery;
+    delete window.__scoremindRecoveryCode;
+    var tokens = { access_token: fragment.get('access_token'), refresh_token: fragment.get('refresh_token') };
+    var hasRecoveryToken = tokens.access_token && tokens.refresh_token && fragment.get('type') === 'recovery';
+    fragment = null;
     var msgEl = document.getElementById('msg');
+    var btn = document.getElementById('submit-btn');
+    var ready = false;
     function showError(key) {
-      var c = COPY[lang] || COPY.en;
-      msgEl.textContent = c[key] || c.errGeneric;
+      errorKey = key;
+      msgEl.textContent = (COPY[lang] || COPY.en)[key] || COPY[lang].errGeneric;
       msgEl.className = 'msg error';
     }
-    function clearMsg() {
-      msgEl.textContent = '';
-      msgEl.className = 'msg';
+    function clearMsg() { errorKey = null; msgEl.textContent = ''; msgEl.className = 'msg'; }
+    function bounded(operation) {
+      return new Promise(function (resolve, reject) {
+        var timer = setTimeout(function () { reject({ code: 'network_timeout' }); }, 15000);
+        Promise.resolve(operation).then(function (value) { clearTimeout(timer); resolve(value); }, function (error) { clearTimeout(timer); reject(error); });
+      });
     }
-
-    // Initialize Supabase client only if the global loaded (CDN reachable).
     var sb = null;
     if (window.supabase && typeof window.supabase.createClient === 'function') {
       sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-        auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
+        auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false, flowType: 'implicit' }
       });
     }
-
-    if (!hasRecoveryToken) {
-      // No valid token in hash — disable submit + show error pre-emptively.
-      showError('errInvalidToken');
-      document.getElementById('submit-btn').disabled = true;
+    async function prepareRecovery() {
+      try {
+        if (!hasRecoveryToken) { showError(incompatibleCode ? 'errIncompatibleLink' : 'errInvalidToken'); return; }
+        if (!sb) { showError('errNetwork'); return; }
+        var session = await bounded(sb.auth.setSession(tokens));
+        tokens = null;
+        if (session.error || !session.data || !session.data.session) { showError('errInvalidToken'); return; }
+        var verified = await bounded(sb.auth.getUser());
+        if (verified.error || !verified.data || !verified.data.user) { showError('errInvalidToken'); return; }
+        ready = true;
+      } catch (_) { showError('errNetwork'); }
+      finally { tokens = null; checking = false; btn.disabled = !ready; applyLang(lang); }
     }
-
-    var form = document.getElementById('reset-form');
-    form.addEventListener('submit', function (e) {
+    prepareRecovery();
+    document.getElementById('reset-form').addEventListener('submit', async function (e) {
       e.preventDefault();
+      if (busy || !ready || !sb) return;
       clearMsg();
-
-      var pwd1 = document.getElementById('pwd1').value;
-      var pwd2 = document.getElementById('pwd2').value;
-
-      if (pwd1.length < 8) { showError('errTooShort'); return; }
-      if (pwd1 !== pwd2)   { showError('errMismatch'); return; }
-      if (!hasRecoveryToken || !sb) { showError('errInvalidToken'); return; }
-
-      var btn = document.getElementById('submit-btn');
-      var origLabel = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = (COPY[lang] || COPY.en).submitting;
-
-      sb.auth.setSession({
-        access_token: tokens.access_token,
-        refresh_token: tokens.refresh_token
-      }).then(function (r) {
-        if (r && r.error) throw r.error;
-        return sb.auth.updateUser({ password: pwd1 });
-      }).then(function (r) {
-        if (r && r.error) throw r.error;
-        // Success — switch states
+      var input1 = document.getElementById('pwd1');
+      var input2 = document.getElementById('pwd2');
+      var password = input1.value;
+      if (password.length < 8) { showError('errTooShort'); return; }
+      if (password !== input2.value) { showError('errMismatch'); return; }
+      if (password.length > 4096) { showError('errGeneric'); return; }
+      busy = true; btn.disabled = true; applyLang(lang);
+      try {
+        var result = await bounded(sb.auth.updateUser({ password: password }));
+        password = null; input1.value = ''; input2.value = '';
+        if (result.error) throw result.error;
+        ready = false;
         document.getElementById('form-state').classList.add('hide');
         document.getElementById('success-state').classList.add('show');
-        // Best-effort: clear hash so token isn't preserved in browser history.
-        try {
-          history.replaceState(null, '', window.location.pathname + window.location.search);
-        } catch (_) { /* noop */ }
-      }).catch(function (err) {
-        var m = (err && err.message ? String(err.message) : '').toLowerCase();
-        if (m.indexOf('expired') !== -1 || m.indexOf('invalid') !== -1 || m.indexOf('token') !== -1) {
-          showError('errInvalidToken');
-        } else if (m.indexOf('password') !== -1 && (m.indexOf('short') !== -1 || m.indexOf('characters') !== -1 || m.indexOf('weak') !== -1)) {
-          showError('errTooShort');
-        } else if (m.indexOf('network') !== -1 || m.indexOf('fetch') !== -1) {
-          showError('errNetwork');
-        } else {
-          showError('errGeneric');
-        }
-        btn.disabled = false;
-        btn.textContent = origLabel;
-      });
+        // Local scope only: do not revoke other devices or change account rights.
+        if (sb.auth.signOut) sb.auth.signOut({ scope: 'local' }).catch(function () {});
+      } catch (error) {
+        var code = error && error.code;
+        if (code === 'weak_password') showError('errTooShort');
+        else if (code === 'session_not_found' || code === 'bad_jwt' || code === 'refresh_token_not_found') { ready = false; showError('errInvalidToken'); }
+        else if (code === 'network_timeout' || (error && error.name === 'AuthRetryableFetchError')) showError('errNetwork');
+        else showError('errGeneric');
+      } finally {
+        password = null; input1.value = ''; input2.value = '';
+        busy = false; btn.disabled = !ready; applyLang(lang);
+      }
     });
   })();
   </script>

@@ -1,0 +1,11 @@
+# Password recovery landing
+
+Base: clean worktree147b658, `auth/reset/index.html` identical to published HTTP200 `/auth/reset/` at preflight. The original `/Users/mac/scoremind-site` contains foreign WIP and was not edited/staged. This change intentionally does not copy its Android-link edits.
+
+The page captures the implicit recovery fragment in memory and removes hash/code/token/error query fields before loading the existing Supabase CDN. It does not persist tokens or log credentials. It validates setSession then getUser before enabling submit; no password operation occurs until a person submits matching fields. Duplicate submits are suppressed, fields cleared on completion, requests have a15s UI deadline, local-only sign-out follows success. Five languages and Arabic RTL are retained; invalid/expired/PKCE/unavailable/network errors use product text, never raw provider details.
+
+PKCE code without its originating verifier is explicitly rejected, with an explanation to request a compatible link through updated iOS. The new backend endpoint creates implicit recovery with fixed `https://scoremind.ai/auth/reset/`; no verifier is invented, no identity is linked. See [Supabase PKCE](https://supabase.com/docs/guides/auth/sessions/pkce-flow) and [implicit recovery](https://supabase.com/docs/guides/auth/sessions/implicit-flow).
+
+`node --test tests/password-recovery.test.mjs`: four browser-VM tests using synthetic values, no network. URL scrubbing order, absent/invalid/PKCE/expired/SDK-unavailable guards, no automatic update, single explicit submit, input clearing, locale retention and RTL are checked. Tests execute mocked updateUser only, never a real password change. No visual or end-to-end delivery claim.
+
+Root owns push/deployment and coordinates one authorized email. Mac alone enters his new password. Verify after publication: request through iOS, email opens `/auth/reset/`, checking state ends in enabled form, update success then app email login with the same identity. Do not retain real token URLs or password screenshots. Existing landing CDN dependency remains; SDK outage produces a localized connection error instead of enabling the form. UI timeout cannot prove a late provider operation did not complete, so verify the new password manually if connection is interrupted during submission.
