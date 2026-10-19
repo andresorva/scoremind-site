@@ -253,6 +253,15 @@
           </div>
           <button type="submit" class="btn btn-primary" id="submit-btn" disabled>Update password</button>
         </form>
+        <form id="recovery-request-form" hidden novalidate style="margin-top:20px;">
+          <p class="subtitle" id="request-explanation"></p>
+          <div class="field">
+            <label class="label" for="recovery-email" id="request-email-label"></label>
+            <input class="input" type="email" id="recovery-email" name="email" autocomplete="email" inputmode="email" maxlength="254" required>
+          </div>
+          <button type="submit" class="btn btn-primary" id="request-link-btn"></button>
+          <div class="msg" id="request-msg" role="status" aria-live="polite"></div>
+        </form>
       </div>
 
       <!-- Success state -->
@@ -302,8 +311,17 @@
 
     var COPY = {
       en: {
+        requestExplanation: 'Request a new recovery link below. It can be opened in this browser.',
+        requestEmail: 'Email',
+        requestLink: 'Request new link',
+        requestingLink: 'Requesting…',
+        requestAccepted: 'If this address is eligible, recovery instructions will be sent. This does not confirm delivery.',
+        requestInvalidEmail: 'Enter a valid email address.',
+        requestRateLimited: 'Too many attempts. Wait 15 minutes before trying again.',
+        requestFailed: 'The request could not be confirmed. Check your connection before trying again.',
+
         checking: 'Checking recovery link…',
-        errIncompatibleLink: 'This link must be opened on the device that requested it. Request a new link from the updated iOS app to reset your password in this browser.',
+        errIncompatibleLink: 'This link needs its original device. Request a new browser-compatible link below.',
         pageTitle: 'Set a new password — ScoreMind AI',
         title: 'Set a new password',
         subtitle: 'Choose a strong password (at least 8 characters).',
@@ -324,8 +342,17 @@
         linkContact: 'Contact'
       },
       es: {
+        requestExplanation: 'Solicita abajo un nuevo enlace de recuperación. Podrás abrirlo en este navegador.',
+        requestEmail: 'Correo electrónico',
+        requestLink: 'Solicitar nuevo enlace',
+        requestingLink: 'Solicitando…',
+        requestAccepted: 'Si esta dirección admite recuperación, se enviarán instrucciones. Esto no confirma la entrega.',
+        requestInvalidEmail: 'Introduce un correo electrónico válido.',
+        requestRateLimited: 'Demasiados intentos. Espera 15 minutos antes de reintentarlo.',
+        requestFailed: 'No se pudo confirmar la solicitud. Revisa tu conexión antes de reintentar.',
+
         checking: 'Comprobando enlace…',
-        errIncompatibleLink: 'Este enlace requiere el dispositivo que lo solicitó. Pide un enlace nuevo desde la app iOS actualizada para recuperar tu contraseña en este navegador.',
+        errIncompatibleLink: 'Este enlace necesita su dispositivo original. Solicita abajo uno nuevo compatible con este navegador.',
         pageTitle: 'Establece una nueva contraseña — ScoreMind AI',
         title: 'Establece una nueva contraseña',
         subtitle: 'Elige una contraseña fuerte (al menos 8 caracteres).',
@@ -346,8 +373,17 @@
         linkContact: 'Contacto'
       },
       pt: {
+        requestExplanation: 'Solicite abaixo um novo link de recuperação. Ele poderá ser aberto neste navegador.',
+        requestEmail: 'E-mail',
+        requestLink: 'Solicitar novo link',
+        requestingLink: 'Solicitando…',
+        requestAccepted: 'Se este endereço permitir recuperação, as instruções serão enviadas. Isso não confirma a entrega.',
+        requestInvalidEmail: 'Digite um e-mail válido.',
+        requestRateLimited: 'Muitas tentativas. Aguarde 15 minutos antes de tentar novamente.',
+        requestFailed: 'Não foi possível confirmar a solicitação. Confira a conexão antes de tentar novamente.',
+
         checking: 'Verificando link…',
-        errIncompatibleLink: 'Este link requer o dispositivo que o solicitou. Peça um novo link no app iOS atualizado para redefinir a senha neste navegador.',
+        errIncompatibleLink: 'Este link requer o dispositivo original. Solicite abaixo um novo link compatível com este navegador.',
         pageTitle: 'Definir nova senha — ScoreMind AI',
         title: 'Definir nova senha',
         subtitle: 'Escolha uma senha forte (no mínimo 8 caracteres).',
@@ -368,8 +404,17 @@
         linkContact: 'Contato'
       },
       fr: {
+        requestExplanation: 'Demandez un nouveau lien ci-dessous. Vous pourrez l’ouvrir dans ce navigateur.',
+        requestEmail: 'Adresse e-mail',
+        requestLink: 'Demander un nouveau lien',
+        requestingLink: 'Demande en cours…',
+        requestAccepted: 'Si cette adresse permet la récupération, des instructions seront envoyées. Cela ne confirme pas leur livraison.',
+        requestInvalidEmail: 'Saisissez une adresse e-mail valide.',
+        requestRateLimited: 'Trop de tentatives. Patientez 15 minutes avant de réessayer.',
+        requestFailed: 'La demande n’a pas pu être confirmée. Vérifiez la connexion avant de réessayer.',
+
         checking: 'Vérification du lien…',
-        errIncompatibleLink: 'Ce lien nécessite l’appareil qui l’a demandé. Demandez un nouveau lien depuis l’app iOS à jour pour réinitialiser le mot de passe dans ce navigateur.',
+        errIncompatibleLink: 'Ce lien nécessite son appareil d’origine. Demandez ci-dessous un nouveau lien compatible avec ce navigateur.',
         pageTitle: 'Définir un nouveau mot de passe — ScoreMind AI',
         title: 'Définir un nouveau mot de passe',
         subtitle: 'Choisissez un mot de passe robuste (au moins 8 caractères).',
@@ -390,8 +435,17 @@
         linkContact: 'Contact'
       },
       ar: {
+        requestExplanation: 'اطلب رابط استعادة جديدًا أدناه. يمكنك فتحه في هذا المتصفح.',
+        requestEmail: 'البريد الإلكتروني',
+        requestLink: 'طلب رابط جديد',
+        requestingLink: 'جارٍ الطلب…',
+        requestAccepted: 'إذا كان العنوان مؤهلًا للاستعادة، فستُرسل التعليمات. هذا لا يؤكد وصولها.',
+        requestInvalidEmail: 'أدخل عنوان بريد إلكتروني صالحًا.',
+        requestRateLimited: 'محاولات كثيرة جدًا. انتظر 15 دقيقة قبل المحاولة مجددًا.',
+        requestFailed: 'تعذر تأكيد الطلب. تحقق من الاتصال قبل المحاولة مجددًا.',
+
         checking: 'جارٍ التحقق من الرابط…',
-        errIncompatibleLink: 'يتطلب هذا الرابط الجهاز الذي طلبه. اطلب رابطًا جديدًا من تطبيق iOS المحدّث لإعادة تعيين كلمة المرور في هذا المتصفح.',
+        errIncompatibleLink: 'يتطلب هذا الرابط جهازه الأصلي. اطلب أدناه رابطًا جديدًا متوافقًا مع هذا المتصفح.',
         pageTitle: 'تعيين كلمة مرور جديدة — ScoreMind AI',
         title: 'تعيين كلمة مرور جديدة',
         subtitle: 'اختر كلمة مرور قوية (8 أحرف على الأقل).',
@@ -413,6 +467,8 @@
       }
     };
 
+    var requestBusy = false;
+    var requestMessageKey = null;
     var busy = false;
     var checking = true;
     var errorKey = null;
@@ -432,7 +488,11 @@
       document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
       document.title = c.pageTitle;
       document.getElementById('title').textContent = c.title;
-      document.getElementById('subtitle').textContent = c.subtitle;
+      document.getElementById('request-explanation').textContent = c.requestExplanation;
+      document.getElementById('request-email-label').textContent = c.requestEmail;
+      document.getElementById('request-link-btn').textContent = requestBusy ? c.requestingLink : c.requestLink;
+      if (requestMessageKey) document.getElementById('request-msg').textContent = c[requestMessageKey];
+      document.getElementById('subtitle').textContent = checking ? c.checking : (ready ? c.subtitle : '');
       document.getElementById('label-pwd').textContent = c.labelPwd;
       document.getElementById('label-pwd2').textContent = c.labelPwd2;
       document.getElementById('submit-btn').textContent = busy ? c.submitting : (checking ? c.checking : c.submit);
@@ -499,9 +559,37 @@
         if (verified.error || !verified.data || !verified.data.user) { showError('errInvalidToken'); return; }
         ready = true;
       } catch (_) { showError('errNetwork'); }
-      finally { tokens = null; checking = false; btn.disabled = !ready; applyLang(lang); }
+      finally { tokens = null; checking = false; btn.disabled = !ready; document.getElementById('reset-form').hidden = !ready; document.getElementById('recovery-request-form').hidden = ready; applyLang(lang); }
     }
     prepareRecovery();
+    document.getElementById('recovery-request-form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+      if (requestBusy) return;
+      var emailInput = document.getElementById('recovery-email');
+      var email = emailInput.value.trim();
+      var requestButton = document.getElementById('request-link-btn');
+      function requestMessage(key, error) {
+        requestMessageKey = key;
+        document.getElementById('request-msg').className = error ? 'msg error' : 'msg';
+        applyLang(lang);
+      }
+      if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { requestMessage('requestInvalidEmail', true); return; }
+      requestBusy = true; requestButton.disabled = true; requestMessageKey = null;
+      document.getElementById('request-msg').textContent = ''; applyLang(lang);
+      var abort = new AbortController();
+      var timeout = setTimeout(function () { abort.abort(); }, 15000);
+      try {
+        var response = await fetch('https://migration-production-dc6e.up.railway.app/api/mobile/session/password-reset', {
+          method: 'POST', credentials: 'omit', referrerPolicy: 'no-referrer',
+          headers: { 'Content-Type': 'application/json' }, signal: abort.signal,
+          body: JSON.stringify({ email: email, locale: lang })
+        });
+        if (response.status === 202) { emailInput.value = ''; requestMessage('requestAccepted', false); }
+        else if (response.status === 429) requestMessage('requestRateLimited', true);
+        else requestMessage('requestFailed', true);
+      } catch (_) { requestMessage('requestFailed', true); }
+      finally { clearTimeout(timeout); email = null; emailInput.value = ''; requestBusy = false; requestButton.disabled = false; applyLang(lang); }
+    });
     document.getElementById('reset-form').addEventListener('submit', async function (e) {
       e.preventDefault();
       if (busy || !ready || !sb) return;
@@ -530,7 +618,7 @@
         else showError('errGeneric');
       } finally {
         password = null; input1.value = ''; input2.value = '';
-        busy = false; btn.disabled = !ready; applyLang(lang);
+        busy = false; btn.disabled = !ready; document.getElementById('reset-form').hidden = !ready; document.getElementById('recovery-request-form').hidden = ready; applyLang(lang);
       }
     });
   })();
