@@ -1,0 +1,12 @@
+{
+  "fetchTime": "2026-10-20T16:04:01.685Z",
+  "url": "http://127.0.0.1:8766/?lang=es",
+  "categories": {
+    "performance": 98,
+    "accessibility": 100,
+    "seo": 100
+  },
+  "LCP": "2.0 s",
+  "CLS": "0",
+  "note": "Local simulated mobile; before final gallery alignment and top crop refinement"
+}

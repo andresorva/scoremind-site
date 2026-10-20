@@ -1,0 +1,41 @@
+ScoreMind — mejora de web y avisos · 20/10/2026
+
+Estado: implementación LOCAL para revisar. No se publicó, no hubo push ni cambios en campañas, tiendas, apps o backend.
+Base verificada con git fetch: origin/main 0efe115a119a65d9571250acc8efb897effc9844.
+Checkout aislado: /Users/mac/development/scoremind-site-visual-20261020.
+
+AUTORIZACIÓN ACTUAL DE MAC
+Mejorar/completar la página pública, integrar avisos y usar capturas reales de fútbol con proporción de celular. Sin barras de señal/batería/sistema. Mantener edades y funciones. No contactar Google, revisar países o crear campañas. Avisos en apps solamente propuestos, no implementados en este bloque.
+
+IMPLEMENTADO
+- Identidad morada coherente con el logo aprobado; jerarquía y marcos de celular.
+- Capturas reales con escudos: Arsenal, comparación Nottingham Forest/Arsenal, Premier League e Inicio.
+- Imágenes WebP redimensionadas proporcionalmente, sin alterar estadísticas ni insertar escudos. Las barras del sistema se ocultan mediante un encuadre CSS, conservando la captura fuente; no hay estiramiento.
+- Nota breve junto a ambas descargas, bloque de uso responsable antes de preguntas, enlace en pie y página /responsible-use/ en español e inglés.
+- Información sobre estimaciones inciertas, ausencia de garantías deportivas/económicas, no aceptación de apuestas/custodia de fondos/pago de premios, compras digitales y apoyo independiente.
+- Sin modificación de edades en tiendas o apps. Web conserva aviso 18+. No se presenta el aviso como un control técnico de acceso.
+- Controles de idioma y metadatos bilingües. No se añadieron dependencias ni proveedores de seguimiento.
+- Se priorizó la carga del CSS y de la traducción antes de los scripts de seguimiento ya existentes, sin modificar esos proveedores.
+
+VERIFICADO EN ESTA SESIÓN
+MEASURED: 18 pruebas locales pasaron (10 de home + 8 de recuperación). Comando: node --test scripts/marketing-check.mjs tests/password-recovery.test.mjs. Registro adyacente test-result.txt.
+MEASURED: archivos de privacidad, términos, eliminación, blog, calendario y auth conservados idénticos a la base actual; comprobado por el test existente con baseline actualizado.
+MEASURED: Lighthouse local móvil, simulación, español: rendimiento 98, accesibilidad 100, SEO 100; LCP 2.0 s y CLS 0. Son mediciones de laboratorio, no velocidad real en los países de destino. Medición hecha antes del último ajuste de alineación de tarjetas y recorte superior de Premier League; no se volvió a medir por ese ajuste visual menor.
+MEASURED: home sin desbordamiento horizontal a 320 px (ES y EN) y 390 px (ES), leído desde Chrome. No representa QA física en iPhone/Android.
+MEASURED: aviso completo renderizado en EN y ES; cambio de idioma activado por teclado y comprobado visualmente en DOM.
+MEASURED: Gambling Therapy abrió en Chrome y mostró servicio global gratuito de Gordon Moody y foros multilingües. No se abrió chat, envió información ni aceptaron condiciones. La primera navegación agotó su espera, pero después cargó; se verificó el contenido de esa misma pestaña.
+MEASURED: cada nueva imagen de producto pesa menos de 500 KB; dimensiones y procedencia en asset-evidence.json.
+
+PENDIENTE REAL
+- Capturas NUEVAS del simulador de Liga MX / FA Cup / Premier League. El Pixel existente estaba encendido, pero el control CUA no pudo vincular su ejecutable: Invalid app. No se controló mediante una vía alternativa ni se reemplazó la app. Las capturas utilizadas son del 15 y 17 de octubre, no nuevas del día 20. La etiqueta pública dice octubre 2026 y la tabla de evidencia conserva fechas precisas.
+- La captura anterior de Premier League conserva el estilo cian de aquella versión; no se recoloreó la interfaz para simular una versión nueva. Sustituirla al disponer de nuevas capturas.
+- La captura de Inicio tiene poca selección diaria visible. Sustituir por una vista completa de liga/partidos al disponer del control del simulador.
+- Revisión visual de Mac y GO específico para publicar el sitio. CLAUDE.md §9.1: “The user says when to push.” La publicación se dispara al actualizar main, por eso esta entrega sigue local.
+- No se cambió el texto de las páginas legales anteriores ni se implementaron avisos en Android/iOS.
+- Integrar estos avisos no acredita aprobación de Google Ads ni certificación.
+
+ERRORES PROPIOS / AJUSTES
+- El primer pase del test heredado usaba la base del 15/10 y exigía las imágenes viejas: fallaron 2 checks. Se actualizó la base al commit publicado del 19/10 y la validación de imágenes al conjunto actual. La recuperación no fue alterada.
+- Primer Lighthouse: rendimiento 75 con traducción tardía. Se priorizaron recursos propios y el siguiente pase dio 98. Ambos resultados son mediciones, no una garantía de rendimiento futuro.
+- Al abrir DevTools se abrió inicialmente en la pestaña Home de Play Console; se cerró inmediatamente sin acciones en la consola. Después se seleccionó la vista previa local. No se cambiaron datos ni configuraciones de tienda.
+- El primer intento de ancho en DevTools quedó en 1 px por el control numérico. Se corrigió a 390 mediante selección de texto y se verificaron las medidas reales. No fue un fallo del CSS.

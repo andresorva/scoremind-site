@@ -178,3 +178,75 @@
 
 .marketing-home .product-layout>*, .marketing-home .plan-grid>*, .marketing-home .faq>*, .marketing-home .product-list article>div { min-width:0; }
 .marketing-home .step-number { flex-shrink:0; }
+/* October refresh: purple ScoreMind identity and intact, portrait app views. */
+.marketing-home { --ink:#100e18; --surface:#1b1728; --text:#f8f6ff; --muted:#bcb5cc; --accent:#bca0ff; --line:#332b45; }
+.marketing-home .button { background:#bca0ff; color:#201236; }
+.marketing-home .button:hover { background:#d4c0ff; color:#201236; }
+.marketing-home .button-outline { background:transparent; color:var(--text); border-color:#79668f; }
+.marketing-home .button-outline:hover { background:var(--surface); color:var(--accent); }
+.marketing-home .hero { padding-block:76px 60px; }
+.marketing-home .hero-figure { max-width:360px; }
+.marketing-home .phone { width:min(292px,100%); padding:7px; border:1px solid #776582; border-radius:29px; background:#292134; }
+.marketing-home .phone img { width:100%; height:auto; border-radius:21px; }
+.marketing-home .hero-figure .phone { width:min(320px,100%); }
+.marketing-home .phone img { object-fit:contain; }
+.marketing-home .language button[aria-pressed=true] { background:#423052; }
+.marketing-home .how-section,.marketing-home .gallery-section { background:#171320; }
+.marketing-home .gallery-section { border-bottom:1px solid var(--line); }
+.marketing-home .screen-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; align-items:start; }
+.marketing-home .screen-card { min-width:0; padding:28px 20px 24px; border:1px solid var(--line); border-radius:18px; background:var(--ink); }
+.marketing-home .screen-card .phone { width:min(250px,100%); }
+.marketing-home .screen-card figcaption { margin-top:24px; }
+.marketing-home .screen-card figcaption h3 { color:var(--text); font-size:1.1rem; }
+.marketing-home .screen-card figcaption p { margin-top:8px; font-size:.875rem; }
+.marketing-home .gallery-note { margin-top:24px; max-width:800px; }
+.marketing-home .detail-figure .phone { width:min(290px,100%); }
+.marketing-home .detail-figure figcaption { text-align:center; }
+.marketing-home .product-layout { align-items:center; }
+.marketing-home .plan-premium { border-color:#9471c8; }
+.marketing-home .download-section { background:#251b35; }
+.marketing-home .download-notice { max-width:500px; margin-top:16px; padding-left:14px; border-left:2px solid #8662bf; }
+.marketing-home .notice-link { display:inline-block; min-height:32px; font-size:.8125rem; color:var(--accent); text-decoration:underline; text-underline-offset:4px; }
+.marketing-home .responsible-section { padding-block:56px 12px; }
+.marketing-home .responsible-card { display:grid; grid-template-columns:.9fr 1.1fr; gap:44px; padding:36px; border:1px solid #5a456e; border-radius:16px; background:var(--surface); }
+.marketing-home .responsible-card .age { display:inline-flex; margin-bottom:20px; border-color:#9774bd; }
+.marketing-home .responsible-card .eyebrow { font-size:.6875rem; margin-bottom:12px; }
+.marketing-home .responsible-card h2 { font-size:clamp(1.65rem,2.5vw,2.3rem); }
+.marketing-home .responsible-card p { font-size:.9375rem; }
+.marketing-home .help-copy { margin-top:16px; }
+.marketing-home .responsible-actions { display:flex; flex-wrap:wrap; gap:8px 28px; margin-top:20px; font-size:.875rem; }
+.marketing-home .notice-page { max-width:880px; padding-block:48px 72px; }
+.marketing-home .notice-heading { margin:40px 0; }
+.marketing-home .notice-heading .age { display:inline-flex; margin-bottom:24px; }
+.marketing-home .notice-heading h1 { font-size:clamp(2.1rem,4vw,3.5rem); }
+.marketing-home .notice-heading .fine { margin-top:20px; }
+.marketing-home .notice-section { padding:28px 0; border-top:1px solid var(--line); }
+.marketing-home .notice-section h2 { font-size:1.4rem; margin-bottom:14px; }
+.marketing-home .notice-section .text-link { margin-top:16px; }
+@media(max-width:800px) {
+ .marketing-home .hero { padding-block:48px; }
+ .marketing-home .screen-gallery { grid-template-columns:1fr; gap:24px; }
+ .marketing-home .screen-card { display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center; }
+ .marketing-home .screen-card .phone { width:min(250px,100%); }
+ .marketing-home .responsible-card { grid-template-columns:1fr; gap:24px; padding:28px; }
+}
+@media(max-width:540px) {
+ .marketing-home .screen-card { display:block; padding:24px; }
+ .marketing-home .screen-card .phone { width:min(250px,100%); }
+ .marketing-home .hero-figure .phone { width:min(280px,100%); }
+ .marketing-home .responsible-card { padding:24px; }
+ .marketing-home .responsible-actions { display:block; }
+ .marketing-home .responsible-actions a { display:flex; }
+}
+.marketing-home .app-viewport { overflow:hidden; border-radius:21px; display:flow-root; }
+.marketing-home .phone .app-viewport img { border-radius:0; margin-top:-9.26%; margin-bottom:-6.02%; }
+.marketing-home .phone .app-viewport img.capture-tall { margin-top:-6.7%; margin-bottom:-6.7%; }
+.marketing-home .screen-gallery { align-items:stretch; }
+.marketing-home .screen-card { display:flex; flex-direction:column; }
+.marketing-home .screen-card .phone { margin:0 auto; }
+.marketing-home .screen-card figcaption { margin-top:auto; padding-top:24px; }
+.marketing-home .phone .app-viewport img.capture-tall { margin-top:-10.5%; }
+@media(min-width:541px) and (max-width:800px) {
+ .marketing-home .screen-card { display:grid; }
+ .marketing-home .screen-card figcaption { margin-top:0; padding-top:0; }
+}

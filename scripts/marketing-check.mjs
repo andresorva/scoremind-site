@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 import {join,dirname} from 'node:path';
 const root=join(dirname(fileURLToPath(import.meta.url)),'..');
 const read=p=>readFileSync(join(root,p),'utf8');
-const baseline='172c3f5f2f1a47cb080cb8c473d52f5563e70b40';
+const baseline='0efe115a119a65d9571250acc8efb897effc9844';
 const original=p=>execFileSync('git',['show',`${baseline}:${p}`],{cwd:root,maxBuffer:4e6});
 const html=read('index.html'),js=read('assets/marketing/home.js'),css=read('assets/marketing/home.css');
 const copy=JSON.parse(js.split(' const COPY = ')[1].split(';\n const valid')[0]);
@@ -20,4 +20,4 @@ test('Every download points to exact Android package; no unverified iOS destinat
 test('No unsubstantiated marketing counters, prices, reviews or result promises',()=>{for(const str of [html,JSON.stringify(copy)])assert.doesNotMatch(str,/82\.9|68\.9|50,000|140\+|\$[0-9]|aggregateRating|reviewCount|7 days free|7 días gratis|Ask anything about any match/);});
 test('Only the existing analytics script origins remain; no new provider',()=>{const before=original('index.html').toString();const scripts=s=>[...s.matchAll(/<script[^>]+src="(https:[^"]+)"/g)].map(m=>m[1]).sort();assert.deepEqual(scripts(html),scripts(before));assert.match(html,/GTM-NVF7D37X/);assert.doesNotMatch(js,/fetch\(|XMLHttpRequest|supabase|Purchases/);});
 test('All marketing CSS selectors are scoped to home',()=>{const clean=css.replace(/\/\*[\s\S]*?\*\//g,'');for(const [,selector] of clean.matchAll(/(?:^|[{}])\s*([^{}]+)\{/g)){if(selector.trim().startsWith('@'))continue;for(const s of selector.split(','))assert.ok(s.trim().startsWith('.marketing-home'),s);}});
-test('New images stay under 500KB, with dimensions reserved and below-fold lazy loading',()=>{for(const [,path] of html.matchAll(/src="(\/assets\/marketing\/[^\"]+)"/g))assert.ok(statSync(join(root,path.split('?')[0])).size<500000,path);assert.match(html,/match-statistics\.webp" width="640" height="1425"/);assert.match(html,/match-probability\.webp" width="1000" height="354" loading="lazy"/);assert.match(html,/fetchpriority="high"/);});
+test('New images stay under 500KB, with dimensions reserved and below-fold lazy loading',()=>{for(const [,path] of html.matchAll(/src="(\/assets\/marketing\/[^\"]+)"/g))assert.ok(statSync(join(root,path.split('?')[0])).size<500000,path);for(const [,img] of html.matchAll(/(<img[^>]+src="\/assets\/marketing\/[^>]+>)/g)){assert.match(img,/width="[1-9][0-9]*"/);assert.match(img,/height="[1-9][0-9]*"/);}assert.match(html,/team-comparison\.webp" width="640" height="1138" loading="lazy"/);assert.match(html,/fetchpriority="high"/);});

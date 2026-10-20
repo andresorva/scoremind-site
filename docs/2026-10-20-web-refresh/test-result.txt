@@ -1,0 +1,26 @@
+✔ Protected service pages are byte-identical to deployed baseline (76.379625ms)
+✔ Hosting, feeds discovery, legacy localization and technical resources are preserved (77.505375ms)
+✔ ES/EN have identical complete keys and all HTML bindings resolve (0.3585ms)
+✔ Single H1 and keyboard-native navigation and FAQ (0.128416ms)
+✔ Local assets, service links and anchor targets resolve (0.234542ms)
+✔ Every download points to exact Android package; no unverified iOS destination (0.090875ms)
+✔ No unsubstantiated marketing counters, prices, reviews or result promises (0.218125ms)
+✔ Only the existing analytics script origins remain; no new provider (8.107167ms)
+✔ All marketing CSS selectors are scoped to home (0.245375ms)
+✔ New images stay under 500KB, with dimensions reserved and below-fold lazy loading (0.280041ms)
+✔ removes sensitive URL before SDK, validates before enabling; no automatic password write (2.555416ms)
+✔ invalid, PKCE, expired and missing SDK never enable password change (5.973ms)
+✔ explicit matching password submits once and clears inputs, language retains errors (1.995167ms)
+✔ five locales and Arabic RTL are present; code is removed without losing locale (1.890208ms)
+✔ legacy PKCE offers explicit re-request, never automatically sends (2.200916ms)
+✔ re-request validates and suppresses duplicate user submissions (1.782ms)
+✔ throttled and failed re-request stay neutral, clear email and allow retry (4.811708ms)
+✔ expired recovery exposes re-request; valid recovery keeps fallback hidden (2.970167ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 199.901833

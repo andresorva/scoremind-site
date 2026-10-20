@@ -1,0 +1,58 @@
+[
+  {
+    "name": "arsenal-profile",
+    "source": "/Users/mac/Downloads/ScoreMind-PlayStore-Capturas-2026-10-17-3.6-184/en/en-06-arsenal-final.png",
+    "width": 640,
+    "height": 1138,
+    "size": 38262,
+    "crop": null,
+    "operation": "Proportional resize and WebP compression only; no UI or data alteration",
+    "captured": "2026-10-17",
+    "source_sha256": "2b4cbddc62762e38d72deef1dd8bfd5b1bcbf829a4e54b1a7ff31eb7b9dcdd1d",
+    "output": "assets/marketing/arsenal-profile.webp",
+    "output_sha256": "69f54ea542827169e5d8dacf79ed7c706ad94b139048bec1183ce0b86339fc39",
+    "display_crop": "CSS app-viewport removes OS status/navigation bars; original pixels otherwise unchanged"
+  },
+  {
+    "name": "team-comparison",
+    "source": "/Users/mac/Downloads/ScoreMind-PlayStore-Capturas-2026-10-17-3.6-184/en/en-04-comparison-final.png",
+    "width": 640,
+    "height": 1138,
+    "size": 44158,
+    "crop": null,
+    "operation": "Proportional resize and WebP compression only; no UI or data alteration",
+    "captured": "2026-10-17",
+    "source_sha256": "f755247b35a45433fef11a669a656e7af80b0a0188d6e96a8eb99a0b7c191481",
+    "output": "assets/marketing/team-comparison.webp",
+    "output_sha256": "bcf6a6b5c3b6dff2a76ff771ce2cdea770bd9b5169adb354711ba3042abeba1c",
+    "display_crop": "CSS app-viewport removes OS status/navigation bars; original pixels otherwise unchanged"
+  },
+  {
+    "name": "football-home",
+    "source": "/Users/mac/Downloads/ScoreMind-PlayStore-Capturas-2026-10-17-3.6-184/en/en-01-home-final.png",
+    "width": 640,
+    "height": 1138,
+    "size": 39984,
+    "crop": null,
+    "operation": "Proportional resize and WebP compression only; no UI or data alteration",
+    "captured": "2026-10-17",
+    "source_sha256": "9030a60f424edd33e60906871443dcb4c1873b1cb9419fe79b4c992b819756cb",
+    "output": "assets/marketing/football-home.webp",
+    "output_sha256": "37cb541a28e920a3f174409aae9528765100b059a4e9e5d4ca32a4a2583849b9",
+    "display_crop": "CSS app-viewport removes OS status/navigation bars; original pixels otherwise unchanged"
+  },
+  {
+    "name": "premier-league-table",
+    "source": "/Users/mac/Downloads/ScoreMind-audit-2026-10-15/premier-league.png",
+    "width": 640,
+    "height": 1425,
+    "size": 46968,
+    "crop": null,
+    "operation": "Proportional resize and WebP compression only; no UI or data alteration",
+    "captured": "2026-10-15",
+    "source_sha256": "4c0b27120d3a38994d37ce3cf3247af45d7295d0431aee1dcabad738fedc984d",
+    "output": "assets/marketing/premier-league-table.webp",
+    "output_sha256": "0e5325645d46bbff89465a8f815d155a566e52b4524c8d35e086b3f6040f120e",
+    "display_crop": "CSS app-viewport removes OS status/navigation bars; original pixels otherwise unchanged"
+  }
+]
