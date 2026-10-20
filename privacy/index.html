@@ -37,7 +37,7 @@
       line-height: 1.6;
       min-height: 100vh;
     }
-    a { color: #00e5cc; text-decoration: none; transition: opacity 0.2s; }
+    a { color: #b9a2ff; text-decoration: none; transition: opacity 0.2s; }
     a:hover { opacity: 0.8; }
 
     .nav {
@@ -47,12 +47,12 @@
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo img { width: 36px; height: 36px; border-radius: 20%; }
     .nav-logo span { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
-    .nav-logo .ai { color: #00e5cc; }
+    .nav-logo .ai { color: #b9a2ff; }
 
     .doc { max-width: 760px; margin: 0 auto; padding: 24px 24px 80px; }
     .doc h1 {
       font-size: 32px; font-weight: 800; margin-bottom: 4px;
-      background: linear-gradient(135deg, #f1f5f9, #00e5cc);
+      background: linear-gradient(135deg, #f1f5f9, #b9a2ff);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
     }
@@ -60,7 +60,7 @@
     .doc h2 {
       font-size: 18px; font-weight: 700; color: #f1f5f9;
       margin-top: 28px; margin-bottom: 10px;
-      border-left: 3px solid #00e5cc; padding-left: 12px;
+      border-left: 3px solid #b9a2ff; padding-left: 12px;
     }
     .doc p, .doc li { font-size: 15px; color: #cbd5e1; margin-bottom: 10px; }
     .doc strong { color: #f1f5f9; }
@@ -69,7 +69,7 @@
     .doc .callout {
       background: #1a2236;
       border: 1px solid rgba(0,229,204,0.15);
-      border-left: 3px solid #00e5cc;
+      border-left: 3px solid #b9a2ff;
       padding: 14px 18px; border-radius: 8px;
       margin: 16px 0; font-size: 14px;
     }
@@ -81,7 +81,7 @@
       text-align: left; padding: 10px 12px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .doc th { color: #00e5cc; font-weight: 600; font-size: 13px; }
+    .doc th { color: #b9a2ff; font-weight: 600; font-size: 13px; }
     .doc td { color: #cbd5e1; }
 
     .footer {
@@ -91,7 +91,7 @@
     }
     .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; flex-wrap: wrap; }
     .footer-links a { font-size: 13px; color: #94a3b8; }
-    .footer-links a:hover { color: #00e5cc; }
+    .footer-links a:hover { color: #b9a2ff; }
     .footer-copy { font-size: 12px; color: #64748b; }
 
     @media (max-width: 480px) {
@@ -100,6 +100,10 @@
       .nav { padding: 12px 16px; }
       .doc th, .doc td { padding: 8px 6px; font-size: 12px; }
     }
+    .legal-summary { margin: 24px 0; padding: 18px; border: 1px solid #78649d; border-radius: 14px; background: #171326; }
+    .legal-summary summary { cursor: pointer; color: #e8ddff; font-weight: 700; }
+    .legal-summary[open] summary { margin-bottom: 16px; }
+    .legal-summary:focus-within { outline: 2px solid #b9a2ff; outline-offset: 4px; }
   </style>
 </head>
 <body>
@@ -117,7 +121,12 @@
 
   <main class="doc">
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last updated: April 28, 2026</p>
+    <p class="last-updated">Last updated: October 20, 2026</p>
+
+    <details class="legal-summary" lang="es"><summary>Español: actualizaciones sobre datos y proveedores</summary>
+    <p>Actualizado el 20 de octubre de 2026. Los datos de compras incluyen derechos de suscripción, saldo de mensajes, caducidad e identificadores de transacciones o recibos. Las solicitudes de red revelan información técnica, como la dirección IP, a la infraestructura que las procesa; puede derivarse un país aproximado sin pedir GPS. Los registros técnicos y de seguridad pueden contener información de las solicitudes.</p>
+    <p>Railway procesa solicitudes mediante nuestra API y tareas programadas. Google Generative AI (Gemini) procesa el texto enviado a ScoreBot para generar respuestas. Los proveedores deportivos, como Highlightly y Sportmonks, suministran calendario, resultados y estadísticas; el proveedor configurado puede variar por plataforma y función. Estas consultas se refieren a datos deportivos, no al perfil de tu cuenta ni a tu conversación con ScoreBot.</p>
+    <p>Firebase Cloud Messaging en Android y el servicio de notificaciones de Apple en iOS gestionan avisos cuando están habilitados. Su disponibilidad depende de la versión, los permisos y los ajustes. Los avisos no se presentan como una función garantizada en todas las versiones.</p></details>
 
     <div class="callout">
       We collect only what we need to make ScoreMind.AI work. We never sell your data, and you can delete your account at any time from the in-app Settings.
@@ -153,12 +162,12 @@
         </tr>
         <tr>
           <td>Subscription</td>
-          <td>Tier (free / plus / premium), expiry date, original platform receipt id</td>
+          <td>Subscription entitlement, message-credit balance, expiry date and platform transaction or receipt identifiers</td>
           <td>Verify your subscription is active, restore on a new device</td>
         </tr>
         <tr>
           <td>Push tokens</td>
-          <td>Firebase Cloud Messaging device token</td>
+          <td>Device push token (Firebase Cloud Messaging on Android or Apple Push Notification service on iOS, where enabled)</td>
           <td>Send you match-start, goal, and result notifications you opted into</td>
         </tr>
         <tr>
@@ -169,7 +178,7 @@
       </tbody>
     </table>
     <p>We do <strong>not</strong> collect: precise location (GPS), contacts, photos, or microphone audio.</p>
-    <p>We derive your approximate <strong>country</strong> (country only — never a precise location) from the IP address of your requests, to lead your home feed with local leagues. The IP address is used transiently for that lookup and is <strong>never stored, logged, or shared</strong>.</p>
+    <p>Network requests expose technical information such as an IP address to the infrastructure that processes them. An approximate country may be derived to personalize coverage; this does not require GPS permission. Infrastructure and security logs may contain technical request information.</p>
 
     <h2>3. How we use the data</h2>
     <ul>
@@ -184,13 +193,12 @@
     <p>To run the app we share specific data with the following processors:</p>
     <ul>
       <li><strong>Supabase</strong> — hosts the database where your account, predictions, and preferences live.</li>
-      <li><strong>Railway</strong> — hosts our backend API and crons (no user data stored here, only forwarded).</li>
+      <li><strong>Railway</strong> — hosts our backend API and scheduled jobs, which process requests needed to provide the service.</li>
       <li><strong>Google AdMob</strong> — serves rewarded video ads for ScoreBot ad-gated messages on free / quota-exhausted users. Ad personalization can be turned off in your device settings.</li>
       <li><strong>Google Generative AI (Gemini)</strong> — powers ScoreBot replies. Your message text is sent for inference; responses are not used by Google to train its model on your data per the API ToS.</li>
-      <li><strong>Anthropic (Claude)</strong> — fallback ScoreBot model. Same processing terms.</li>
-      <li><strong>Sportmonks</strong> — match data feed. We send no user data to Sportmonks; we only fetch fixtures, lineups, scores.</li>
+      <li><strong>Sports data providers</strong> — feeds such as Highlightly and Sportmonks supply fixtures, scores and statistics. The configured feed can differ by platform and feature. These requests concern sports data rather than your account profile or ScoreBot conversation.</li>
       <li><strong>Apple App Store / Google Play</strong> — handle subscription billing and receipt verification.</li>
-      <li><strong>Firebase Cloud Messaging</strong> — delivers push notifications.</li>
+      <li><strong>Firebase Cloud Messaging / Apple Push Notification service</strong> — deliver notifications on the relevant platform where enabled. Notification availability depends on your app version, permissions and settings.</li>
       <li><strong>Resend</strong> — sends contact/feedback emails when you reach us via the in-app form.</li>
     </ul>
     <p>We do <strong>not</strong> sell your personal data to advertisers, brokers, or any third party.</p>
@@ -228,6 +236,7 @@
       <a href="/blog">Blog</a>
       <a href="/privacy">Privacy Policy</a>
       <a href="/terms">Terms of Use</a>
+      <a href="/responsible-use/">Responsible use / Uso responsable</a>
       <a href="mailto:info@datanaat.com">Contact</a>
     </div>
     <div class="footer-copy">&copy; 2026 Datanaat. All rights reserved. <span style="display:inline-block;padding:2px 10px;border-radius:999px;border:1px solid currentColor;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-left:8px;vertical-align:middle;opacity:0.85;">18+</span></div>
