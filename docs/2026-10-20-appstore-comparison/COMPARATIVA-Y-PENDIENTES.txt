@@ -1,0 +1,93 @@
+SCOREMIND — COMPARATIVA DE APPS Y PENDIENTES PARA APPLE
+Consulta: 20 de octubre de 2026. Muestra: las seis apps nombradas por Mac más ElizaSCORE (n=7 fichas públicas). Investigación de fichas, webs y documentos públicos; no se instalaron las apps, verificaron contratos privados ni accedió a sus cuentas de revisión.
+
+CONCLUSIÓN
+Las predicciones de fútbol, xG, probabilidades e incluso las combinadas aparecen en apps publicadas en App Store. Eso refuta que necesariamente debamos quitar nuestras funciones para poder presentar una app de esta categoría. No demuestra por qué Apple aprobó cada binario ni sustituye la respuesta al rechazo de ScoreMind por propiedad intelectual.
+No apareció una fórmula común basada en declarar «no tenemos derechos». El aviso de uso informativo, la ausencia de garantías, la independencia y la titularidad ajena de marcas cumplen funciones distintas de la autorización para mostrar contenido.
+
+1. SCOREMATH
+Ficha: https://apps.apple.com/us/app/scoremath-football-analysis/id6759188938
+Términos: https://football.sourcesoftware.net/terms.html
+Privacidad: https://football.sourcesoftware.net/privacy.html
+Observado: Sports, compras integradas, análisis estadístico/Poisson/IA. La descripción menciona ligas y modelos, no ganancias garantizadas. Los términos, que todavía llaman al producto «Futbol», presentan sus análisis como información y entretenimiento sin garantía. Declaran que los datos de fútbol de terceros se utilizan bajo licencia. Es una declaración del desarrollador, no una licencia examinada por nosotros.
+Acceso: el buscador no pudo cargar los términos; Safari sí los mostró y permitió leer sus apartados de servicio, compras, pronósticos y propiedad intelectual. No se infirió su contenido a partir de un resultado de búsqueda.
+Aplicación a ScoreMind: explicar el modelo y la incertidumbre sí; afirmar una licencia que no hemos acreditado, no.
+
+2. BROCCOLAI
+Ficha: https://apps.apple.com/nl/app/broccolai-fussball-prognosen/id6758902023?platform=watch
+Legal: https://kamurandogan.github.io/broccolai-privacy/terms-of-service.html
+Privacidad: https://kamurandogan.github.io/broccolai-privacy/privacy-policy.html
+Observado: Sports, compras integradas, predicciones con confianza y selección diaria. Sus términos declaran uso informativo/entretenimiento, ausencia de garantía y que no maneja apuestas ni transacciones ligadas a resultados; también que rendimientos pasados no garantizan futuros. La propiedad intelectual se formula de manera general a favor de Broccolai, no como una renuncia a derechos de ligas. La web del desarrollador enlazada por Apple es un dominio de app-ads; la política sí lleva a un pequeño sitio legal.
+Aplicación: separar las predicciones estadísticas de la ejecución de apuestas; no copiar afirmaciones de propiedad demasiado amplias.
+
+3. TIPKICK
+Ficha actual: https://apps.apple.com/us/app/tipkick-football-predictions/id6759671742
+Términos: https://tipkick.app/en/terms
+Observado: Sports, compras integradas. La ficha consultada incluye expresamente consejos, cuotas, probabilidades y competencias reconocibles. Al final aclara que no es una casa de apuestas y no recibe apuestas, y enlaza el EULA estándar de Apple. Los términos presentan la información como entretenimiento, no garantizan resultados y describen la responsabilidad del usuario. No ofrecen una autorización FIFA transferible a ScoreMind.
+Precaución: resultados indexados antiguos mostraban otra edad; la ficha US abierta durante esta consulta mostró 18+. No se utiliza esa diferencia como motivo para cambiar la edad de ScoreMind.
+Aplicación: se puede describir una función real sin prometer aprobación ni beneficio económico. Mantener enlaces legales y EULA coherentes.
+
+4. GOALII
+Ficha: https://apps.apple.com/in/app/goalii-football-predictions/id6758107038?platform=tv
+Web: https://goalii.app/
+Términos: https://goalii.app/terms/
+Aviso: https://goalii.app/disclaimer/
+Observado: análisis IA, probabilidades, xG, forma, ligas, versión gratuita y Pro. Su disclaimer está separado de los términos y enfatiza finalidad informativa/educativa, incertidumbre y ausencia de garantía financiera. Reconoce información de terceros, pero el documento examinado no aporta permisos específicos sobre escudos.
+Inconsistencias públicas: el disclaimer dice 13 años; la ficha examinada indica 18+. Los términos y la web también muestran planes/precios de momentos diferentes. Esto ilustra que una app publicada no convierte cada frase de su web en un modelo correcto para copiar.
+Aplicación: un aviso accesible y claro sí; copiar sus edades, precios o cifras de precisión no.
+
+5. 180SCORE
+Ficha: https://apps.apple.com/us/app/180score-ai-soccer-predictor/id6478534279?platform=ipad
+Términos: https://180score.ai/terms-of-service/
+Observado: Sports, compras integradas, información futbolística y predicciones como herramienta adicional de análisis, no garantía de resultados. Los términos describen estadísticas y escenarios IA; rechazan la ejecución de apuestas. En propiedad intelectual afirman que el contenido es suyo o está incluido con consentimiento de sus titulares. Esa afirmación no prueba qué licencias privadas poseen.
+Aplicación: distingue acertadamente el producto estadístico de la prestación de servicios de apuestas, pero su declaración de consentimiento no se puede trasladar a ScoreMind sin respaldo.
+
+6. SCOUTER
+Ficha: https://apps.apple.com/in/app/football-bet-tips-scouter/id1569637963?platform=ipad
+Web: https://scouter-app.co/
+Términos: https://scouter-app.co/?p=3118
+Observado: Sports, compras integradas; la ficha y la web muestran predicciones, combinador, movimiento de cuotas, xG y recomendaciones en vivo. Sus términos se presentan como una app de estadísticas y consejos, con suscripciones y servicio sin garantías. Atribuyen derechos a Scouter y sus licenciantes, no declaran una exención universal por usar estadísticas.
+Aplicación: su publicación refuta que todo combinador o pronóstico esté excluido por definición de App Store. No prueba autorización para nuestros recursos ni aceptación de Google Ads.
+
+7. ELIZASCORE
+Play: https://play.google.com/store/apps/details?id=com.elizascore&hl=en
+App Store: https://apps.apple.com/al/app/elizascore-football-scores/id6752576111
+Términos: https://github.com/ElizaHubDev/legal/blob/main/TERMS_OF_SERVICE.md
+Privacidad: https://github.com/ElizaHubDev/legal/blob/main/PRIVACY_POLICY.md
+Web enlazada desde Play: https://elizahubdev.github.io/
+Observado: Play presenta resultados, estadísticas, predicciones, historial y retos sin dinero. Aclara que es información estadística, que las estimaciones pueden fallar y que no opera apuestas. En App Store enlaza EULA estándar, privacidad y términos. Los términos italianos tratan análisis propios, compras, información/entretenimiento y propiedad de su contenido original; no encontramos una autorización pública FIFA ni una cláusula que diga que carecer de derechos permite usar logos.
+La web enlazada desde Play devolvió 404 en la comprobación web. No se deduce por ello que toda su operación carezca de web o de contratos privados. No se acreditó públicamente que todas las apps investigadas usen el mismo proveedor de ScoreMind.
+
+LO COMÚN Y LO QUE NO SE PUEDE INFERIR
+- Las siete fichas existen y presentan funciones estadísticas/de predicción dentro de Sports, con compras integradas. Existencia pública no equivale a una revisión de los binarios ni a conocer su historial de rechazos.
+- Se repiten los avisos de información/entretenimiento y ausencia de garantía en numerosos términos. No es una fórmula idéntica en todas las fichas.
+- Suscripciones, contacto y privacidad aparecen como partes ordinarias de la presentación del producto.
+- No comparten la misma edad ni la misma redacción sobre apuestas, ni acreditan públicamente una misma licencia.
+- Algunas webs o textos están desactualizados: no se deben copiar como si Apple hubiera certificado su corrección legal.
+- No encontramos evidencia pública de que un aviso de no afiliación elimine los requisitos de derechos de contenido.
+
+APPLE Y API-FOOTBALL: LA DISTINCIÓN IMPORTANTE
+Apple: https://developer.apple.com/help/app-store-connect/reference/app-information/app-information
+Directrices: https://developer.apple.com/app-store/review/guidelines/#intellectual-property
+Proveedor: https://www.api-football.com/terms
+Apple distingue apps que muestran/acceden a contenido ajeno de apps que no lo hacen. Para las primeras exige derechos necesarios o uso permitido por la ley aplicable. No exige ser propietario de FIFA para hacer estadísticas, pero el aviso «las marcas pertenecen a sus titulares» no demuestra por sí solo que todo recurso usado esté autorizado.
+API-Football permite crear productos con su servicio, pero sus apartados Service & data y Data/Logos/images no conceden automáticamente permisos comerciales sobre todas las competencias y recursos visuales. Describe los logos como identificativos y deja al cliente comprobar las autorizaciones necesarias. No se concluye aquí que cada nombre o cada hecho estadístico necesite individualmente una licencia: hay que separar hechos, acceso/condiciones del feed, marcas, imágenes y contenido señalado por Apple.
+La declaración actual de ScoreMind «no contiene contenido de terceros» no equivale a «no somos dueños de las marcas». Tampoco sería correcto seleccionar la alternativa que certifica derechos sin acreditar la base aplicable. No se cambió esa declaración.
+
+CAMBIOS REALIZADOS EN ESTE TRABAJO
+- Mac confirmó directamente API-Football como proveedor actual. Se corrigieron las menciones que yo había publicado erróneamente a Highlightly/Sportmonks en privacidad EN y su aviso ES.
+- Términos identifican API-Football y enlazan EULA estándar de Apple; EULA añadido a las descripciones App Store de los cuatro idiomas.
+- Notas de revisión guardadas con API-Football como proveedor, sin enviar la app.
+- Web: commit 2674c5e6926a9ccd9c60504bde1d6b1e82ce3b96 en origin/main; GitHub Pages built. terms/ y privacy/ devolvieron HTTP200 y coincidieron con sus archivos locales durante la consulta. Evidencia de esta ejecución: Web-proveedor-corregido.json, copia en la carpeta de entrega.
+- Se conservaron funciones, edades y capturas. La app sigue sin enviarse a revisión.
+
+PENDIENTES RESUMIDOS PARA SCOREMIND
+1. Capturas de Mac: diseñar las pantallas en inglés y adjuntarlas a los cuatro idiomas. No hacer ni subir otras en su lugar.
+2. Respuesta de propiedad intelectual: preparar procedencia, uso identificativo y documentos que respalden el contenido concreto señalado por Apple. No presentar el pago de una API como licencia FIFA ni afirmar que otro aprobado nos concede permiso. No se contactó a Apple ni al proveedor.
+3. Privacidad de Apple: revisar las categorías declaradas frente a cuenta, compras, conversaciones e identificadores reales del build actual, antes de certificar cambios.
+4. Compras y acceso: comprobar cuenta de revisión y compras/restauración en el dispositivo, y preparar la asociación de suscripciones/paquetes al primer envío. Revisar el punto pendiente de notificaciones Apple de producción antes de lanzamiento; no se modificó esa configuración.
+5. Solo después, con el GO de envío de Mac, armar y enviar App Review. El GO actual permite textos y web, no revoca la instrucción expresa de no enviar la app hasta recibir las capturas.
+
+LÍMITES Y ERRORES PROPIOS
+Mi error fue publicar proveedores incorrectos basándome en documentación histórica y código sin confirmar que fueran los proveedores actuales. Mac corrigió el dato y quedó corregido en producción. Esa corrección no cambia por sí misma la clasificación ni el rechazo de Apple.
+No se verificaron contratos privados de competidores, conversaciones con revisores, binarios instalados, licencias FIFA ni QA física. La comparación identifica prácticas observables; no atribuye una causa secreta o única a las aprobaciones.
