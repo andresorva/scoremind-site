@@ -16,7 +16,7 @@
       'hero.btn_primary_big': 'Google Play',
       'hero.btn_secondary_small': 'COMING SOON',
       'hero.btn_secondary_big': 'for iOS',
-      'hero.tiny': 'Free · Available in 5 languages · 18+',
+      'hero.tiny': 'Free · Available in 5 languages',
 
       'trust.card1.label': 'Very High Accuracy',
       'trust.card1.desc': 'Very High accuracy predictions since launch',
@@ -49,7 +49,7 @@
       'footer.link_terms': 'Terms of Service',
       'footer.link_contact': 'Contact',
       'footer.copyright': '© 2026 Datanaat. All rights reserved.',
-      'footer.disclaimer': 'ScoreMind AI provides sports predictions and football analysis for entertainment purposes only.',
+      'footer.disclaimer': 'ScoreMind AI provides sports information and statistical analysis. Model estimates are informative and do not guarantee results.',
 
       'wc.subscribe_cta': 'Subscribe to the full World Cup 2026 calendar — auto-updates every day with results and upcoming matches',
       'wc.modal.title': 'World Cup 2026 Calendar',
@@ -76,7 +76,7 @@
       'hero.btn_primary_big': 'Google Play',
       'hero.btn_secondary_small': 'PRÓXIMAMENTE',
       'hero.btn_secondary_big': 'para iOS',
-      'hero.tiny': 'Gratis · Disponible en 5 idiomas · 18+',
+      'hero.tiny': 'Gratis · Disponible en 5 idiomas',
 
       'trust.card1.label': 'Precisión Muy Alta',
       'trust.card1.desc': 'Predicciones de Precisión Muy Alta desde el lanzamiento',
@@ -109,7 +109,7 @@
       'footer.link_terms': 'Términos de Servicio',
       'footer.link_contact': 'Contacto',
       'footer.copyright': '© 2026 Datanaat. Todos los derechos reservados.',
-      'footer.disclaimer': 'ScoreMind AI ofrece predicciones deportivas y análisis de fútbol solo con fines de entretenimiento.',
+      'footer.disclaimer': 'ScoreMind AI ofrece información deportiva y análisis estadístico. Las estimaciones del modelo son informativas y no garantizan resultados.',
 
       'wc.subscribe_cta': 'Suscríbete al calendario completo del Mundial 2026 — se actualiza cada día con resultados y próximos partidos',
       'wc.modal.title': 'Calendario del Mundial 2026',

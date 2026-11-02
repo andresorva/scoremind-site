@@ -13,7 +13,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0a0e1a">
-  <title>Blog — ScoreMind AI · Football Predictions, Analysis & Stats</title>
+  <title>Blog — ScoreMind AI · Football Analysis & Stats</title>
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -23,8 +23,8 @@
   })(window,document,'script','dataLayer','GTM-NVF7D37X');</script>
   <!-- End Google Tag Manager -->
 
-  <meta name="description" content="The ScoreMind AI blog — AI-powered football predictions, deep stats, league previews, and ScoreBot insights across 140+ competitions worldwide.">
-  <meta name="keywords" content="football predictions, soccer predictions, AI football tips, match predictions, football stats, ScoreMind AI">
+  <meta name="description" content="The ScoreMind AI blog — AI-powered football analysis, deep stats, league previews, and ScoreBot insights across the competitions covered by the app.">
+  <meta name="keywords" content="football analysis, soccer analysis, AI match analysis, match analysis, football stats, ScoreMind AI">
 
   <link rel="canonical" href="https://scoremind.ai/blog">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,20 +33,19 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://app.trysoro.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="ScoreMind AI Blog — Football Predictions, Stats & Analysis">
-  <meta property="og:description" content="AI-powered football predictions, deep stats, league previews and ScoreBot insights across 140+ competitions worldwide.">
+  <meta property="og:title" content="ScoreMind AI Blog — Football Scores, Stats & Analysis">
+  <meta property="og:description" content="AI-powered football analysis, deep stats, league previews and ScoreBot insights across the competitions covered by the app.">
   <meta property="og:image" content="https://scoremind.ai/og-image.png">
   <meta property="og:url" content="https://scoremind.ai/blog">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ScoreMind AI">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ScoreMind AI Blog — Football Predictions, Stats & Analysis">
-  <meta name="twitter:description" content="AI-powered football predictions, deep stats and analysis across 140+ competitions.">
+  <meta name="twitter:title" content="ScoreMind AI Blog — Football Scores, Stats & Analysis">
+  <meta name="twitter:description" content="AI-powered football analysis, deep stats and analysis across the competitions covered by the app.">
   <meta name="twitter:image" content="https://scoremind.ai/og-image.png">
 
   <style>
@@ -266,19 +265,13 @@
     }
     .qr-col { display: flex; flex-direction: column; align-items: center; }
 
-    /* Soro embed area */
+    /* Editorial articles */
     .blog-embed-wrap {
       max-width: 1100px;
       margin: 0 auto;
       padding: 24px 24px 8px;
       min-height: 400px;
     }
-    #soro-blog {
-      width: 100%;
-    }
-    /* Defensive — let the Soro-rendered content breathe and stay on-brand */
-    #soro-blog a { color: #00e5cc; }
-    #soro-blog img { max-width: 100%; height: auto; }
 
     /* Footer — matches privacy/terms */
     .footer {
@@ -327,6 +320,17 @@
     @media (max-width: 420px) {
       .page-intro h1 { font-size: 28px; }
     }
+
+    .editorial-blog { max-width: 920px; padding: 0 24px 48px; }
+    .editorial-intro { color: #aeb8c9; margin-bottom: 20px; }
+    .article-index { display: grid; gap: 12px; margin: 0 0 40px; }
+    .article-index a { padding: 16px 20px; border: 1px solid #504163; border-radius: 12px; color: #d5beff; line-height: 1.5; }
+    .article-index a:focus-visible { outline: 3px solid #bca0ff; outline-offset: 3px; }
+    .editorial-article { padding: 36px 0; border-top: 1px solid #3b3348; scroll-margin-top: 24px; }
+    .editorial-article .article-date { font-size: 13px; color: #b8a9cd; }
+    .editorial-article h2 { font-size: clamp(25px, 4vw, 36px); line-height: 1.2; margin: 12px 0 24px; }
+    .editorial-article h3 { font-size: 20px; margin: 28px 0 12px; }
+    .editorial-article p { font-size: 17px; line-height: 1.8; color: #c2c9d4; margin: 12px 0; }
   </style>
 </head>
 <body>
@@ -338,7 +342,7 @@
   <!-- Nav -->
   <nav class="nav">
     <a href="/" class="nav-logo">
-      <img src="/logo.png" alt="ScoreMind.AI">
+      <img src="/assets/marketing/scoremind-mark.webp" alt="ScoreMind.AI">
       <span>ScoreMind<span class="ai">.AI</span></span>
     </a>
     <div class="nav-right">
@@ -353,8 +357,8 @@
   <!-- Page intro -->
   <section class="page-intro">
     <h1 data-en="ScoreMind AI Blog" data-es="Blog de ScoreMind AI">ScoreMind AI Blog</h1>
-    <p data-en="AI-powered football predictions, deep stats, and ScoreBot analysis — across 140+ competitions worldwide."
-       data-es="Predicciones de fútbol con IA, estadísticas profundas y análisis de ScoreBot — en más de 140 competencias del mundo.">AI-powered football predictions, deep stats, and ScoreBot analysis — across 140+ competitions worldwide.</p>
+    <p data-en="Understand football statistics, team form and AI match analysis with practical guides from ScoreMind."
+       data-es="Entiende las estadísticas de fútbol, la forma de los equipos y el análisis con IA con las guías de ScoreMind.">Understand football statistics, team form and AI match analysis with practical guides from ScoreMind.</p>
   </section>
 
   <!-- TOP download CTA banner -->
@@ -363,8 +367,8 @@
       <div class="cta-copy">
         <span class="cta-eyebrow" data-en="GET THE APP" data-es="DESCARGA LA APP">GET THE APP</span>
         <h2 class="cta-headline"
-            data-en="Predictions, stats and ScoreBot — in your pocket."
-            data-es="Predicciones, estadísticas y ScoreBot — en tu bolsillo.">Predictions, stats and ScoreBot — in your pocket.</h2>
+            data-en="Match analysis, stats and ScoreBot — in your pocket."
+            data-es="Análisis, estadísticas y ScoreBot — en tu bolsillo.">Match analysis, stats and ScoreBot — in your pocket.</h2>
         <p class="cta-sub"
            data-en="Free on Android. Scan the QR or tap the button to install."
            data-es="Gratis en Android. Escanea el QR o toca el botón para instalar.">Free on Android. Scan the QR or tap the button to install.</p>
@@ -386,18 +390,54 @@
       <div class="qr-col">
         <a class="qr-wrap" href="https://play.google.com/store/apps/details?id=ai.scoremind.app" aria-label="Open Google Play listing">
           <img class="qr-img" src="/assets/qr/google-play.svg" alt="Google Play QR code">
-          <img class="qr-logo" src="/logo.webp" alt="">
+          <img class="qr-logo" src="/assets/marketing/scoremind-mark.webp" alt="">
         </a>
         <span class="qr-label" data-en="Scan to install" data-es="Escanea para instalar">Scan to install</span>
       </div>
     </div>
   </aside>
 
-  <!-- Soro blog embed -->
-  <main class="blog-embed-wrap">
-    <div id="soro-blog"></div>
-    <script src="https://app.trysoro.com/api/embed/0cc1022b-029a-47bd-a25c-d81572d7aeaa?theme=dark" defer></script>
-  </main>
+<main class="blog-embed-wrap editorial-blog">
+<p class="editorial-intro" data-en="Match data, explained." data-es="Los datos del partido, explicados.">Match data, explained.</p>
+<nav class="article-index" aria-label="Articles">
+<a href="#model-estimates" data-en="What a model estimate actually tells you" data-es="Qué te dice una estimación del modelo">What a model estimate actually tells you</a>
+<a href="#team-form" data-en="How to compare two teams beyond the score" data-es="Cómo comparar dos equipos más allá del marcador">How to compare two teams beyond the score</a>
+<a href="#ask-scorebot" data-en="Ask ScoreBot questions that add context" data-es="Haz preguntas a ScoreBot que aporten contexto">Ask ScoreBot questions that add context</a>
+</nav>
+<article class="editorial-article" id="model-estimates">
+<p class="article-date" data-en="ScoreMind Team · November 2, 2026" data-es="Equipo ScoreMind · 2 de noviembre de 2026">ScoreMind Team · November 2, 2026</p>
+<h2 data-en="What a model estimate actually tells you" data-es="Qué te dice una estimación del modelo">What a model estimate actually tells you</h2>
+<p data-en="A probability expresses uncertainty. It describes how a model distributes the possible outcomes using the information available to it. It does not tell you what must happen in a particular match." data-es="Una probabilidad expresa incertidumbre. Describe cómo un modelo distribuye los posibles resultados con la información disponible. No dice qué tiene que suceder en un partido concreto.">A probability expresses uncertainty. It describes how a model distributes the possible outcomes using the information available to it. It does not tell you what must happen in a particular match.</p>
+<h3 data-en="Start with the question" data-es="Empieza por la pregunta">Start with the question</h3>
+<p data-en="Check which outcome the number describes and which period it covers. A full-match estimate and a first-half estimate answer different questions. Read the labels before comparing the numbers." data-es="Comprueba qué resultado describe la cifra y qué periodo abarca. Una estimación para todo el partido y otra para el primer tiempo responden preguntas distintas. Lee las etiquetas antes de comparar números.">Check which outcome the number describes and which period it covers. A full-match estimate and a first-half estimate answer different questions. Read the labels before comparing the numbers.</p>
+<h3 data-en="The largest probability is not certainty" data-es="La probabilidad más alta no es certeza">The largest probability is not certainty</h3>
+<p data-en="As a hypothetical example, a model could assign 40% to a home win, 32% to a draw and 28% to an away win. The home win is the largest single estimate, but the other two outcomes still account for 60% together. This example is not a forecast for a real match." data-es="Como ejemplo hipotético, un modelo podría asignar 40 % a la victoria local, 32 % al empate y 28 % a la victoria visitante. La victoria local es la estimación individual más alta, pero las otras dos posibilidades reúnen el 60 %. Este ejemplo no es una estimación de un partido real.">As a hypothetical example, a model could assign 40% to a home win, 32% to a draw and 28% to an away win. The home win is the largest single estimate, but the other two outcomes still account for 60% together. This example is not a forecast for a real match.</p>
+<h3 data-en="Read the context alongside the estimate" data-es="Lee el contexto junto a la estimación">Read the context alongside the estimate</h3>
+<p data-en="Compare recent results, opponents, home and away performance, and the amount of data behind the analysis. Missing lineups or a short history should remain visible limitations. Use the estimate to ask better questions about the match." data-es="Compara resultados recientes, rivales, rendimiento local y visitante, y la cantidad de datos detrás del análisis. Las alineaciones ausentes o un historial corto siguen siendo limitaciones. Usa la estimación para plantear mejores preguntas sobre el partido.">Compare recent results, opponents, home and away performance, and the amount of data behind the analysis. Missing lineups or a short history should remain visible limitations. Use the estimate to ask better questions about the match.</p>
+</article>
+<article class="editorial-article" id="team-form">
+<p class="article-date" data-en="ScoreMind Team · November 2, 2026" data-es="Equipo ScoreMind · 2 de noviembre de 2026">ScoreMind Team · November 2, 2026</p>
+<h2 data-en="How to compare two teams beyond the score" data-es="Cómo comparar dos equipos más allá del marcador">How to compare two teams beyond the score</h2>
+<p data-en="A run of wins is useful context, but it is only one part of a team’s recent form. The strength of the opponents, match location and available statistics can change how that run should be interpreted." data-es="Una racha de victorias aporta contexto, pero es solo una parte de la forma reciente. El nivel de los rivales, la localía y las estadísticas disponibles pueden cambiar su interpretación.">A run of wins is useful context, but it is only one part of a team’s recent form. The strength of the opponents, match location and available statistics can change how that run should be interpreted.</p>
+<h3 data-en="Compare the same window" data-es="Compara la misma ventana">Compare the same window</h3>
+<p data-en="Use the same number of recent matches or the same season period for both teams. Keep full-season records separate from the last few fixtures. If one team has fewer recorded matches, show that difference instead of treating the samples as equivalent." data-es="Usa el mismo número de partidos recientes o el mismo periodo de temporada para ambos equipos. Separa el registro de toda la temporada de los últimos encuentros. Si un equipo tiene menos partidos registrados, ten presente esa diferencia.">Use the same number of recent matches or the same season period for both teams. Keep full-season records separate from the last few fixtures. If one team has fewer recorded matches, show that difference instead of treating the samples as equivalent.</p>
+<h3 data-en="Look at more than wins and losses" data-es="Mira más allá de las victorias y derrotas">Look at more than wins and losses</h3>
+<p data-en="Goals scored and conceded help describe the results. Shots and chance-quality data can add another perspective when available. No single metric explains a team on its own, and statistics from different providers may use different definitions." data-es="Los goles a favor y en contra ayudan a describir los resultados. Los tiros y la calidad de las ocasiones pueden aportar otra perspectiva cuando están disponibles. Ninguna métrica explica por sí sola a un equipo, y distintos proveedores pueden utilizar definiciones diferentes.">Goals scored and conceded help describe the results. Shots and chance-quality data can add another perspective when available. No single metric explains a team on its own, and statistics from different providers may use different definitions.</p>
+<h3 data-en="Give previous meetings their place" data-es="Dale su lugar al historial">Give previous meetings their place</h3>
+<p data-en="Head-to-head results show what happened between two teams. They do not guarantee a repeat: squads, coaches and circumstances change. Combine the history with current form and clearly distinguish a recorded fact from an interpretation." data-es="Los enfrentamientos directos muestran lo que ocurrió entre dos equipos. No garantizan que se repita: cambian las plantillas, los entrenadores y las circunstancias. Combina el historial con la forma actual y distingue un hecho registrado de una interpretación.">Head-to-head results show what happened between two teams. They do not guarantee a repeat: squads, coaches and circumstances change. Combine the history with current form and clearly distinguish a recorded fact from an interpretation.</p>
+</article>
+<article class="editorial-article" id="ask-scorebot">
+<p class="article-date" data-en="ScoreMind Team · November 2, 2026" data-es="Equipo ScoreMind · 2 de noviembre de 2026">ScoreMind Team · November 2, 2026</p>
+<h2 data-en="Ask ScoreBot questions that add context" data-es="Haz preguntas a ScoreBot que aporten contexto">Ask ScoreBot questions that add context</h2>
+<p data-en="A useful conversation starts with a specific match and a clear question. Tell ScoreBot which teams or competition you mean, then ask it to explain what the available data suggests." data-es="Una conversación útil empieza con un partido concreto y una pregunta clara. Indica a ScoreBot qué equipos o competición te interesan y pídele que explique qué sugieren los datos disponibles.">A useful conversation starts with a specific match and a clear question. Tell ScoreBot which teams or competition you mean, then ask it to explain what the available data suggests.</p>
+<h3 data-en="Ask for an explanation, not a list" data-es="Pide una explicación, no una lista">Ask for an explanation, not a list</h3>
+<p data-en="Try: “What changed in these teams’ recent form?” or “Which difference between their attack and defence stands out?” These questions invite an interpretation of the numbers you can already see." data-es="Prueba: «¿Qué cambió en la forma reciente de estos equipos?» o «¿Qué diferencia destaca entre su ataque y su defensa?». Estas preguntas invitan a interpretar las cifras que ya puedes consultar.">Try: “What changed in these teams’ recent form?” or “Which difference between their attack and defence stands out?” These questions invite an interpretation of the numbers you can already see.</p>
+<h3 data-en="Use follow-up questions" data-es="Profundiza con otra pregunta">Use follow-up questions</h3>
+<p data-en="Ask whether the comparison changes when looking only at home or away matches, or which part of the conclusion is supported by the strongest sample. Ask what information is missing before drawing a firmer conclusion." data-es="Pregunta si la comparación cambia al considerar solo partidos como local o visitante, o qué parte de la conclusión tiene una muestra más sólida. Pregunta también qué información falta antes de llegar a una conclusión más firme.">Ask whether the comparison changes when looking only at home or away matches, or which part of the conclusion is supported by the strongest sample. Ask what information is missing before drawing a firmer conclusion.</p>
+<h3 data-en="Check the important details" data-es="Verifica los detalles importantes">Check the important details</h3>
+<p data-en="AI explanations can contain mistakes and cannot fill every gap in sports coverage. Confirm dates, results and other important facts in the match data. The app shows the current access conditions and message allowance for ScoreBot." data-es="Las explicaciones de IA pueden contener errores y no resuelven todos los vacíos de cobertura deportiva. Confirma las fechas, los resultados y otros hechos importantes con los datos del partido. La app muestra las condiciones de acceso y el cupo de mensajes de ScoreBot.">AI explanations can contain mistakes and cannot fill every gap in sports coverage. Confirm dates, results and other important facts in the match data. The app shows the current access conditions and message allowance for ScoreBot.</p>
+</article>
+</main>
 
   <!-- BOTTOM download CTA banner -->
   <aside class="cta-banner" aria-label="Download ScoreMind AI">
@@ -408,8 +448,8 @@
             data-en="Take ScoreMind AI with you. Free on Android."
             data-es="Lleva ScoreMind AI contigo. Gratis en Android.">Take ScoreMind AI with you. Free on Android.</h2>
         <p class="cta-sub"
-           data-en="Win probabilities, deep stats and a personal AI sports analyst for 140+ competitions worldwide."
-           data-es="Probabilidades, estadísticas profundas y un analista deportivo IA personal para más de 140 competencias.">Win probabilities, deep stats and a personal AI sports analyst for 140+ competitions worldwide.</p>
+           data-en="Win probabilities, deep stats and a personal AI sports analyst for the competitions covered by the app."
+           data-es="Probabilidades, estadísticas profundas y un analista deportivo IA personal para las competiciones disponibles en la app.">Win probabilities, deep stats and a personal AI sports analyst for the competitions covered by the app.</p>
         <div class="cta-buttons">
           <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=ai.scoremind.app">
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -428,7 +468,7 @@
       <div class="qr-col">
         <a class="qr-wrap" href="https://play.google.com/store/apps/details?id=ai.scoremind.app" aria-label="Open Google Play listing">
           <img class="qr-img" src="/assets/qr/google-play.svg" alt="Google Play QR code">
-          <img class="qr-logo" src="/logo.webp" alt="">
+          <img class="qr-logo" src="/assets/marketing/scoremind-mark.webp" alt="">
         </a>
         <span class="qr-label" data-en="Scan to install" data-es="Escanea para instalar">Scan to install</span>
       </div>
@@ -444,10 +484,10 @@
       <a href="/terms" data-en="Terms of Use" data-es="Términos de Uso">Terms of Use</a>
       <a href="mailto:info@datanaat.com" data-en="Contact" data-es="Contacto">Contact</a>
     </div>
-    <div class="footer-copy">&copy; 2026 Datanaat. All rights reserved. <span style="display:inline-block;padding:2px 10px;border-radius:999px;border:1px solid currentColor;font-size:11px;font-weight:700;letter-spacing:0.5px;margin-left:8px;vertical-align:middle;opacity:0.85;">18+</span></div>
+    <div class="footer-copy">&copy; 2026 Datanaat. All rights reserved.</div>
     <div class="footer-disclaimer"
-         data-en="ScoreMind AI provides sports predictions and football analysis for entertainment purposes only."
-         data-es="ScoreMind AI ofrece predicciones deportivas y análisis de fútbol solo con fines de entretenimiento.">ScoreMind AI provides sports predictions and football analysis for entertainment purposes only.</div>
+         data-en="ScoreMind AI provides sports information and statistical analysis. Model estimates are informative and do not guarantee results."
+         data-es="ScoreMind AI ofrece información deportiva y análisis estadístico. Las estimaciones del modelo son informativas y no garantizan resultados.">ScoreMind AI provides sports information and statistical analysis. Model estimates are informative and do not guarantee results.</div>
   </footer>
 
   <script>
