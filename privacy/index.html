@@ -125,7 +125,7 @@
 
     <details class="legal-summary" lang="es"><summary>Español: actualizaciones sobre datos y proveedores</summary>
     <p>Actualizado el 2 de noviembre de 2026. Los datos de compras incluyen derechos de suscripción, saldo de mensajes, caducidad e identificadores de transacciones o recibos. Las solicitudes de red revelan información técnica, como la dirección IP, a la infraestructura que las procesa; puede derivarse un país aproximado sin pedir GPS. Los registros técnicos y de seguridad pueden contener información de las solicitudes.</p>
-    <p>Railway procesa solicitudes mediante nuestra API y tareas programadas. Google Generative AI (Gemini) procesa el texto enviado a ScoreBot para generar respuestas. API-Football (API-SPORTS) suministra calendario, resultados y estadísticas de fútbol. Estas consultas se refieren a datos deportivos, no al perfil de tu cuenta ni a tu conversación con ScoreBot.</p>
+    <p>Railway procesa solicitudes mediante nuestra API y tareas programadas. OpenAI procesa los mensajes enviados a ScoreBot y el contexto deportivo pertinente para generar respuestas. La app de Android actual no muestra anuncios. API-Football (API-SPORTS) suministra calendario, resultados y estadísticas de fútbol; las consultas a ese proveedor se refieren a datos deportivos, no al perfil de tu cuenta ni a tu conversación con ScoreBot.</p>
     <p>Firebase Cloud Messaging en Android y el servicio de notificaciones de Apple en iOS gestionan avisos cuando están habilitados. Su disponibilidad depende de la versión, los permisos y los ajustes. Los avisos no se presentan como una función garantizada en todas las versiones.</p></details>
 
     <div class="callout">
@@ -152,13 +152,13 @@
         </tr>
         <tr>
           <td>Profile preferences</td>
-          <td>Country, age range, favourite teams/leagues, theme, language</td>
+          <td>Country, optional gender, favourite teams/leagues, theme, language, and profile information previously provided, such as an age range</td>
           <td>Personalize the home screen, surface local leagues first</td>
         </tr>
         <tr>
           <td>Activity</td>
-          <td>Predictions you make, ScoreBot conversations, daily login streak, coin balance</td>
-          <td>Run the gamification + leaderboard features, evaluate your prediction accuracy</td>
+          <td>Screen interactions, searches, followed teams and leagues, and ScoreBot conversations</td>
+          <td>Provide sports analysis, synchronize your preferences, and maintain your ScoreBot conversation history</td>
         </tr>
         <tr>
           <td>Subscription</td>
@@ -182,9 +182,9 @@
 
     <h2>3. How we use the data</h2>
     <ul>
-      <li><strong>Run the app.</strong> Show your predictions, your subscription tier, your daily reward, your followed teams.</li>
+      <li><strong>Run the app.</strong> Show sports analysis, your subscription access, your followed teams, and your ScoreBot conversations.</li>
       <li><strong>Personalize content.</strong> Lead the home feed with leagues from your country.</li>
-      <li><strong>Improve the model.</strong> Aggregate prediction accuracy across all users to retune the scientific model. Individual identities are not used in model training.</li>
+      <li><strong>Improve the service.</strong> Analyze feature usage, technical errors, and service performance to identify problems and improve the app.</li>
       <li><strong>Send notifications.</strong> Only those you opted into in Settings → Notifications.</li>
       <li><strong>Prevent abuse.</strong> Rate-limit ScoreBot calls and detect script-driven access.</li>
     </ul>
@@ -192,9 +192,10 @@
     <h2>4. Third parties</h2>
     <p>To run the app we share specific data with the following processors:</p>
     <ul>
-      <li><strong>Supabase</strong> — hosts the database where your account, predictions, and preferences live.</li>
+      <li><strong>Supabase</strong> — hosts account information, preferences, subscription records, and ScoreBot conversation history.</li>
       <li><strong>Railway</strong> — hosts our backend API and scheduled jobs, which process requests needed to provide the service.</li>
-      <li><strong>Google AdMob</strong> — serves rewarded video ads for ScoreBot ad-gated messages on free / quota-exhausted users. Ad personalization can be turned off in your device settings.</li>
+      <li><strong>Google Analytics for Firebase</strong> — processes app interaction events, installation identifiers, and technical information for usage and performance analytics. When you sign in, analytics events may be associated with your account identifier. The current Android app does not display advertisements or offer ad-gated ScoreBot messages.</li>
+      <li><strong>RevenueCat</strong> — receives purchase and subscription information and an account identifier to support purchase analytics and subscription tracking. Store billing and our backend determine the access available to your account.</li>
       <li><strong>OpenAI</strong> — processes your ScoreBot messages and relevant sports context to generate replies. Do not include sensitive personal information in your messages. The provider processes this data under its API service terms.</li>
       <li><strong>API-Football (API-SPORTS)</strong> — supplies football fixtures, scores and statistics. These requests concern sports data rather than your account profile or ScoreBot conversation.</li>
       <li><strong>Apple App Store / Google Play</strong> — handle subscription billing and receipt verification.</li>
@@ -204,14 +205,14 @@
     <p>We do <strong>not</strong> sell your personal data to advertisers, brokers, or any third party.</p>
 
     <h2>5. Data retention</h2>
-    <p>We keep your account-level data for as long as you have an active account. Activity data (predictions, ScoreBot messages older than 3 days, login streaks) is retained on a rolling basis to support feature timelines and accuracy backtests. When you delete your account, all of the above is removed within 30 days from our active systems. Some entries (purchase audit logs) are retained longer where required by tax, legal, or anti-fraud obligations.</p>
+    <p>We keep your account-level data for as long as you have an active account. Activity records and ScoreBot conversations support your history, service operation, and security. The limited conversation window used to generate a reply does not mean that older messages have been deleted. When you delete your account, all of the above is removed within 30 days from our active systems. Some entries (purchase audit logs) are retained longer where required by tax, legal, or anti-fraud obligations.</p>
 
     <h2>6. Your rights</h2>
     <ul>
       <li><strong>Access / export.</strong> Email <a href="mailto:info@datanaat.com">info@datanaat.com</a> with the subject "Data export" and we'll send you a JSON of everything we hold about your account within 14 days.</li>
       <li><strong>Correction.</strong> Most fields you can edit yourself in Settings.</li>
       <li><strong>Deletion.</strong> Settings → Account → Delete Account. The deletion is propagated across all linked tables, push tokens are unregistered, and Apple Sign-in tokens (if applicable) are revoked through Apple's revoke endpoint per Guideline 5.1.1(v).</li>
-      <li><strong>Object / withdraw consent.</strong> You can disable notifications, opt out of analytics, or stop using the app at any time.</li>
+      <li><strong>Object / withdraw consent.</strong> You can disable notifications in your device settings and contact <a href="mailto:info@datanaat.com">info@datanaat.com</a> about privacy objections, consent withdrawal, or deletion requests. The current Android app does not include an in-app analytics opt-out control.</li>
     </ul>
 
     <h2>7. Children</h2>
