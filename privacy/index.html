@@ -121,15 +121,16 @@
 
   <main class="doc">
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last updated: November 2, 2026</p>
+    <p class="last-updated">Last updated: November 19, 2026</p>
 
     <details class="legal-summary" lang="es"><summary>Español: actualizaciones sobre datos y proveedores</summary>
-    <p>Actualizado el 2 de noviembre de 2026. Los datos de compras incluyen derechos de suscripción, saldo de mensajes, caducidad e identificadores de transacciones o recibos. Las solicitudes de red revelan información técnica, como la dirección IP, a la infraestructura que las procesa; puede derivarse un país aproximado sin pedir GPS. Los registros técnicos y de seguridad pueden contener información de las solicitudes.</p>
-    <p>Railway procesa solicitudes mediante nuestra API y tareas programadas. OpenAI procesa los mensajes enviados a ScoreBot y el contexto deportivo pertinente para generar respuestas. La app de Android actual no muestra anuncios. API-Football (API-SPORTS) suministra calendario, resultados y estadísticas de fútbol; las consultas a ese proveedor se refieren a datos deportivos, no al perfil de tu cuenta ni a tu conversación con ScoreBot.</p>
+    <p>Actualizado el 19 de noviembre de 2026. Los datos de compras incluyen derechos de suscripción, saldo de mensajes, caducidad e identificadores de transacciones o recibos. Las solicitudes de red revelan información técnica, como la dirección IP, a la infraestructura que las procesa; puede derivarse un país aproximado sin pedir GPS. Los registros técnicos y de seguridad pueden contener información de las solicitudes.</p>
+    <p>Railway procesa solicitudes mediante nuestra API y tareas programadas. OpenAI procesa los mensajes de ScoreBot para generar respuestas. En iOS 3.0.16, compilación 64, ScoreBot pide tu permiso antes de compartir tu pregunta, mensajes recientes de la conversación, contexto del partido, idioma, hora local y zona horaria. Puedes retirar el permiso para esa cuenta en este dispositivo desde Cuenta y ajustes → ScoreBot e IA. Si incluyes datos personales en tu pregunta, estos forman parte del texto que recibe OpenAI. La app de Android actual no muestra anuncios. API-Football (API-SPORTS) suministra calendario, resultados y estadísticas de fútbol; las consultas a ese proveedor se refieren a datos deportivos, no al perfil de tu cuenta ni a tu conversación con ScoreBot.</p>
+    <p>Si eliges iniciar sesión con Google en iOS, su SDK procesa datos para autenticarte y realizar análisis de uso. La app de iOS no muestra anuncios ni usa esos datos para rastrearte. Puedes solicitar la eliminación de tu cuenta y conversaciones. Conservamos los registros de compras necesarios por motivos legales, fiscales o de prevención del fraude. Si usaste Iniciar sesión con Apple, también puedes retirar el acceso de ScoreMind en los ajustes de tu cuenta de Apple.</p>
     <p>Firebase Cloud Messaging en Android y el servicio de notificaciones de Apple en iOS gestionan avisos cuando están habilitados. Su disponibilidad depende de la versión, los permisos y los ajustes. Los avisos no se presentan como una función garantizada en todas las versiones.</p></details>
 
     <div class="callout">
-      We collect only what we need to make ScoreMind.AI work. We never sell your data, and you can delete your account at any time from the in-app Settings.
+      We collect only what we need to make ScoreMind.AI work. We never sell your data. You can request account deletion from the account settings, on our <a href="/delete-account/">account deletion page</a>, or by contacting us.
     </div>
 
     <h2>1. Who we are</h2>
@@ -157,12 +158,12 @@
         </tr>
         <tr>
           <td>Activity</td>
-          <td>Screen interactions, searches, followed teams and leagues, and ScoreBot conversations</td>
+          <td>Followed teams, leagues and matches, alert preferences, and ScoreBot conversations. Screen interactions and analytics events on Android and the website</td>
           <td>Provide sports analysis, synchronize your preferences, and maintain your ScoreBot conversation history</td>
         </tr>
         <tr>
           <td>Subscription</td>
-          <td>Subscription entitlement, message-credit balance, expiry date and platform transaction or receipt identifiers</td>
+          <td>Subscription entitlement, message-credit balance, expiry date and transaction or receipt identifiers. Apple purchase records can also include the product, purchase status, dates, storefront, price and currency</td>
           <td>Verify your subscription is active, restore on a new device</td>
         </tr>
         <tr>
@@ -180,6 +181,8 @@
     <p>We do <strong>not</strong> collect: precise location (GPS), contacts, photos, or microphone audio.</p>
     <p>Network requests expose technical information such as an IP address to the infrastructure that processes them. An approximate country may be derived to personalize coverage; this does not require GPS permission. Infrastructure and security logs may contain technical request information.</p>
 
+    <p><strong>iPhone and iPad.</strong> The iOS app shows no ads, does not request your advertising identifier, and does not use your data to track you across other companies’ apps or websites. If you choose Sign in with Apple, ScoreMind requests the email scope. If you choose Google Sign-In, Google can share your name, email and profile picture link with ScoreMind. Its iOS SDK declares that it collects name, email, phone number and approximate location for sign-in functionality, user identifiers and other data for functionality and analytics, and device identifiers and other usage data for analytics. ScoreMind does not ask for location permission or a phone number on iOS.</p>
+
     <h2>3. How we use the data</h2>
     <ul>
       <li><strong>Run the app.</strong> Show sports analysis, your subscription access, your followed teams, and your ScoreBot conversations.</li>
@@ -194,25 +197,25 @@
     <ul>
       <li><strong>Supabase</strong> — hosts account information, preferences, subscription records, and ScoreBot conversation history.</li>
       <li><strong>Railway</strong> — hosts our backend API and scheduled jobs, which process requests needed to provide the service.</li>
-      <li><strong>Google Analytics for Firebase</strong> — processes app interaction events, installation identifiers, and technical information for usage and performance analytics. When you sign in, analytics events may be associated with your account identifier. The current Android app does not display advertisements or offer ad-gated ScoreBot messages.</li>
-      <li><strong>RevenueCat</strong> — receives purchase and subscription information and an account identifier to support purchase analytics and subscription tracking. Store billing and our backend determine the access available to your account.</li>
-      <li><strong>OpenAI</strong> — processes your ScoreBot messages and relevant sports context to generate replies. Do not include sensitive personal information in your messages. The provider processes this data under its API service terms.</li>
+      <li><strong>Google Analytics for Firebase</strong> — on Android, processes app interaction events, installation identifiers, and technical information for usage and performance analytics. When you sign in, analytics events may be associated with your account identifier. The current Android app does not display advertisements or offer ad-gated ScoreBot messages.</li>
+      <li><strong>RevenueCat</strong> — on Android, receives purchase and subscription information and an account identifier to support purchase analytics and subscription tracking. Store billing and our backend determine the access available to your account.</li>
+      <li><strong>OpenAI</strong> — generates ScoreBot replies from your question, recent conversation, relevant match details, language, local time and time zone. ScoreMind does not send your account ID, name or email as profile fields. Anything you type in the conversation, including personal information, is part of the text sent to OpenAI. On iOS 3.0.16 (build 64), ScoreBot asks permission before the first send for the signed-in account on that device. You can decline and continue using the other features of the app.</li>
       <li><strong>API-Football (API-SPORTS)</strong> — supplies football fixtures, scores and statistics. These requests concern sports data rather than your account profile or ScoreBot conversation.</li>
       <li><strong>Apple App Store / Google Play</strong> — handle subscription billing and receipt verification.</li>
       <li><strong>Firebase Cloud Messaging / Apple Push Notification service</strong> — deliver notifications on the relevant platform where enabled. Notification availability depends on your app version, permissions and settings.</li>
-      <li><strong>Resend</strong> — sends contact/feedback emails when you reach us via the in-app form.</li>
+      <li><strong>Resend</strong> — sends contact or feedback emails from the website or the Android form. On iOS, Contact Us opens your email app.</li>
     </ul>
     <p>We do <strong>not</strong> sell your personal data to advertisers, brokers, or any third party.</p>
 
     <h2>5. Data retention</h2>
-    <p>We keep your account-level data for as long as you have an active account. Activity records and ScoreBot conversations support your history, service operation, and security. The limited conversation window used to generate a reply does not mean that older messages have been deleted. When you delete your account, all of the above is removed within 30 days from our active systems. Some entries (purchase audit logs) are retained longer where required by tax, legal, or anti-fraud obligations.</p>
+    <p>We store your ScoreBot questions and replies with your account in Supabase so you can see your history. Only recent messages are used to generate a reply. Older messages may remain in your saved history. Withdrawing permission on iOS stops future ScoreBot sends from that account on that device. To request deletion of stored conversations or your account, use the options below. We retain purchase and reconciliation records, which can include transaction and account identifiers, where required for tax, legal or fraud-prevention purposes.</p>
 
     <h2>6. Your rights</h2>
     <ul>
       <li><strong>Access / export.</strong> Email <a href="mailto:info@datanaat.com">info@datanaat.com</a> with the subject "Data export" and we'll send you a JSON of everything we hold about your account within 14 days.</li>
       <li><strong>Correction.</strong> Most fields you can edit yourself in Settings.</li>
-      <li><strong>Deletion.</strong> Settings → Account → Delete Account. The deletion is propagated across all linked tables, push tokens are unregistered, and Apple Sign-in tokens (if applicable) are revoked through Apple's revoke endpoint per Guideline 5.1.1(v).</li>
-      <li><strong>Object / withdraw consent.</strong> You can disable notifications in your device settings and contact <a href="mailto:info@datanaat.com">info@datanaat.com</a> about privacy objections, consent withdrawal, or deletion requests. The current Android app does not include an in-app analytics opt-out control.</li>
+      <li><strong>Deletion.</strong> Choose Delete account in Account and settings on iOS, or Settings → Account → Delete Account on Android. You can also use the <a href="/delete-account/">account deletion page</a> or email us from your account address. Deletion requests cover your account, profile, preferences and saved ScoreBot conversations, subject to the purchase-record retention above. If you used Sign in with Apple, you can also remove ScoreMind under Sign in with Apple in your Apple Account settings.</li>
+      <li><strong>Object / withdraw consent.</strong> You can disable notifications in your device settings and contact <a href="mailto:info@datanaat.com">info@datanaat.com</a> about privacy objections, consent withdrawal, or deletion requests. On iOS 3.0.16 (build 64), open Account and settings → ScoreBot and AI to withdraw permission to share future messages with OpenAI for this account on this device. The current Android app does not include an in-app analytics opt-out control.</li>
     </ul>
 
     <h2>7. Children</h2>
